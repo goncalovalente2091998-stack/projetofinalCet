@@ -23,36 +23,40 @@ namespace GymManager.View.Forms
     public partial class ClienteForm : Window
     {
 
-        private Cliente cliente;
-
-public ClienteForm(Cliente cliente)
-{
-    InitializeComponent();
-
-    this.cliente = cliente;
-
-            if (cliente != null)
-            {
-                txtNome.Text = cliente.Nome;
-                txtNIF.Text = cliente.NIF;
-                dpNascimento.SelectedDate = cliente.DataNascimento;
-                txtTelefone.Text = cliente.Telefone;
-                txtEmail.Text = cliente.Email;
-                txtMorada.Text = cliente.Morada;
-                dpInscricao.SelectedDate = cliente.DataInscricao;
-                chkEstado.IsChecked = cliente.Estado;
-            }
-}
-
         private readonly ClienteService service = new ClienteService();
+        private readonly Cliente? cliente;
 
-        public ClienteForm() : this(null)
+        public ClienteForm()
         {
             InitializeComponent();
 
             dpInscricao.SelectedDate = DateTime.Today;
             chkEstado.IsChecked = true;
+
+            txtTitulo.Text = "Novo Cliente";
+            Title = "Novo Cliente";
         }
+        public ClienteForm(Cliente cliente)
+{
+             InitializeComponent();
+
+            this.cliente = cliente;
+
+            Title = "Editar Cliente";
+            txtTitulo.Text = "Editar Cliente";
+
+            txtNome.Text = cliente.Nome;
+            txtNIF.Text = cliente.NIF;
+            dpNascimento.SelectedDate = cliente.DataNascimento;
+            txtTelefone.Text = cliente.Telefone;
+            txtEmail.Text = cliente.Email;
+            txtMorada.Text = cliente.Morada;
+            dpInscricao.SelectedDate = cliente.DataInscricao;
+            chkEstado.IsChecked = cliente.Estado;
+        }
+
+       
+
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {

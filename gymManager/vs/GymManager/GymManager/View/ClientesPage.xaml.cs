@@ -35,7 +35,19 @@ namespace GymManager.View
 
         private void CarregarClientes()
         {
-            dgClientes.ItemsSource = service.Listar();
+            try
+            {
+                var lista = service.Listar();
+
+                dgClientes.ItemsSource = lista;
+                txtTotalClientes.Text = lista.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro(
+                    "Não foi possível carregar os clientes.\n\n" +
+                    ex.Message);
+            }
         }
 
         private void btnNovo_Click(object sender, RoutedEventArgs e)
@@ -94,15 +106,30 @@ namespace GymManager.View
             }
         }
 
-        private void txtPesquisar_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtPesquisar_TextChanged(
+    object sender,
+    TextChangedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPesquisar.Text))
-            {
-                CarregarClientes();
+            if (!IsLoaded)
                 return;
-            }
 
-            dgClientes.ItemsSource = service.Pesquisar(txtPesquisar.Text);
+            try
+            {
+                string pesquisa = txtPesquisar.Text.Trim();
+
+                var lista = string.IsNullOrWhiteSpace(pesquisa)
+                    ? service.Listar()
+                    : service.Pesquisar(pesquisa);
+
+                dgClientes.ItemsSource = lista;
+                txtTotalClientes.Text = lista.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro(
+                    "Não foi possível pesquisar os clientes.\n\n" +
+                    ex.Message);
+            }
         }
     }
     

@@ -25,7 +25,7 @@ namespace GymManager.View
     public partial class ProfessoresPage : Page
     {
         private readonly ProfessoresService service = new ProfessoresService();
-        ProfessoresForm form = new ProfessoresForm();
+     
         public ProfessoresPage()
         {
             InitializeComponent();
@@ -35,16 +35,48 @@ namespace GymManager.View
 
         private void CarregarProfessores()
         {
-            dgProfessores.ItemsSource = service.Listar();
+            try
+            {
+                var lista = service.Listar();
+
+                dgProfessores.ItemsSource = lista;
+                txtTotalProfessores.Text = lista.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro(
+                    "Não foi possível carregar os professores.\n\n" +
+                    ex.Message);
+            }
         }
 
         private void txtPesquisar_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!IsLoaded)
+                return;
 
+            try
+            {
+                string pesquisa = txtPesquisar.Text.Trim();
+
+                var lista = string.IsNullOrWhiteSpace(pesquisa)
+                    ? service.Listar()
+                    : service.Pesquisar(pesquisa);
+
+                dgProfessores.ItemsSource = lista;
+                txtTotalProfessores.Text = lista.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro(
+                    "Não foi possível pesquisar os professores.\n\n" +
+                    ex.Message);
+            }
         }
 
         private void btnNovo_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+            ProfessoresForm form = new ProfessoresForm();
 
             if (form.ShowDialog() == true)
             {

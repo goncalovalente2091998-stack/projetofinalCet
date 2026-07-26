@@ -33,10 +33,10 @@ namespace GymManager.View.Forms
         public ProfessoresForm(Professor professor)
         {
             InitializeComponent();
-
             this.professor = professor;
 
             Title = "Editar Professor";
+            txtTitulo.Text = "Editar Professor";
 
             txtNome.Text = professor.Nome;
             txtEspecialidade.Text = professor.Especialidade;
@@ -109,7 +109,8 @@ namespace GymManager.View.Forms
             }
         }
 
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+     
+        private void btnCancelar_Click_1(object sender, RoutedEventArgs e)
         {
             Close();
         }

@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace GymManager.Models
 {
-    class Plano
+    public class Plano
     {
+        public int IdPlano { get; set; }
+
+        public string Nome { get; set; } = string.Empty;
+
+        public decimal Preco { get; set; }
+
+        public int DuracaoMeses { get; set; }
+
+        public string? Descricao { get; set; }
     }
 }

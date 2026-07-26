@@ -2,9 +2,10 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Title="ProfessoresPage">
+      Title="Professores"
+      Background="#F1F5F9">
 
-    <Grid Margin="20">
+    <Grid Margin="25">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -12,88 +13,289 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Cabeçalho -->
-        <TextBlock Text="👨‍🏫 Gestão de Professores"
-                   FontSize="28"
-                   FontWeight="Bold"
-                   Margin="0,0,0,20"/>
+        <!-- CABEÇALHO -->
+        <Grid>
 
-        <!-- Barra de Ferramentas -->
-        <DockPanel Grid.Row="1" Margin="0,0,0,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel>
 
-                <Button x:Name="btnNovo"
-                        Content="➕ Novo"
-                        Width="110"
-                        Height="35"
-                        Margin="0,0,10,0" Click="btnNovo_Click"/>
+                <TextBlock Text="Gestão de Professores"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1E293B"/>
 
-                <Button x:Name="btnEditar"
-                        Content="✏️ Editar"
-                        Width="110"
-                        Height="35"
-                        Margin="0,0,10,0"/>
-
-                <Button x:Name="btnEliminar"
-                        Content="🗑️ Eliminar"
-                        Width="110"
-                        Height="35"/>
+                <TextBlock Text="Registo e gestão dos professores responsáveis pelas aulas"
+                           FontSize="14"
+                           Foreground="#64748B"
+                           Margin="0,5,0,0"/>
 
             </StackPanel>
 
-            <Grid Width="280" Height="40">
+            <Border Grid.Column="1"
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="18,10"
+                    VerticalAlignment="Center">
 
-                <TextBox x:Name="txtPesquisar"
-             Padding="35,0,10,0"
-             materialDesign:HintAssist.Hint="Pesquisar professor..."
-             materialDesign:TextFieldAssist.HasClearButton="True"
-             TextChanged="txtPesquisar_TextChanged"/>
+                <StackPanel Orientation="Horizontal">
 
-                <materialDesign:PackIcon Kind="Magnify"
-                             Width="20"
-                             Height="20"
-                             Margin="10,0,0,0"
-                             VerticalAlignment="Center"
-                             HorizontalAlignment="Left"
-                             Foreground="Gray"/>
+                    <materialDesign:PackIcon Kind="School"
+                                             Width="26"
+                                             Height="26"
+                                             Foreground="#7C3AED"
+                                             VerticalAlignment="Center"/>
+
+                    <StackPanel Margin="10,0,0,0">
+
+                        <TextBlock Text="Total de Professores"
+                                   FontSize="12"
+                                   Foreground="#64748B"/>
+
+                        <TextBlock x:Name="txtTotalProfessores"
+                                   Text="0"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Foreground="#1E293B"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+        <!-- BARRA DE AÇÕES -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                Margin="0,25,0,20">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Button x:Name="btnNovo"
+                            Width="120"
+                            Height="42"
+                            Margin="0,0,10,0"
+                            Click="btnNovo_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="AccountPlus"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Novo"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEditar"
+                            Width="120"
+                            Height="42"
+                            Margin="0,0,10,0"
+                            Click="btnEditar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Pencil"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Editar"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEliminar"
+                            Width="120"
+                            Height="42"
+                            Click="btnEliminar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Delete"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Eliminar"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                </StackPanel>
+
+                <!-- PESQUISA -->
+                <Grid Grid.Column="2"
+                      Height="42">
+
+                    <TextBox x:Name="txtPesquisar"
+                             Padding="38,0,35,0"
+                             VerticalContentAlignment="Center"
+                             TextChanged="txtPesquisar_TextChanged"
+                             materialDesign:HintAssist.Hint="Pesquisar professor..."
+                             materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="20"
+                                             Height="20"
+                                             Margin="10,0,0,0"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             Foreground="#64748B"/>
+
+                </Grid>
 
             </Grid>
-        </DockPanel>
 
-        <!-- DataGrid -->
+        </Border>
 
-        <DataGrid x:Name="dgProfessores"
-                  Grid.Row="2"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  SelectionMode="Single">
+        <!-- TABELA -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1">
 
-            <DataGrid.Columns>
+            <DataGrid x:Name="dgProfessores"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      RowHeight="44"
+                      ColumnHeaderHeight="44"
+                      BorderThickness="0"
+                      AlternatingRowBackground="#F8FAFC">
 
-                <DataGridTextColumn Header="ID"
-                                    Binding="{Binding IdProfessor}"
-                                    Width="60"/>
+                <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Nome"
-                                    Binding="{Binding Nome}"
-                                    Width="220"/>
+                    <DataGridTextColumn Header="ID"
+                                        Binding="{Binding IdProfessor}"
+                                        Width="70"/>
 
-                <DataGridTextColumn Header="Especialidade"
-                                    Binding="{Binding Especialidade}"
-                                    Width="180"/>
+                    <DataGridTemplateColumn Header="Professor"
+                                            Width="2*">
 
-                <DataGridTextColumn Header="Telefone"
-                                    Binding="{Binding Telefone}"
-                                    Width="140"/>
+                        <DataGridTemplateColumn.CellTemplate>
 
-                <DataGridTextColumn Header="Email"
-                                    Binding="{Binding Email}"
-                                    Width="*"/>
+                            <DataTemplate>
 
-            </DataGrid.Columns>
+                                <StackPanel Orientation="Horizontal"
+                                            VerticalAlignment="Center">
 
-        </DataGrid>
+                                    <Border Width="32"
+                                            Height="32"
+                                            CornerRadius="16"
+                                            Background="#EDE9FE"
+                                            Margin="0,0,10,0">
+
+                                        <materialDesign:PackIcon Kind="Account"
+                                                                 Width="18"
+                                                                 Height="18"
+                                                                 Foreground="#7C3AED"
+                                                                 HorizontalAlignment="Center"
+                                                                 VerticalAlignment="Center"/>
+
+                                    </Border>
+
+                                    <TextBlock Text="{Binding Nome}"
+                                               FontWeight="SemiBold"
+                                               VerticalAlignment="Center"
+                                               Foreground="#1E293B"/>
+
+                                </StackPanel>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Especialidade"
+                                        Binding="{Binding Especialidade}"
+                                        Width="1.5*"/>
+
+                    <DataGridTemplateColumn Header="Telefone"
+                                            Width="150">
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <materialDesign:PackIcon Kind="Phone"
+                                                             Width="17"
+                                                             Height="17"
+                                                             Foreground="#64748B"
+                                                             Margin="0,0,7,0"/>
+
+                                    <TextBlock Text="{Binding Telefone}"
+                                               VerticalAlignment="Center"/>
+
+                                </StackPanel>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Email"
+                                            Width="2*">
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <materialDesign:PackIcon Kind="Email"
+                                                             Width="17"
+                                                             Height="17"
+                                                             Foreground="#64748B"
+                                                             Margin="0,0,7,0"/>
+
+                                    <TextBlock Text="{Binding Email}"
+                                               VerticalAlignment="Center"
+                                               TextTrimming="CharacterEllipsis"/>
+
+                                </StackPanel>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
 
     </Grid>
 

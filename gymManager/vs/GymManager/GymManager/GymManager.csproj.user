@@ -26,7 +26,19 @@
     <Compile Update="View\Forms\ClienteForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Forms\InscricaoForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\PersonalTrainerForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\PlanoForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Forms\ProfessoresForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\UtilizadorForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\InscricoesPage.xaml.cs">
@@ -54,6 +66,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProfessoresPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UtilizadoresPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

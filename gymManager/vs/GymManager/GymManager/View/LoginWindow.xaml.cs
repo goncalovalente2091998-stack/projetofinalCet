@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GymManager.Helpers;
+using GymManager.Models;
+using GymManager.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +22,78 @@ namespace GymManager.View
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private readonly UtilizadorService service =
+             new UtilizadorService();
+
         public LoginWindow()
         {
+      
             InitializeComponent();
         }
 
-        private void btnEntrar_Click(object sender, RoutedEventArgs e)
+        private void btnEntrar_Click(
+            object sender,
+            RoutedEventArgs e)
         {
-        
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            string email = txtEmail.Text.Trim();
+            string password = txtPassword.Password;
 
-            this.Close();
-        
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                Mensagem.Aviso("Introduza o email.");
+                txtEmail.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                Mensagem.Aviso("Introduza a palavra-passe.");
+                txtPassword.Focus();
+                return;
+            }
+
+            try
+            {
+                Utilizador? utilizador =
+                    service.ObterPorEmail(email);
+
+                bool credenciaisValidas =
+                    utilizador != null &&
+                    passwordHelper.Verificar(
+                        password,
+                        utilizador.PasswordHash);
+
+                if (!credenciaisValidas)
+                {
+                    Mensagem.Aviso(
+                        "Email ou palavra-passe inválidos.");
+
+                    txtPassword.Clear();
+                    txtPassword.Focus();
+                    return;
+                }
+
+                Sessao.IdUtilizador =
+                    utilizador!.IdUtilizador;
+
+                Sessao.Nome =
+                    utilizador.Nome;
+
+                Sessao.Perfil =
+                    utilizador.Perfil;
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro(
+                    "Não foi possível iniciar sessão.\n\n" +
+                    ex.Message);
+            }
         }
     }
 }
+

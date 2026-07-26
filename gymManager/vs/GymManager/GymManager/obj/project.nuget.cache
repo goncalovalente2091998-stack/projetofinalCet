@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "w7WKquXfooU=",
+  "dgSpecHash": "o+KdhMAxltM=",
   "success": true,
   "projectFilePath": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\GymManager.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gonca\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\materialdesigncolors\\5.3.3-ci1429\\materialdesigncolors.5.3.3-ci1429.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\materialdesignthemes\\5.3.3-ci1429\\materialdesignthemes.5.3.3-ci1429.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\microsoft.bcl.cryptography\\8.0.0\\microsoft.bcl.cryptography.8.0.0.nupkg.sha512",

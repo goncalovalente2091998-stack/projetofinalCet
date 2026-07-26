@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GymManager.Helpers;
+using GymManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +24,10 @@ namespace GymManager.View
         public MainWindow()
         {
             InitializeComponent();
-
+            txtNomeUtilizador.Text = Sessao.Nome;
+            txtPerfilUtilizador.Text = Sessao.Perfil;
+            AplicarPermissoes();
+            txtTituloPagina.Text = "Inicio";       
             MainFrame.Navigate(new DashboardPage());
         }
 
@@ -33,6 +38,7 @@ namespace GymManager.View
 
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
+            txtTituloPagina.Text = "Clientes";
             MainFrame.Navigate(new ClientesPage());
         }
 
@@ -53,6 +59,7 @@ namespace GymManager.View
 
         private void btnProfessores_Click(object sender, RoutedEventArgs e)
         {
+            txtTituloPagina.Text = "Professores";
             MainFrame.Navigate(new ProfessoresPage());
         }
 
@@ -63,6 +70,7 @@ namespace GymManager.View
 
         private void btnPT_Click(object sender, RoutedEventArgs e)
         {
+            txtTituloPagina.Text = "Personal Trainers";
             MainFrame.Navigate(new PersonalTrainersPage());
         }
 
@@ -89,6 +97,164 @@ namespace GymManager.View
         private void btnManutencoes_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new ManutencoesPage());
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Mensagem.Confirmar("Pretende terminar a sessão?"))
+                return;
+
+            Sessao.Limpar();
+
+            LoginWindow login = new LoginWindow();
+            login.Show();
+
+            Close();
+        }
+
+
+
+
+        private void AplicarPermissoes()
+        {
+            bool administrador =
+                Sessao.Perfil.Equals(
+                    Perfis.Administrador,
+                    StringComparison.OrdinalIgnoreCase);
+
+            bool rececionista =
+                Sessao.Perfil.Equals(
+                    Perfis.Rececionista,
+                    StringComparison.OrdinalIgnoreCase);
+
+            bool professor =
+                Sessao.Perfil.Equals(
+                    Perfis.Professor,
+                    StringComparison.OrdinalIgnoreCase);
+
+            bool personalTrainer =
+                Sessao.Perfil.Equals(
+                    Perfis.PersonalTrainer,
+                    StringComparison.OrdinalIgnoreCase);
+
+            txtAdmin.Visibility =
+              administrador 
+                  ? Visibility.Visible
+                  : Visibility.Collapsed;
+
+            txtAdmin.Visibility =
+             administrador
+                 ? Visibility.Visible
+                 : Visibility.Collapsed;
+
+            txtComercial.Visibility =
+             administrador || rececionista 
+                 ? Visibility.Visible
+                 : Visibility.Collapsed;
+          
+            spComercial.Visibility =
+        administrador || rececionista
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+
+
+            txtEquipamentos.Visibility =
+            administrador || rececionista
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+
+            spEquipamentos.Visibility =
+      administrador || rececionista
+          ? Visibility.Visible
+          : Visibility.Collapsed;
+
+
+
+            txtGestao.Visibility =
+             administrador || rececionista 
+                 ? Visibility.Visible
+                 : Visibility.Collapsed;
+
+            spGestao.Visibility =
+            administrador || rececionista
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+
+
+
+
+            btnClientes.Visibility =
+                administrador || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnPlanos.Visibility =
+                administrador || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnInscricoes.Visibility =
+                administrador || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnPagamentos.Visibility =
+                administrador || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnProfessores.Visibility =
+                administrador
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnPT.Visibility =
+                administrador  || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnAulas.Visibility =
+                administrador || rececionista || professor
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnTreinos.Visibility =
+                administrador || personalTrainer || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnExercicios.Visibility =
+                administrador || personalTrainer || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnAvaliacoes.Visibility =
+                administrador || personalTrainer || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnEquipamentos.Visibility =
+                administrador || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            btnManutencoes.Visibility =
+                administrador || rececionista
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            btnUtilizadores.Visibility =
+    
+                Sessao.Perfil.Equals(
+        "Administrador",
+        StringComparison.OrdinalIgnoreCase)
+        ? Visibility.Visible
+        : Visibility.Collapsed;
+        }
+
+        private void btnUtilizadores_Click(object sender, RoutedEventArgs e)
+        {
+            txtTituloPagina.Text = "Utilizadores";
+            MainFrame.Navigate(new UtilizadoresPage());
         }
     }
 }

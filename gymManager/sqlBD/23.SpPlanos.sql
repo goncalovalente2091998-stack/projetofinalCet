@@ -95,3 +95,26 @@ BEGIN
     WHERE IdPlano = @IdPlano;
 END;
 GO
+
+CREATE OR ALTER PROCEDURE sp_Planos_Pesquisar
+(
+    @Pesquisa NVARCHAR(100)
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        IdPlano,
+        Nome,
+        Preco,
+        DuracaoMeses,
+        Descricao
+    FROM Planos
+    WHERE Nome LIKE '%' + @Pesquisa + '%'
+       OR Descricao LIKE '%' + @Pesquisa + '%'
+       OR CAST(Preco AS NVARCHAR(20)) LIKE '%' + @Pesquisa + '%'
+       OR CAST(DuracaoMeses AS NVARCHAR(10)) LIKE '%' + @Pesquisa + '%'
+    ORDER BY Nome;
+END;
+GO

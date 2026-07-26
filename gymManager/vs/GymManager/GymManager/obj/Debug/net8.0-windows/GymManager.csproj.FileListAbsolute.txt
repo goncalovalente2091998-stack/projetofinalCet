@@ -50,7 +50,6 @@ C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\bin\Debug\net8.0-wind
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\GymManager.csproj.AssemblyReference.cache
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\LoginWindow.baml
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\MainWindow.baml
-C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\AulasPage.g.cs
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\AvaliacoesPage.g.cs
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\ClientesPage.g.cs
@@ -70,7 +69,6 @@ C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-wind
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\GymManager_Content.g.cs
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\GymManager_MarkupCompile.cache
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\GymManager_MarkupCompile.lref
-C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\AulasPage.baml
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\AvaliacoesPage.baml
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\ClientesPage.baml
@@ -102,3 +100,14 @@ C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-wind
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\ProfessoresForm.baml
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\ProfessoresForm.g.cs
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\App.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\PersonalTrainerForm.g.cs
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\PersonalTrainerForm.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\bin\Debug\net8.0-windows\BCrypt-Net-Next.dll
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\UtilizadorForm.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\UtilizadoresPage.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\UtilizadorForm.g.cs
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\UtilizadoresPage.g.cs
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\PlanoForm.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\PlanoForm.g.cs
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\InscricaoForm.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\InscricaoForm.g.cs

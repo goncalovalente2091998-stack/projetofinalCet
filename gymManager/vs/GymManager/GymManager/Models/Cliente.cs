@@ -26,5 +26,7 @@ namespace GymManager.Models
         public DateTime DataInscricao { get; set; }
 
         public bool Estado { get; set; }
+
+ 
     }
 }
