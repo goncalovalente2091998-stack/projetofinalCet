@@ -1,0 +1,143 @@
+﻿<Window x:Class="GymManager.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gym Manager"
+        Height="700"
+        Width="1200"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- MENU LATERAL -->
+        <Border Background="#1E293B">
+
+            <StackPanel>
+
+                <TextBlock Text="GYM MANAGER"
+                           Foreground="White"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="20"
+                           HorizontalAlignment="Center"/>
+
+                <Button Name="btnDashboard"
+                        Content="🏠 Dashboard"
+                        Margin="10"
+                        Height="40"
+                        Click="btnDashboard_Click"/>
+
+                <Button Name="btnClientes"
+                        Content="👥 Clientes"
+                        Margin="10"
+                        Height="40"
+                        Click="btnClientes_Click"/>
+
+                <Button Name="btnPlanos"
+                        Content="💳 Planos"
+                        Margin="10"
+                        Height="40"
+                        Click="btnPlanos_Click"/>
+
+                <Button Name="btnInscricoes"
+                        Content="📝 Inscrições"
+                        Margin="10"
+                        Height="40"
+                        Click="btnInscricoes_Click"/>
+
+                <Button Name="btnPagamentos"
+                        Content="💰 Pagamentos"
+                        Margin="10"
+                        Height="40"
+                        Click="btnPagamentos_Click"/>
+
+                <Button Name="btnProfessores"
+                        Content="👨‍🏫 Professores"
+                        Margin="10"
+                        Height="40"
+                        Click="btnProfessores_Click"/>
+
+                <Button Name="btnAulas"
+                        Content="🏋️ Aulas"
+                        Margin="10"
+                        Height="40"
+                        Click="btnAulas_Click"/>
+
+                <Button Name="btnPT"
+                        Content="💪 Personal Trainers"
+                        Margin="10"
+                        Height="40"
+                        Click="btnPT_Click"/>
+
+                <Button Name="btnTreinos"
+                        Content="📋 Planos de Treino"
+                        Margin="10"
+                        Height="40"
+                        Click="btnTreinos_Click"/>
+
+                <Button Name="btnExercicios"
+                        Content="🏃 Exercícios"
+                        Margin="10"
+                        Height="40"
+                        Click="btnExercicios_Click"/>
+
+                <Button Name="btnAvaliacoes"
+                        Content="📈 Avaliações"
+                        Margin="10"
+                        Height="40"
+                        Click="btnAvaliacoes_Click"/>
+
+                <Button Name="btnEquipamentos"
+                        Content="🔧 Equipamentos"
+                        Margin="10"
+                        Height="40"
+                        Click="btnEquipamentos_Click"/>
+
+                <Button Name="btnManutencoes"
+                        Content="🛠 Manutenções"
+                        Margin="10"
+                        Height="40"
+                        Click="btnManutencoes_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- ÁREA PRINCIPAL -->
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Cabeçalho -->
+            <Border Background="White">
+
+                <Grid>
+
+                   
+
+                    <TextBlock Text="Administrador"
+                               HorizontalAlignment="Right"
+                               Margin="20"
+                               VerticalAlignment="Center"/>
+
+                </Grid>
+
+            </Border>
+
+            <!-- Frame -->
+            <Frame x:Name="MainFrame"
+                   Grid.Row="1"
+                   NavigationUIVisibility="Hidden"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

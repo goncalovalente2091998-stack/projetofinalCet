@@ -1,0 +1,8 @@
+CREATE TABLE Aulas (
+    IdAula INT IDENTITY(1,1) PRIMARY KEY,
+    IdProfessor INT NOT NULL,
+    Nome NVARCHAR(100) NOT NULL,
+    Horario NVARCHAR(50) NOT NULL,
+    Lotacao INT NOT NULL,
+    Sala NVARCHAR(50) NOT NULL
+);

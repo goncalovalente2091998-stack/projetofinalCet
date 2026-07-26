@@ -1,0 +1,100 @@
+﻿<Page x:Class="GymManager.View.ProfessoresPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="ProfessoresPage">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <TextBlock Text="👨‍🏫 Gestão de Professores"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <!-- Barra de Ferramentas -->
+        <DockPanel Grid.Row="1" Margin="0,0,0,15">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Button x:Name="btnNovo"
+                        Content="➕ Novo"
+                        Width="110"
+                        Height="35"
+                        Margin="0,0,10,0" Click="btnNovo_Click"/>
+
+                <Button x:Name="btnEditar"
+                        Content="✏️ Editar"
+                        Width="110"
+                        Height="35"
+                        Margin="0,0,10,0"/>
+
+                <Button x:Name="btnEliminar"
+                        Content="🗑️ Eliminar"
+                        Width="110"
+                        Height="35"/>
+
+            </StackPanel>
+
+            <Grid Width="280" Height="40">
+
+                <TextBox x:Name="txtPesquisar"
+             Padding="35,0,10,0"
+             materialDesign:HintAssist.Hint="Pesquisar professor..."
+             materialDesign:TextFieldAssist.HasClearButton="True"
+             TextChanged="txtPesquisar_TextChanged"/>
+
+                <materialDesign:PackIcon Kind="Magnify"
+                             Width="20"
+                             Height="20"
+                             Margin="10,0,0,0"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Left"
+                             Foreground="Gray"/>
+
+            </Grid>
+        </DockPanel>
+
+        <!-- DataGrid -->
+
+        <DataGrid x:Name="dgProfessores"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding IdProfessor}"
+                                    Width="60"/>
+
+                <DataGridTextColumn Header="Nome"
+                                    Binding="{Binding Nome}"
+                                    Width="220"/>
+
+                <DataGridTextColumn Header="Especialidade"
+                                    Binding="{Binding Especialidade}"
+                                    Width="180"/>
+
+                <DataGridTextColumn Header="Telefone"
+                                    Binding="{Binding Telefone}"
+                                    Width="140"/>
+
+                <DataGridTextColumn Header="Email"
+                                    Binding="{Binding Email}"
+                                    Width="*"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+
+</Page>

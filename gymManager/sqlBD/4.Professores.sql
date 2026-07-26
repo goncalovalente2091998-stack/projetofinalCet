@@ -1,0 +1,7 @@
+CREATE TABLE Professores (
+    IdProfessor INT IDENTITY(1,1) PRIMARY KEY,
+    Nome NVARCHAR(100) NOT NULL,
+    Especialidade NVARCHAR(100) NOT NULL,
+    Telefone NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL
+);

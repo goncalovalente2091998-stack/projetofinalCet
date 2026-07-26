@@ -1,0 +1,7 @@
+CREATE TABLE Utilizadores (
+    IdUtilizador INT IDENTITY(1,1) PRIMARY KEY,
+    Nome NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    Perfil NVARCHAR(30) NOT NULL
+);

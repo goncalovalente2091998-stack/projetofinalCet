@@ -1,0 +1,7 @@
+CREATE TABLE Planos (
+    IdPlano INT IDENTITY(1,1) PRIMARY KEY,
+    Nome NVARCHAR(100) NOT NULL,
+    Preco DECIMAL(10,2) NOT NULL,
+    DuracaoMeses INT NOT NULL,
+    Descricao NVARCHAR(255)
+);

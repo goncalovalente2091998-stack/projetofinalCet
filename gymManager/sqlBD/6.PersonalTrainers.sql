@@ -1,0 +1,9 @@
+CREATE TABLE PersonalTrainers (
+    IdPT INT IDENTITY(1,1) PRIMARY KEY,
+    Nome NVARCHAR(100) NOT NULL,
+    Especialidade NVARCHAR(100) NOT NULL,
+    Telefone NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+    ValorHora DECIMAL(10,2) NOT NULL,
+    Estado BIT NOT NULL
+);

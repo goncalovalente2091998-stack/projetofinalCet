@@ -1,0 +1,7 @@
+CREATE TABLE Equipamentos (
+    IdEquipamento INT IDENTITY(1,1) PRIMARY KEY,
+    Nome NVARCHAR(100) NOT NULL,
+    Marca NVARCHAR(100) NOT NULL,
+    Estado NVARCHAR(50) NOT NULL,
+    DataCompra DATE NOT NULL
+);

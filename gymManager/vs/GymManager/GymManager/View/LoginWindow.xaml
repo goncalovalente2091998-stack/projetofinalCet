@@ -1,0 +1,57 @@
+﻿<Window x:Class="GymManager.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gym Manager"
+        Height="600"
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="DarkGray">
+
+        <Border Width="420"
+                Height="420"
+                Background="White"
+                CornerRadius="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+            <StackPanel Margin="40">
+
+                <TextBlock Text="GYM MANAGER"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,10"/>
+
+                <TextBlock Text="Iniciar Sessão"
+                           FontSize="18"
+                           
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,40"/>
+
+                <TextBlock Text="Email"/>
+
+                <TextBox x:Name="txtEmail"
+                         Height="40"
+                         Margin="0,5,0,20"/>
+
+                <TextBlock Text="Palavra-passe"/>
+
+                <PasswordBox x:Name="txtPassword"
+                             Height="40"
+                             Margin="0,5,0,40"/>
+
+                <Button x:Name="btnEntrar"
+                        Content="Entrar"
+                        Height="34"
+                        FontSize="16"
+                        Click="btnEntrar_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,79 @@
+﻿<Window x:Class="GymManager.View.Forms.ClienteForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cliente"
+        Height="550"
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Nome:" Grid.Row="0" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtNome" Grid.Row="0" Grid.Column="1"/>
+
+        <TextBlock Text="NIF:" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtNIF" Grid.Row="1" Grid.Column="1"/>
+
+        <TextBlock Text="Data Nascimento:" Grid.Row="2" VerticalAlignment="Center"/>
+        <DatePicker x:Name="dpNascimento" Grid.Row="2" Grid.Column="1"/>
+
+        <TextBlock Text="Telefone:" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtTelefone" Grid.Row="3" Grid.Column="1"/>
+
+        <TextBlock Text="Email:" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="1"/>
+
+        <TextBlock Text="Morada:" Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtMorada" Grid.Row="5" Grid.Column="1"/>
+
+        <TextBlock Text="Data Inscrição:" Grid.Row="6" VerticalAlignment="Center"/>
+        <DatePicker x:Name="dpInscricao" Grid.Row="6" Grid.Column="1"/>
+
+        <TextBlock Text="Estado:" Grid.Row="7" VerticalAlignment="Center"/>
+        <CheckBox x:Name="chkEstado"
+                  Grid.Row="7"
+                  Grid.Column="1"
+                  Content="Cliente Ativo"/>
+
+        <StackPanel Grid.Row="8"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+
+            <Button x:Name="btnGuardar"
+        Content="💾 Guardar"
+        Width="100"
+        Height="35"
+        Margin="5"
+        Click="btnGuardar_Click"/>
+
+            <Button x:Name="btnCancelar"
+        Content="❌ Cancelar"
+        Width="100"
+        Height="35"
+        Margin="5"
+        Click="btnCancelar_Click"/>
+        </StackPanel>
+
+    </Grid>
+
+</Window>
