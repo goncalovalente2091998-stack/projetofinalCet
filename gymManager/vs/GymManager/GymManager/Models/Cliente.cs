@@ -27,6 +27,7 @@ namespace GymManager.Models
 
         public bool Estado { get; set; }
 
- 
+        public string DescricaoReserva =>
+           $"{Nome} — NIF: {NIF}";
     }
 }

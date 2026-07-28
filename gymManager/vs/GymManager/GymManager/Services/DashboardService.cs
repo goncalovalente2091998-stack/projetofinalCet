@@ -65,7 +65,14 @@ namespace GymManager.Services
 
                 InscricoesATerminar =
                     Convert.ToInt32(
-                        reader["InscricoesATerminar"])
+                        reader["InscricoesATerminar"]),
+                AulasHoje =
+    Convert.ToInt32(
+        reader["AulasHoje"]),
+
+                ReservasHoje =
+    Convert.ToInt32(
+        reader["ReservasHoje"]),
             };
         }
 

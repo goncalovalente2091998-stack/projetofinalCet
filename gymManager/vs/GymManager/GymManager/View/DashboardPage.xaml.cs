@@ -36,7 +36,6 @@ namespace GymManager.View
         {
             InitializeComponent();
 
-            CarregarDashboard();
         }
 
         private void CarregarDashboard()
@@ -73,6 +72,12 @@ namespace GymManager.View
                         "C2",
                         culturaPortugal);
 
+                txtAulasHoje.Text =
+    resumo.AulasHoje.ToString();
+
+                txtReservasHoje.Text =
+                    resumo.ReservasHoje.ToString();
+
                 dgUltimosPagamentos.ItemsSource =
                     service.ListarUltimosPagamentos();
 
@@ -85,6 +90,24 @@ namespace GymManager.View
                     "Não foi possível carregar o dashboard.\n\n" +
                     ex.Message);
             }
+        }
+
+        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
+        {
+            CarregarDashboard();
+        }
+        protected override void OnInitialized(
+    EventArgs e)
+        {
+            base.OnInitialized(e);
+
+            Loaded += DashboardPage_Loaded;
+        }
+        private void DashboardPage_Loaded(
+    object sender,
+    RoutedEventArgs e)
+        {
+            CarregarDashboard();
         }
 
     }

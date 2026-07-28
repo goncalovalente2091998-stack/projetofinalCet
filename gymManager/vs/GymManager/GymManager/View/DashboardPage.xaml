@@ -21,25 +21,58 @@
                 <!-- Segunda linha de cartões -->
                 <RowDefinition Height="Auto"/>
 
+                <!-- Terceira linha de cartões -->
+                <RowDefinition Height="Auto"/>
+
                 <!-- Tabelas -->
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- CABEÇALHO -->
-            <StackPanel Grid.Row="0"
-                        Margin="0,0,0,25">
+            <Grid Grid.Row="0"
+                  Margin="0,0,0,25">
 
-                <TextBlock Text="Dashboard"
-                           FontSize="30"
-                           FontWeight="Bold"
-                           Foreground="#1E293B"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Resumo geral da atividade do ginásio"
-                           FontSize="14"
-                           Foreground="#64748B"
-                           Margin="0,5,0,0"/>
+                <StackPanel>
 
-            </StackPanel>
+                    <TextBlock Text="Dashboard"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Foreground="#1E293B"/>
+
+                    <TextBlock Text="Resumo geral da atividade do ginásio"
+                               FontSize="14"
+                               Foreground="#64748B"
+                               Margin="0,5,0,0"/>
+
+                </StackPanel>
+
+                <Button x:Name="btnAtualizar"
+                        Grid.Column="1"
+                        Width="125"
+                        Height="42"
+                        VerticalAlignment="Center"
+                        Click="btnAtualizar_Click">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="Refresh"
+                                                 Width="18"
+                                                 Height="18"
+                                                 Margin="0,0,7,0"/>
+
+                        <TextBlock Text="Atualizar"
+                                   VerticalAlignment="Center"/>
+
+                    </StackPanel>
+
+                </Button>
+
+            </Grid>
 
             <!-- PRIMEIRA LINHA DE CARTÕES -->
             <Grid Grid.Row="1"
@@ -47,11 +80,9 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="18"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="16"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="18"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -59,7 +90,7 @@
                 <Border Grid.Column="0"
                         Background="White"
                         CornerRadius="14"
-                        Padding="18"
+                        Padding="20"
                         BorderBrush="#E2E8F0"
                         BorderThickness="1">
 
@@ -70,14 +101,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Width="52"
-                                Height="52"
-                                CornerRadius="26"
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
                                 Background="#DBEAFE">
 
                             <materialDesign:PackIcon Kind="AccountGroup"
-                                                     Width="27"
-                                                     Height="27"
+                                                     Width="28"
+                                                     Height="28"
                                                      Foreground="#2563EB"
                                                      HorizontalAlignment="Center"
                                                      VerticalAlignment="Center"/>
@@ -85,17 +116,16 @@
                         </Border>
 
                         <StackPanel Grid.Column="1"
-                                    Margin="14,0,0,0"
+                                    Margin="15,0,0,0"
                                     VerticalAlignment="Center">
 
                             <TextBlock Text="Clientes ativos"
-                                       FontSize="12"
-                                       Foreground="#64748B"
-                                       TextWrapping="Wrap"/>
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
 
                             <TextBlock x:Name="txtClientesAtivos"
                                        Text="0"
-                                       FontSize="26"
+                                       FontSize="27"
                                        FontWeight="Bold"
                                        Foreground="#1E293B"/>
 
@@ -109,7 +139,7 @@
                 <Border Grid.Column="2"
                         Background="White"
                         CornerRadius="14"
-                        Padding="18"
+                        Padding="20"
                         BorderBrush="#E2E8F0"
                         BorderThickness="1">
 
@@ -120,14 +150,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Width="52"
-                                Height="52"
-                                CornerRadius="26"
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
                                 Background="#DCFCE7">
 
                             <materialDesign:PackIcon Kind="FileCheck"
-                                                     Width="27"
-                                                     Height="27"
+                                                     Width="28"
+                                                     Height="28"
                                                      Foreground="#15803D"
                                                      HorizontalAlignment="Center"
                                                      VerticalAlignment="Center"/>
@@ -135,17 +165,16 @@
                         </Border>
 
                         <StackPanel Grid.Column="1"
-                                    Margin="14,0,0,0"
+                                    Margin="15,0,0,0"
                                     VerticalAlignment="Center">
 
                             <TextBlock Text="Inscrições ativas"
-                                       FontSize="12"
-                                       Foreground="#64748B"
-                                       TextWrapping="Wrap"/>
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
 
                             <TextBlock x:Name="txtInscricoesAtivas"
                                        Text="0"
-                                       FontSize="26"
+                                       FontSize="27"
                                        FontWeight="Bold"
                                        Foreground="#1E293B"/>
 
@@ -155,11 +184,11 @@
 
                 </Border>
 
-                <!-- RECEITA DO MÊS -->
+                <!-- PAGAMENTOS PENDENTES -->
                 <Border Grid.Column="4"
                         Background="White"
                         CornerRadius="14"
-                        Padding="18"
+                        Padding="20"
                         BorderBrush="#E2E8F0"
                         BorderThickness="1">
 
@@ -170,82 +199,31 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Width="52"
-                                Height="52"
-                                CornerRadius="26"
-                                Background="#DCFCE7">
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#FEF3C7">
 
-                            <materialDesign:PackIcon Kind="CashMultiple"
-                                                     Width="27"
-                                                     Height="27"
-                                                     Foreground="#15803D"
+                            <materialDesign:PackIcon Kind="ClockOutline"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#B45309"
                                                      HorizontalAlignment="Center"
                                                      VerticalAlignment="Center"/>
 
                         </Border>
 
                         <StackPanel Grid.Column="1"
-                                    Margin="14,0,0,0"
+                                    Margin="15,0,0,0"
                                     VerticalAlignment="Center">
 
-                            <TextBlock Text="Receita do mês"
-                                       FontSize="12"
-                                       Foreground="#64748B"
-                                       TextWrapping="Wrap"/>
+                            <TextBlock Text="Pagamentos pendentes"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
 
-                            <TextBlock x:Name="txtReceitaMes"
-                                       Text="0,00 €"
-                                       FontSize="22"
-                                       FontWeight="Bold"
-                                       Foreground="#1E293B"/>
-
-                        </StackPanel>
-
-                    </Grid>
-
-                </Border>
-
-                <!-- RECEITA DO ANO -->
-                <Border Grid.Column="6"
-                        Background="White"
-                        CornerRadius="14"
-                        Padding="18"
-                        BorderBrush="#E2E8F0"
-                        BorderThickness="1">
-
-                    <Grid>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Border Width="52"
-                                Height="52"
-                                CornerRadius="26"
-                                Background="#DBEAFE">
-
-                            <materialDesign:PackIcon Kind="Calendar"
-                                                     Width="27"
-                                                     Height="27"
-                                                     Foreground="#2563EB"
-                                                     HorizontalAlignment="Center"
-                                                     VerticalAlignment="Center"/>
-
-                        </Border>
-
-                        <StackPanel Grid.Column="1"
-                                    Margin="14,0,0,0"
-                                    VerticalAlignment="Center">
-
-                            <TextBlock Text="Receita do ano"
-                                       FontSize="12"
-                                       Foreground="#64748B"
-                                       TextWrapping="Wrap"/>
-
-                            <TextBlock x:Name="txtReceitaAno"
-                                       Text="0,00 €"
-                                       FontSize="22"
+                            <TextBlock x:Name="txtPagamentosPendentes"
+                                       Text="0"
+                                       FontSize="27"
                                        FontWeight="Bold"
                                        Foreground="#1E293B"/>
 
@@ -258,7 +236,8 @@
             </Grid>
 
             <!-- SEGUNDA LINHA DE CARTÕES -->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2"
+                  Margin="0,0,0,18">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -268,8 +247,106 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- RECEITA TOTAL -->
+                <!-- RECEITA DO MÊS -->
                 <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="14"
+                        Padding="20"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#DCFCE7">
+
+                            <materialDesign:PackIcon Kind="CashMultiple"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#15803D"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Receita do mês"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
+
+                            <TextBlock x:Name="txtReceitaMes"
+                                       Text="0,00 €"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="#1E293B"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- RECEITA DO ANO -->
+                <Border Grid.Column="2"
+                        Background="White"
+                        CornerRadius="14"
+                        Padding="20"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#DBEAFE">
+
+                            <materialDesign:PackIcon Kind="Calendar"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#2563EB"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Receita do ano"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
+
+                            <TextBlock x:Name="txtReceitaAno"
+                                       Text="0,00 €"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="#1E293B"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- RECEITA TOTAL -->
+                <Border Grid.Column="4"
                         Background="White"
                         CornerRadius="14"
                         Padding="20"
@@ -317,7 +394,69 @@
 
                 </Border>
 
-                <!-- PAGAMENTOS PENDENTES -->
+            </Grid>
+
+            <!-- TERCEIRA LINHA DE CARTÕES -->
+            <Grid Grid.Row="3">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- AULAS DE HOJE -->
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="14"
+                        Padding="20"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#DBEAFE">
+
+                            <materialDesign:PackIcon Kind="CalendarToday"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#2563EB"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Aulas de hoje"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
+
+                            <TextBlock x:Name="txtAulasHoje"
+                                       Text="0"
+                                       FontSize="27"
+                                       FontWeight="Bold"
+                                       Foreground="#1E293B"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- RESERVAS DE HOJE -->
                 <Border Grid.Column="2"
                         Background="White"
                         CornerRadius="14"
@@ -335,12 +474,12 @@
                         <Border Width="54"
                                 Height="54"
                                 CornerRadius="27"
-                                Background="#FEF3C7">
+                                Background="#DCFCE7">
 
-                            <materialDesign:PackIcon Kind="ClockOutline"
+                            <materialDesign:PackIcon Kind="AccountCheck"
                                                      Width="28"
                                                      Height="28"
-                                                     Foreground="#B45309"
+                                                     Foreground="#15803D"
                                                      HorizontalAlignment="Center"
                                                      VerticalAlignment="Center"/>
 
@@ -350,11 +489,11 @@
                                     Margin="15,0,0,0"
                                     VerticalAlignment="Center">
 
-                            <TextBlock Text="Pagamentos pendentes"
+                            <TextBlock Text="Reservas de hoje"
                                        FontSize="13"
                                        Foreground="#64748B"/>
 
-                            <TextBlock x:Name="txtPagamentosPendentes"
+                            <TextBlock x:Name="txtReservasHoje"
                                        Text="0"
                                        FontSize="27"
                                        FontWeight="Bold"
@@ -422,7 +561,7 @@
             </Grid>
 
             <!-- TABELAS -->
-            <Grid Grid.Row="3"
+            <Grid Grid.Row="4"
                   Margin="0,22,0,0">
 
                 <Grid.ColumnDefinitions>

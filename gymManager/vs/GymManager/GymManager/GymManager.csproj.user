@@ -23,6 +23,9 @@
     <Compile Update="View\ExerciciosPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Forms\AulaForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Forms\ClienteForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -39,6 +42,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Forms\ProfessoresForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\ReservaAulaForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Forms\UtilizadorForm.xaml.cs">
@@ -69,6 +75,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProfessoresPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ReservasAulasPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UtilizadoresPage.xaml.cs">

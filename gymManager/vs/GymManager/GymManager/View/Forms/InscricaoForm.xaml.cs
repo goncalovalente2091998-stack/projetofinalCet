@@ -21,6 +21,12 @@ namespace GymManager.View.Forms
         private readonly PlanoService planoService =
             new PlanoService();
 
+        /*
+         * Fica preenchida apenas quando estamos a editar.
+         *
+         * Numa nova inscrição ou renovação permanece null,
+         * para que seja criada uma nova inscrição.
+         */
         private readonly Inscricao? inscricao;
 
         private List<Cliente> clientes = new();
@@ -31,22 +37,28 @@ namespace GymManager.View.Forms
 
         private bool atualizandoTextoCliente;
 
+        private bool modoRenovacao;
+
         public InscricaoForm()
         {
             InitializeComponent();
 
             CarregarDados();
-  
 
             dpDataInicio.SelectedDate =
                 DateTime.Today;
 
             SelecionarEstado("Pendente");
 
+            /*
+             * Uma inscrição nova deve ser sempre criada
+             * como Pendente.
+             */
             cmbEstado.IsEnabled = false;
         }
 
-        public InscricaoForm(Inscricao inscricao)
+        public InscricaoForm(
+            Inscricao inscricao)
         {
             InitializeComponent();
 
@@ -59,29 +71,133 @@ namespace GymManager.View.Forms
 
             Cliente? cliente = clientes
                 .FirstOrDefault(c =>
-                    c.IdCliente == inscricao.IdCliente);
+                    c.IdCliente ==
+                    inscricao.IdCliente);
 
             if (cliente != null)
             {
                 SelecionarCliente(cliente);
             }
+            else
+            {
+                Mensagem.Aviso(
+                    "Não foi possível encontrar o cliente desta inscrição.");
+            }
 
-            cmbPlano.SelectedValue = inscricao.IdPlano;
-            dpDataInicio.SelectedDate = inscricao.DataInicio;
-            dpDataFim.SelectedDate = inscricao.DataFim;
+            cmbPlano.SelectedValue =
+                inscricao.IdPlano;
 
-            SelecionarEstado(inscricao.Estado);
+            dpDataInicio.SelectedDate =
+                inscricao.DataInicio;
+
+            dpDataFim.SelectedDate =
+                inscricao.DataFim;
+
+            SelecionarEstado(
+                inscricao.Estado);
+
+            /*
+             * Na edição normal permitimos alterar
+             * o estado da inscrição.
+             */
+            cmbEstado.IsEnabled = true;
+        }
+
+        public InscricaoForm(
+            Inscricao inscricaoAnterior,
+            bool renovar)
+        {
+            InitializeComponent();
+
+            modoRenovacao = renovar;
+
+            Title = "Renovar Inscrição";
+            txtTitulo.Text = "Renovar Inscrição";
+
+            CarregarDados();
+
+            /*
+             * É obrigatório selecionar o objeto Cliente.
+             * Preencher apenas txtCliente.Text não chega,
+             * porque o Guardar usa clienteSelecionado.
+             */
+            Cliente? cliente = clientes
+                .FirstOrDefault(c =>
+                    c.IdCliente ==
+                    inscricaoAnterior.IdCliente);
+
+            if (cliente != null)
+            {
+                SelecionarCliente(cliente);
+            }
+            else
+            {
+                /*
+                 * Fallback caso o cliente não seja encontrado
+                 * na lista carregada.
+                 */
+                clienteSelecionado =
+                    new Cliente
+                    {
+                        IdCliente =
+                            inscricaoAnterior.IdCliente,
+
+                        Nome =
+                            inscricaoAnterior.NomeCliente
+                    };
+
+                atualizandoTextoCliente = true;
+
+                txtCliente.Text =
+                    inscricaoAnterior.NomeCliente;
+
+                atualizandoTextoCliente = false;
+            }
+
+            /*
+             * Na renovação, o cliente não pode ser alterado.
+             */
+            txtCliente.IsEnabled = false;
+
+            /*
+             * Pré-seleciona o plano anterior,
+             * mas permite escolher outro plano.
+             */
+            cmbPlano.SelectedValue =
+                inscricaoAnterior.IdPlano;
+
+            /*
+             * A renovação começa hoje.
+             */
+            dpDataInicio.SelectedDate =
+                DateTime.Today;
+
+            /*
+             * Atualiza automaticamente a data final
+             * segundo a duração do plano.
+             */
+            AtualizarDataFim();
+
+            SelecionarEstado("Pendente");
+
+            cmbEstado.IsEnabled = false;
         }
 
         private void CarregarDados()
         {
             try
             {
-                clientes = clienteService.Listar();
-                planos = planoService.Listar();
+                clientes =
+                    clienteService.Listar();
 
-                lstClientes.ItemsSource = clientes;
-                cmbPlano.ItemsSource = planos;
+                planos =
+                    planoService.Listar();
+
+                lstClientes.ItemsSource =
+                    clientes;
+
+                cmbPlano.ItemsSource =
+                    planos;
             }
             catch (Exception ex)
             {
@@ -96,33 +212,49 @@ namespace GymManager.View.Forms
             TextChangedEventArgs e)
         {
             if (atualizandoTextoCliente)
-                return;
-
-            clienteSelecionado = null;
-
-            string pesquisa = txtCliente.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(pesquisa))
             {
-                lstClientes.ItemsSource = clientes;
-                popupClientes.IsOpen = false;
                 return;
             }
 
-            List<Cliente> resultados = clientes
-                .Where(c =>
-                    c.Nome.Contains(
-                        pesquisa,
-                        StringComparison.OrdinalIgnoreCase)
-                    ||
-                    c.NIF.Contains(
-                        pesquisa,
-                        StringComparison.OrdinalIgnoreCase))
-                .Take(10)
-                .ToList();
+            /*
+             * Quando o utilizador altera manualmente o texto,
+             * a seleção anterior deixa de ser válida.
+             */
+            clienteSelecionado = null;
 
-            lstClientes.ItemsSource = resultados;
-            lstClientes.SelectedIndex = -1;
+            string pesquisa =
+                txtCliente.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(
+                    pesquisa))
+            {
+                lstClientes.ItemsSource =
+                    clientes;
+
+                popupClientes.IsOpen =
+                    false;
+
+                return;
+            }
+
+            List<Cliente> resultados =
+                clientes
+                    .Where(c =>
+                        c.Nome.Contains(
+                            pesquisa,
+                            StringComparison.OrdinalIgnoreCase)
+                        ||
+                        c.NIF.Contains(
+                            pesquisa,
+                            StringComparison.OrdinalIgnoreCase))
+                    .Take(10)
+                    .ToList();
+
+            lstClientes.ItemsSource =
+                resultados;
+
+            lstClientes.SelectedIndex =
+                -1;
 
             popupClientes.IsOpen =
                 resultados.Count > 0;
@@ -137,7 +269,9 @@ namespace GymManager.View.Forms
                 lstClientes.Items.Count > 0)
             {
                 lstClientes.Focus();
-                lstClientes.SelectedIndex = 0;
+
+                lstClientes.SelectedIndex =
+                    0;
 
                 e.Handled = true;
                 return;
@@ -145,7 +279,9 @@ namespace GymManager.View.Forms
 
             if (e.Key == Key.Escape)
             {
-                popupClientes.IsOpen = false;
+                popupClientes.IsOpen =
+                    false;
+
                 e.Handled = true;
             }
         }
@@ -155,17 +291,22 @@ namespace GymManager.View.Forms
             KeyEventArgs e)
         {
             if (e.Key == Key.Enter &&
-                lstClientes.SelectedItem is Cliente cliente)
+                lstClientes.SelectedItem is
+                    Cliente cliente)
             {
                 SelecionarCliente(cliente);
+
                 e.Handled = true;
                 return;
             }
 
             if (e.Key == Key.Escape)
             {
-                popupClientes.IsOpen = false;
+                popupClientes.IsOpen =
+                    false;
+
                 txtCliente.Focus();
+
                 e.Handled = true;
             }
         }
@@ -174,10 +315,17 @@ namespace GymManager.View.Forms
             object sender,
             SelectionChangedEventArgs e)
         {
+            /*
+             * Evita selecionar imediatamente apenas
+             * porque o ItemsSource foi alterado.
+             */
             if (!lstClientes.IsKeyboardFocusWithin)
+            {
                 return;
+            }
 
-            if (lstClientes.SelectedItem is Cliente cliente)
+            if (lstClientes.SelectedItem is
+                Cliente cliente)
             {
                 SelecionarCliente(cliente);
             }
@@ -187,27 +335,36 @@ namespace GymManager.View.Forms
             object sender,
             MouseButtonEventArgs e)
         {
-            if (lstClientes.SelectedItem is Cliente cliente)
+            if (lstClientes.SelectedItem is
+                Cliente cliente)
             {
                 SelecionarCliente(cliente);
             }
         }
 
-        private void SelecionarCliente(Cliente cliente)
+        private void SelecionarCliente(
+            Cliente cliente)
         {
-            clienteSelecionado = cliente;
+            clienteSelecionado =
+                cliente;
 
-            atualizandoTextoCliente = true;
+            atualizandoTextoCliente =
+                true;
 
-            txtCliente.Text = cliente.Nome;
+            txtCliente.Text =
+                cliente.Nome;
 
             txtCliente.CaretIndex =
                 txtCliente.Text.Length;
 
-            atualizandoTextoCliente = false;
+            atualizandoTextoCliente =
+                false;
 
-            popupClientes.IsOpen = false;
-            lstClientes.SelectedIndex = -1;
+            popupClientes.IsOpen =
+                false;
+
+            lstClientes.SelectedIndex =
+                -1;
         }
 
         private void cmbPlano_SelectionChanged(
@@ -226,17 +383,28 @@ namespace GymManager.View.Forms
 
         private void AtualizarDataFim()
         {
-            if (cmbPlano.SelectedItem is not Plano plano ||
+            if (cmbPlano.SelectedItem is not
+                    Plano plano ||
                 !dpDataInicio.SelectedDate.HasValue)
             {
                 return;
             }
 
             DateTime inicio =
-                dpDataInicio.SelectedDate.Value.Date;
+                dpDataInicio
+                    .SelectedDate
+                    .Value
+                    .Date;
 
             dpDataFim.SelectedDate =
-                inicio.AddMonths(plano.DuracaoMeses);
+                inicio.AddMonths(
+                    plano.DuracaoMeses);
+
+            /*
+             * A data final é calculada pelo plano
+             * e não deve ser alterada manualmente.
+             */
+            dpDataFim.IsEnabled = false;
 
             txtResumoPlano.Text =
                 $"{plano.Nome}: " +
@@ -244,9 +412,11 @@ namespace GymManager.View.Forms
                 $"{plano.Preco:F2} €.";
         }
 
-        private void SelecionarEstado(string estado)
+        private void SelecionarEstado(
+            string estado)
         {
-            foreach (object item in cmbEstado.Items)
+            foreach (object item in
+                     cmbEstado.Items)
             {
                 if (item is ComboBoxItem comboItem &&
                     string.Equals(
@@ -254,12 +424,15 @@ namespace GymManager.View.Forms
                         estado,
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    cmbEstado.SelectedItem = comboItem;
+                    cmbEstado.SelectedItem =
+                        comboItem;
+
                     return;
                 }
             }
 
-            cmbEstado.SelectedIndex = 0;
+            cmbEstado.SelectedIndex =
+                0;
         }
 
         private void btnGuardar_Click(
@@ -275,9 +448,12 @@ namespace GymManager.View.Forms
                 return;
             }
 
-            if (cmbPlano.SelectedValue is not int idPlano)
+            if (cmbPlano.SelectedValue is not
+                int idPlano)
             {
-                Mensagem.Aviso("Selecione um plano.");
+                Mensagem.Aviso(
+                    "Selecione um plano.");
+
                 cmbPlano.Focus();
                 return;
             }
@@ -294,9 +470,9 @@ namespace GymManager.View.Forms
             if (!dpDataFim.SelectedDate.HasValue)
             {
                 Mensagem.Aviso(
-                    "Selecione a data de fim.");
+                    "Não foi possível calcular a data de fim.");
 
-                dpDataFim.Focus();
+                cmbPlano.Focus();
                 return;
             }
 
@@ -306,69 +482,108 @@ namespace GymManager.View.Forms
                 Mensagem.Aviso(
                     "A data de fim não pode ser anterior à data de início.");
 
-                dpDataFim.Focus();
                 return;
             }
-
-            if (cmbEstado.SelectedItem is not
-                ComboBoxItem estadoItem)
-            {
-                Mensagem.Aviso("Selecione o estado.");
-                cmbEstado.Focus();
-                return;
-            }
-
-            string estado =
-                estadoItem.Content?.ToString()
-                ?? string.Empty;
 
             bool novaInscricao =
                 inscricao == null;
 
+            string estado;
+
+            /*
+             * Inscrições novas e renovações são sempre
+             * criadas como Pendente.
+             */
+            if (novaInscricao ||
+                modoRenovacao)
+            {
+                estado =
+                    "Pendente";
+            }
+            else
+            {
+                if (cmbEstado.SelectedItem is not
+                    ComboBoxItem estadoItem)
+                {
+                    Mensagem.Aviso(
+                        "Selecione o estado.");
+
+                    cmbEstado.Focus();
+                    return;
+                }
+
+                estado =
+                    estadoItem.Content?.ToString()
+                    ?? string.Empty;
+            }
+
             string operacao =
-                novaInscricao
-                    ? "criar"
-                    : "atualizar";
+                modoRenovacao
+                    ? "renovar"
+                    : novaInscricao
+                        ? "criar"
+                        : "atualizar";
 
             if (!Mensagem.Confirmar(
-                $"Tem a certeza que pretende {operacao} esta inscrição?"))
+                    $"Tem a certeza que pretende " +
+                    $"{operacao} esta inscrição?"))
             {
                 return;
             }
 
-            Inscricao dados = new Inscricao
-            {
-                IdInscricao =
-                    inscricao?.IdInscricao ?? 0,
+            Inscricao dados =
+                new Inscricao
+                {
+                    IdInscricao =
+                        inscricao?.IdInscricao
+                        ?? 0,
 
-                IdCliente =
-                    clienteSelecionado.IdCliente,
+                    IdCliente =
+                        clienteSelecionado
+                            .IdCliente,
 
-                IdPlano =
-                    idPlano,
+                    IdPlano =
+                        idPlano,
 
-                DataInicio =
-                    dpDataInicio.SelectedDate.Value.Date,
+                    DataInicio =
+                        dpDataInicio
+                            .SelectedDate
+                            .Value
+                            .Date,
 
-                DataFim =
-                    dpDataFim.SelectedDate.Value.Date,
+                    DataFim =
+                        dpDataFim
+                            .SelectedDate
+                            .Value
+                            .Date,
 
-                Estado =
-                    estado
-            };
+                    Estado =
+                        estado
+                };
 
             try
             {
+                /*
+                 * Na renovação, inscricao permanece null.
+                 * Portanto é criada uma nova inscrição,
+                 * preservando o histórico da anterior.
+                 */
                 if (novaInscricao)
                 {
-                    inscricaoService.Inserir(dados);
+                    inscricaoService.Inserir(
+                        dados);
 
                     Mensagem.Sucesso(
-                        "Inscrição criada com sucesso!");
+                        modoRenovacao
+                            ? "Inscrição renovada com sucesso! " +
+                              "Foi criado um pagamento pendente."
+                            : "Inscrição criada com sucesso! " +
+                              "Foi criado um pagamento pendente.");
                 }
                 else
                 {
-                    inscricaoService.Atualizar(dados);
+                    inscricaoService.Atualizar(
+                        dados);
 
                     Mensagem.Sucesso(
                         "Inscrição atualizada com sucesso!");
@@ -379,8 +594,11 @@ namespace GymManager.View.Forms
             catch (Exception ex)
             {
                 Mensagem.Erro(
-                    "Não foi possível guardar a inscrição.\n\n" +
-                    ex.Message);
+                    modoRenovacao
+                        ? "Não foi possível renovar a inscrição.\n\n" +
+                          ex.Message
+                        : "Não foi possível guardar a inscrição.\n\n" +
+                          ex.Message);
             }
         }
 

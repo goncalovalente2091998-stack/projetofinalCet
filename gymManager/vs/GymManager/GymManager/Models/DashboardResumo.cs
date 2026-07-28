@@ -22,5 +22,9 @@ namespace GymManager.Models
         public decimal ReceitaTotal { get; set; }
 
         public int InscricoesATerminar { get; set; }
+
+        public int AulasHoje { get; set; }
+
+        public int ReservasHoje { get; set; }
     }
 }

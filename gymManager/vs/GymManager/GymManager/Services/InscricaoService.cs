@@ -371,5 +371,50 @@ namespace GymManager.Services
 
             cmd.ExecuteNonQuery();
         }
+        public void Renovar(int idInscricao)
+        {
+            using SqlConnection conn =
+                db.GetConnection();
+
+            conn.Open();
+
+            using SqlCommand cmd =
+                new SqlCommand(
+                    "sp_Inscricoes_Renovar",
+                    conn);
+
+            cmd.CommandType =
+                CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(
+                "@IdInscricao",
+                SqlDbType.Int).Value =
+                idInscricao;
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void GerarPagamento(int idInscricao)
+        {
+            using SqlConnection conn =
+                db.GetConnection();
+
+            conn.Open();
+
+            using SqlCommand cmd =
+                new SqlCommand(
+                    "dbo.sp_Inscricoes_GerarPagamento",
+                    conn);
+
+            cmd.CommandType =
+                CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(
+                "@IdInscricao",
+                SqlDbType.Int).Value =
+                idInscricao;
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

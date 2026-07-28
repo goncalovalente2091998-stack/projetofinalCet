@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE sp_Dashboard_Resumo
+CREATE OR ALTER PROCEDURE dbo.sp_Dashboard_Resumo
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -6,70 +6,78 @@ BEGIN
     SELECT
         (
             SELECT COUNT(*)
-            FROM Clientes
+            FROM dbo.Clientes
             WHERE Estado = 1
         ) AS ClientesAtivos,
 
         (
             SELECT COUNT(*)
-            FROM Inscricoes
-            WHERE Estado = 'Ativa'
+            FROM dbo.Inscricoes
+            WHERE Estado = N'Ativa'
               AND DataFim >= CAST(GETDATE() AS DATE)
         ) AS InscricoesAtivas,
 
         (
             SELECT COUNT(*)
-            FROM Pagamentos
-            WHERE Estado = 'Pendente'
+            FROM dbo.Pagamentos
+            WHERE Estado = N'Pendente'
         ) AS PagamentosPendentes,
 
         (
             SELECT ISNULL(SUM(Valor), 0)
-            FROM Pagamentos
-            WHERE Estado = 'Pago'
-              AND YEAR(
-                    ISNULL(
-                        DataConfirmacao,
-                        DataPagamento
-                    )
-                  ) = YEAR(GETDATE())
-              AND MONTH(
-                    ISNULL(
-                        DataConfirmacao,
-                        DataPagamento
-                    )
-                  ) = MONTH(GETDATE())
+            FROM dbo.Pagamentos
+            WHERE Estado = N'Pago'
+              AND YEAR(ISNULL(DataConfirmacao, DataPagamento))
+                    = YEAR(GETDATE())
+              AND MONTH(ISNULL(DataConfirmacao, DataPagamento))
+                    = MONTH(GETDATE())
         ) AS ReceitaMes,
 
         (
             SELECT ISNULL(SUM(Valor), 0)
-            FROM Pagamentos
-            WHERE Estado = 'Pago'
-              AND YEAR(
-                    ISNULL(
-                        DataConfirmacao,
-                        DataPagamento
-                    )
-                  ) = YEAR(GETDATE())
+            FROM dbo.Pagamentos
+            WHERE Estado = N'Pago'
+              AND YEAR(ISNULL(DataConfirmacao, DataPagamento))
+                    = YEAR(GETDATE())
         ) AS ReceitaAno,
 
         (
             SELECT ISNULL(SUM(Valor), 0)
-            FROM Pagamentos
-            WHERE Estado = 'Pago'
+            FROM dbo.Pagamentos
+            WHERE Estado = N'Pago'
         ) AS ReceitaTotal,
 
         (
             SELECT COUNT(*)
-            FROM Inscricoes
-            WHERE Estado = 'Ativa'
+            FROM dbo.Inscricoes
+            WHERE Estado = N'Ativa'
               AND DataFim >= CAST(GETDATE() AS DATE)
               AND DataFim <= DATEADD(
                     DAY,
                     7,
                     CAST(GETDATE() AS DATE)
                   )
-        ) AS InscricoesATerminar;
+        ) AS InscricoesATerminar,
+
+        (
+            SELECT COUNT(*)
+            FROM dbo.Aulas
+            WHERE DataAula = CAST(GETDATE() AS DATE)
+              AND Estado <> N'Cancelada'
+        ) AS AulasHoje,
+
+        (
+            SELECT COUNT(*)
+            FROM dbo.ReservasAulas AS R
+            INNER JOIN dbo.Aulas AS A
+                ON A.IdAula = R.IdAula
+            WHERE A.DataAula = CAST(GETDATE() AS DATE)
+              AND R.Estado IN
+              (
+                  N'Confirmada',
+                  N'Presente'
+              )
+        ) AS ReservasHoje;
 END;
 GO
 CREATE OR ALTER PROCEDURE sp_Dashboard_UltimosPagamentos

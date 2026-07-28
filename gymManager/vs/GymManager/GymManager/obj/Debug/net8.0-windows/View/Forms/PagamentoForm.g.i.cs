@@ -255,7 +255,7 @@ namespace GymManager.View.Forms {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GymManager;V1.0.0.0;component/view/forms/pagamentoform.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GymManager;component/view/forms/pagamentoform.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Forms\PagamentoForm.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

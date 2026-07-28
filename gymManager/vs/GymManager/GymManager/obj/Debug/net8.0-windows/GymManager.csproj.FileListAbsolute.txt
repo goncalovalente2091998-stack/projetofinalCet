@@ -113,3 +113,9 @@ C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-wind
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\GymManager.pdb
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\GymManager.genruntimeconfig.cache
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\ref\GymManager.dll
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\AulaForm.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\AulaForm.g.cs
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\ReservaAulaForm.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\ReservasAulasPage.baml
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\Forms\ReservaAulaForm.g.cs
+C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\obj\Debug\net8.0-windows\View\ReservasAulasPage.g.cs
