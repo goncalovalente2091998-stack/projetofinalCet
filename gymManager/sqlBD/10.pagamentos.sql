@@ -6,3 +6,25 @@ CREATE TABLE Pagamentos (
     MetodoPagamento NVARCHAR(50) NOT NULL,
     Observacoes NVARCHAR(255)
 );
+
+ALTER TABLE Pagamentos
+ADD
+    Estado NVARCHAR(30) NOT NULL
+        CONSTRAINT DF_Pagamentos_Estado DEFAULT 'Pendente',
+
+    ReferenciaExterna NVARCHAR(150) NULL,
+
+    IdTransacaoExterna NVARCHAR(150) NULL,
+
+    DataConfirmacao DATETIME2 NULL;
+GO
+
+ALTER TABLE Pagamentos
+ADD IdInscricao INT NULL;
+GO
+
+ALTER TABLE Pagamentos
+ADD CONSTRAINT FK_Pagamentos_Inscricoes
+FOREIGN KEY (IdInscricao)
+REFERENCES Inscricoes(IdInscricao);
+GO

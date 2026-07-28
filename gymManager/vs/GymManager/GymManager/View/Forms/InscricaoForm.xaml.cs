@@ -36,9 +36,14 @@ namespace GymManager.View.Forms
             InitializeComponent();
 
             CarregarDados();
+  
 
-            dpDataInicio.SelectedDate = DateTime.Today;
-            cmbEstado.SelectedIndex = 0;
+            dpDataInicio.SelectedDate =
+                DateTime.Today;
+
+            SelecionarEstado("Pendente");
+
+            cmbEstado.IsEnabled = false;
         }
 
         public InscricaoForm(Inscricao inscricao)

@@ -9,154 +9,311 @@ namespace GymManager.Services
 {
     public class InscricaoService
     {
-        private readonly DataBase db = new DataBase();
+        private readonly DataBase db =
+            new DataBase();
 
-        public List<Inscricao> Listar()
+        public List<InscricaoPagamento> ListarAtivasPorCliente(
+            int idCliente)
         {
-            List<Inscricao> lista = new();
+            List<InscricaoPagamento> lista = new();
 
-            using SqlConnection conn = db.GetConnection();
+            using SqlConnection conn =
+                db.GetConnection();
+
             conn.Open();
 
             using SqlCommand cmd =
-                new SqlCommand("sp_Inscricoes_Listar", conn);
+                new SqlCommand(
+                    "sp_Inscricoes_ListarAtivasPorCliente",
+                    conn);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType =
+                CommandType.StoredProcedure;
 
-            using SqlDataReader reader = cmd.ExecuteReader();
+            cmd.Parameters.Add(
+                "@IdCliente",
+                SqlDbType.Int).Value =
+                idCliente;
+
+            using SqlDataReader reader =
+                cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                lista.Add(MapearInscricao(reader));
+                lista.Add(
+                    new InscricaoPagamento
+                    {
+                        IdInscricao =
+                            Convert.ToInt32(
+                                reader["IdInscricao"]),
+
+                        IdCliente =
+                            Convert.ToInt32(
+                                reader["IdCliente"]),
+
+                        IdPlano =
+                            Convert.ToInt32(
+                                reader["IdPlano"]),
+
+                        NomePlano =
+                            reader["NomePlano"].ToString()
+                            ?? string.Empty,
+
+                        Preco =
+                            Convert.ToDecimal(
+                                reader["Preco"]),
+
+                        DuracaoMeses =
+                            Convert.ToInt32(
+                                reader["DuracaoMeses"]),
+
+                        DataInicio =
+                            Convert.ToDateTime(
+                                reader["DataInicio"]),
+
+                        DataFim =
+                            Convert.ToDateTime(
+                                reader["DataFim"]),
+
+                        Estado =
+                            reader["Estado"].ToString()
+                            ?? string.Empty
+                    });
             }
 
             return lista;
         }
 
-        public Inscricao? ObterPorId(int idInscricao)
+        public List<Inscricao> Listar()
         {
-            using SqlConnection conn = db.GetConnection();
+            AtualizarEstadosExpirados();
+
+            List<Inscricao> lista = new();
+
+            using SqlConnection conn =
+                db.GetConnection();
+
             conn.Open();
 
             using SqlCommand cmd =
-                new SqlCommand("sp_Inscricoes_ObterPorId", conn);
+                new SqlCommand(
+                    "sp_Inscricoes_Listar",
+                    conn);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType =
+                CommandType.StoredProcedure;
+
+            using SqlDataReader reader =
+                cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(
+                    MapearInscricao(reader));
+            }
+
+            return lista;
+        }
+
+        public Inscricao? ObterPorId(
+            int idInscricao)
+        {
+            using SqlConnection conn =
+                db.GetConnection();
+
+            conn.Open();
+
+            using SqlCommand cmd =
+                new SqlCommand(
+                    "sp_Inscricoes_ObterPorId",
+                    conn);
+
+            cmd.CommandType =
+                CommandType.StoredProcedure;
 
             cmd.Parameters.Add(
                 "@IdInscricao",
-                SqlDbType.Int).Value = idInscricao;
+                SqlDbType.Int).Value =
+                idInscricao;
 
-            using SqlDataReader reader = cmd.ExecuteReader();
+            using SqlDataReader reader =
+                cmd.ExecuteReader();
 
             if (!reader.Read())
+            {
                 return null;
+            }
 
             return MapearInscricao(reader);
         }
 
-        public void Inserir(Inscricao inscricao)
+        public void Inserir(
+            Inscricao inscricao)
         {
-            using SqlConnection conn = db.GetConnection();
+            using SqlConnection conn =
+                db.GetConnection();
+
             conn.Open();
 
             using SqlCommand cmd =
-                new SqlCommand("sp_Inscricoes_Inserir", conn);
+                new SqlCommand(
+                    "sp_Inscricoes_Inserir",
+                    conn);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType =
+                CommandType.StoredProcedure;
 
-            AdicionarParametros(cmd, inscricao);
+            AdicionarParametrosInserir(
+                cmd,
+                inscricao);
 
             cmd.ExecuteNonQuery();
         }
 
-        public void Atualizar(Inscricao inscricao)
+        public void Atualizar(
+            Inscricao inscricao)
         {
-            using SqlConnection conn = db.GetConnection();
+            using SqlConnection conn =
+                db.GetConnection();
+
             conn.Open();
 
             using SqlCommand cmd =
-                new SqlCommand("sp_Inscricoes_Atualizar", conn);
+                new SqlCommand(
+                    "sp_Inscricoes_Atualizar",
+                    conn);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType =
+                CommandType.StoredProcedure;
 
             cmd.Parameters.Add(
                 "@IdInscricao",
-                SqlDbType.Int).Value = inscricao.IdInscricao;
+                SqlDbType.Int).Value =
+                inscricao.IdInscricao;
 
-            AdicionarParametros(cmd, inscricao);
+            AdicionarParametrosAtualizar(
+                cmd,
+                inscricao);
 
             cmd.ExecuteNonQuery();
         }
 
-        public void Eliminar(int idInscricao)
+        public void Eliminar(
+            int idInscricao)
         {
-            using SqlConnection conn = db.GetConnection();
+            using SqlConnection conn =
+                db.GetConnection();
+
             conn.Open();
 
             using SqlCommand cmd =
-                new SqlCommand("sp_Inscricoes_Eliminar", conn);
+                new SqlCommand(
+                    "sp_Inscricoes_Eliminar",
+                    conn);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType =
+                CommandType.StoredProcedure;
 
             cmd.Parameters.Add(
                 "@IdInscricao",
-                SqlDbType.Int).Value = idInscricao;
+                SqlDbType.Int).Value =
+                idInscricao;
 
             cmd.ExecuteNonQuery();
         }
 
-        public List<Inscricao> Pesquisar(string pesquisa)
+        public List<Inscricao> Pesquisar(
+    string pesquisa)
         {
+            AtualizarEstadosExpirados();
+
             List<Inscricao> lista = new();
 
-            using SqlConnection conn = db.GetConnection();
+            using SqlConnection conn =
+                db.GetConnection();
+
             conn.Open();
 
             using SqlCommand cmd =
-                new SqlCommand("sp_Inscricoes_Pesquisar", conn);
+                new SqlCommand(
+                    "sp_Inscricoes_Pesquisar",
+                    conn);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType =
+                CommandType.StoredProcedure;
 
             cmd.Parameters.Add(
                 "@Pesquisa",
                 SqlDbType.NVarChar,
-                100).Value = pesquisa;
+                100).Value =
+                pesquisa;
 
-            using SqlDataReader reader = cmd.ExecuteReader();
+            using SqlDataReader reader =
+                cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                lista.Add(MapearInscricao(reader));
+                lista.Add(
+                    MapearInscricao(reader));
             }
 
             return lista;
         }
 
-        private static void AdicionarParametros(
+        private static void AdicionarParametrosInserir(
             SqlCommand cmd,
             Inscricao inscricao)
         {
             cmd.Parameters.Add(
                 "@IdCliente",
-                SqlDbType.Int).Value = inscricao.IdCliente;
+                SqlDbType.Int).Value =
+                inscricao.IdCliente;
 
             cmd.Parameters.Add(
                 "@IdPlano",
-                SqlDbType.Int).Value = inscricao.IdPlano;
+                SqlDbType.Int).Value =
+                inscricao.IdPlano;
 
             cmd.Parameters.Add(
                 "@DataInicio",
-                SqlDbType.Date).Value = inscricao.DataInicio.Date;
+                SqlDbType.Date).Value =
+                inscricao.DataInicio.Date;
 
             cmd.Parameters.Add(
                 "@DataFim",
-                SqlDbType.Date).Value = inscricao.DataFim.Date;
+                SqlDbType.Date).Value =
+                inscricao.DataFim.Date;
+        }
+
+        private static void AdicionarParametrosAtualizar(
+            SqlCommand cmd,
+            Inscricao inscricao)
+        {
+            cmd.Parameters.Add(
+                "@IdCliente",
+                SqlDbType.Int).Value =
+                inscricao.IdCliente;
+
+            cmd.Parameters.Add(
+                "@IdPlano",
+                SqlDbType.Int).Value =
+                inscricao.IdPlano;
+
+            cmd.Parameters.Add(
+                "@DataInicio",
+                SqlDbType.Date).Value =
+                inscricao.DataInicio.Date;
+
+            cmd.Parameters.Add(
+                "@DataFim",
+                SqlDbType.Date).Value =
+                inscricao.DataFim.Date;
 
             cmd.Parameters.Add(
                 "@Estado",
                 SqlDbType.NVarChar,
-                50).Value = inscricao.Estado;
+                50).Value =
+                inscricao.Estado;
         }
 
         private static Inscricao MapearInscricao(
@@ -165,32 +322,54 @@ namespace GymManager.Services
             return new Inscricao
             {
                 IdInscricao =
-                    Convert.ToInt32(reader["IdInscricao"]),
+                    Convert.ToInt32(
+                        reader["IdInscricao"]),
 
                 IdCliente =
-                    Convert.ToInt32(reader["IdCliente"]),
+                    Convert.ToInt32(
+                        reader["IdCliente"]),
 
                 NomeCliente =
                     reader["NomeCliente"].ToString()
                     ?? string.Empty,
 
                 IdPlano =
-                    Convert.ToInt32(reader["IdPlano"]),
+                    Convert.ToInt32(
+                        reader["IdPlano"]),
 
                 NomePlano =
                     reader["NomePlano"].ToString()
                     ?? string.Empty,
 
                 DataInicio =
-                    Convert.ToDateTime(reader["DataInicio"]),
+                    Convert.ToDateTime(
+                        reader["DataInicio"]),
 
                 DataFim =
-                    Convert.ToDateTime(reader["DataFim"]),
+                    Convert.ToDateTime(
+                        reader["DataFim"]),
 
                 Estado =
                     reader["Estado"].ToString()
                     ?? string.Empty
             };
+        }
+        public void AtualizarEstadosExpirados()
+        {
+            using SqlConnection conn =
+                db.GetConnection();
+
+            conn.Open();
+
+            using SqlCommand cmd =
+                new SqlCommand(
+                    "sp_Inscricoes_AtualizarEstadosExpirados",
+                    conn);
+
+            cmd.CommandType =
+                CommandType.StoredProcedure;
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

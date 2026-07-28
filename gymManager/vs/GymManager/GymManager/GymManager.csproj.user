@@ -29,6 +29,9 @@
     <Compile Update="View\Forms\InscricaoForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Forms\PagamentoForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Forms\PersonalTrainerForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

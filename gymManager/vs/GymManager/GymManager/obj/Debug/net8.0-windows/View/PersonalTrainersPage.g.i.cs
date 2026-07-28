@@ -87,7 +87,7 @@ namespace GymManager.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GymManager;component/view/personaltrainerspage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GymManager;V1.0.0.0;component/view/personaltrainerspage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\PersonalTrainersPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

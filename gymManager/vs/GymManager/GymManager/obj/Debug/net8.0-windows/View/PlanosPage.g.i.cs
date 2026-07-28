@@ -87,7 +87,7 @@ namespace GymManager.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GymManager;component/view/planospage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GymManager;V1.0.0.0;component/view/planospage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\PlanosPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

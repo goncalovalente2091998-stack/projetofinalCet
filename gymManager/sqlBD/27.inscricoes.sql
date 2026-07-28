@@ -4,29 +4,16 @@ BEGIN
     SET NOCOUNT ON;
 
     SELECT
-        I.IdInscricao,
-        I.IdCliente,
-        C.Nome AS NomeCliente,
-        I.IdPlano,
-        P.Nome AS NomePlano,
-        I.DataInicio,
-        I.DataFim,
-        CASE
-            WHEN I.Estado = 'Terminada'
-                THEN 'Terminada'
-            WHEN I.DataFim < CAST(GETDATE() AS DATE)
-                THEN 'Terminada'
-            ELSE I.Estado
-        END AS Estado
-    FROM Inscricoes AS I
-    INNER JOIN Clientes AS C
-        ON C.IdCliente = I.IdCliente
-    INNER JOIN Planos AS P
-        ON P.IdPlano = I.IdPlano
-    ORDER BY I.DataInicio DESC;
+        IdInscricao,
+        IdCliente,
+        IdPlano,
+        DataInicio,
+        DataFim,
+        Estado
+    FROM Inscricoes
+    ORDER BY DataInicio DESC;
 END;
 GO
-
 
 CREATE OR ALTER PROCEDURE sp_Inscricoes_ObterPorId
 (
@@ -37,42 +24,29 @@ BEGIN
     SET NOCOUNT ON;
 
     SELECT
-        I.IdInscricao,
-        I.IdCliente,
-        C.Nome AS NomeCliente,
-        I.IdPlano,
-        P.Nome AS NomePlano,
-        I.DataInicio,
-        I.DataFim,
-        CASE
-            WHEN I.Estado = 'Terminada'
-                THEN 'Terminada'
-            WHEN I.DataFim < CAST(GETDATE() AS DATE)
-                THEN 'Terminada'
-            ELSE I.Estado
-        END AS Estado
-    FROM Inscricoes AS I
-    INNER JOIN Clientes AS C
-        ON C.IdCliente = I.IdCliente
-    INNER JOIN Planos AS P
-        ON P.IdPlano = I.IdPlano
-    WHERE I.IdInscricao = @IdInscricao;
+        IdInscricao,
+        IdCliente,
+        IdPlano,
+        DataInicio,
+        DataFim,
+        Estado
+    FROM Inscricoes
+    WHERE IdInscricao = @IdInscricao;
 END;
 GO
-
 
 CREATE OR ALTER PROCEDURE sp_Inscricoes_Inserir
 (
     @IdCliente INT,
     @IdPlano INT,
     @DataInicio DATE,
-    @DataFim DATE,
-    @Estado NVARCHAR(50)
+    @DataFim DATE
 )
 AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Validar cliente
     IF NOT EXISTS
     (
         SELECT 1
@@ -80,10 +54,16 @@ BEGIN
         WHERE IdCliente = @IdCliente
     )
     BEGIN
-        RAISERROR('O cliente selecionado não existe.', 16, 1);
+        RAISERROR(
+            'O cliente selecionado não existe.',
+            16,
+            1
+        );
+
         RETURN;
     END;
 
+    -- Validar plano
     IF NOT EXISTS
     (
         SELECT 1
@@ -91,41 +71,49 @@ BEGIN
         WHERE IdPlano = @IdPlano
     )
     BEGIN
-        RAISERROR('O plano selecionado não existe.', 16, 1);
-        RETURN;
-    END;
-
-    IF @DataFim < @DataInicio
-    BEGIN
         RAISERROR(
-            'A data de fim não pode ser anterior à data de início.',
+            'O plano selecionado não existe.',
             16,
             1
         );
+
         RETURN;
     END;
 
-    IF @Estado NOT IN ('Ativa', 'Suspensa', 'Terminada')
+    -- Validar datas
+    IF @DataFim < @DataInicio
     BEGIN
-        RAISERROR('O estado indicado não é válido.', 16, 1);
+        RAISERROR(
+            'A data final não pode ser anterior à data inicial.',
+            16,
+            1
+        );
+
         RETURN;
     END;
 
+    -- Impedir inscrições sobrepostas
     IF EXISTS
     (
         SELECT 1
         FROM Inscricoes
         WHERE IdCliente = @IdCliente
-          AND Estado = 'Ativa'
+          AND Estado IN
+          (
+              'Pendente',
+              'Ativa',
+              'Suspensa'
+          )
           AND @DataInicio <= DataFim
           AND @DataFim >= DataInicio
     )
     BEGIN
         RAISERROR(
-            'O cliente já possui uma inscrição ativa nesse período.',
+            'O cliente já possui uma inscrição nesse período.',
             16,
             1
         );
+
         RETURN;
     END;
 
@@ -143,12 +131,10 @@ BEGIN
         @IdPlano,
         @DataInicio,
         @DataFim,
-        @Estado
+        'Pendente'
     );
 END;
 GO
-
-
 CREATE OR ALTER PROCEDURE sp_Inscricoes_Atualizar
 (
     @IdInscricao INT,
@@ -169,7 +155,12 @@ BEGIN
         WHERE IdInscricao = @IdInscricao
     )
     BEGIN
-        RAISERROR('A inscrição indicada não existe.', 16, 1);
+        RAISERROR(
+            'A inscrição indicada não existe.',
+            16,
+            1
+        );
+
         RETURN;
     END;
 
@@ -180,7 +171,12 @@ BEGIN
         WHERE IdCliente = @IdCliente
     )
     BEGIN
-        RAISERROR('O cliente selecionado não existe.', 16, 1);
+        RAISERROR(
+            'O cliente selecionado não existe.',
+            16,
+            1
+        );
+
         RETURN;
     END;
 
@@ -191,23 +187,41 @@ BEGIN
         WHERE IdPlano = @IdPlano
     )
     BEGIN
-        RAISERROR('O plano selecionado não existe.', 16, 1);
+        RAISERROR(
+            'O plano selecionado não existe.',
+            16,
+            1
+        );
+
         RETURN;
     END;
 
     IF @DataFim < @DataInicio
     BEGIN
         RAISERROR(
-            'A data de fim não pode ser anterior à data de início.',
+            'A data final não pode ser anterior à data inicial.',
             16,
             1
         );
+
         RETURN;
     END;
 
-    IF @Estado NOT IN ('Ativa', 'Suspensa', 'Terminada')
+    IF @Estado NOT IN
+    (
+        'Pendente',
+        'Ativa',
+        'Suspensa',
+        'Terminada',
+        'Cancelada'
+    )
     BEGIN
-        RAISERROR('O estado indicado não é válido.', 16, 1);
+        RAISERROR(
+            'O estado da inscrição não é válido.',
+            16,
+            1
+        );
+
         RETURN;
     END;
 
@@ -217,16 +231,17 @@ BEGIN
         FROM Inscricoes
         WHERE IdCliente = @IdCliente
           AND IdInscricao <> @IdInscricao
-          AND Estado = 'Ativa'
+          AND Estado IN ('Pendente', 'Ativa', 'Suspensa')
           AND @DataInicio <= DataFim
           AND @DataFim >= DataInicio
     )
     BEGIN
         RAISERROR(
-            'O cliente já possui outra inscrição ativa nesse período.',
+            'O cliente já possui outra inscrição nesse período.',
             16,
             1
         );
+
         RETURN;
     END;
 
@@ -241,7 +256,6 @@ BEGIN
 END;
 GO
 
-
 CREATE OR ALTER PROCEDURE sp_Inscricoes_Eliminar
 (
     @IdInscricao INT
@@ -250,26 +264,13 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    IF NOT EXISTS
-    (
-        SELECT 1
-        FROM Inscricoes
-        WHERE IdInscricao = @IdInscricao
-    )
-    BEGIN
-        RAISERROR('A inscrição indicada não existe.', 16, 1);
-        RETURN;
-    END;
-
     DELETE FROM Inscricoes
     WHERE IdInscricao = @IdInscricao;
 END;
 GO
-
-
-CREATE OR ALTER PROCEDURE sp_Inscricoes_Pesquisar
+CREATE OR ALTER PROCEDURE sp_Inscricoes_ListarAtivasPorCliente
 (
-    @Pesquisa NVARCHAR(100)
+    @IdCliente INT
 )
 AS
 BEGIN
@@ -278,36 +279,80 @@ BEGIN
     SELECT
         I.IdInscricao,
         I.IdCliente,
-        C.Nome AS NomeCliente,
         I.IdPlano,
         P.Nome AS NomePlano,
+        P.Preco,
+        P.DuracaoMeses,
         I.DataInicio,
         I.DataFim,
-        CASE
-            WHEN I.Estado = 'Terminada'
-                THEN 'Terminada'
-            WHEN I.DataFim < CAST(GETDATE() AS DATE)
-                THEN 'Terminada'
-            ELSE I.Estado
-        END AS Estado
+        I.Estado
     FROM Inscricoes AS I
-    INNER JOIN Clientes AS C
-        ON C.IdCliente = I.IdCliente
+
     INNER JOIN Planos AS P
         ON P.IdPlano = I.IdPlano
-    WHERE C.Nome LIKE '%' + @Pesquisa + '%'
-       OR C.NIF LIKE '%' + @Pesquisa + '%'
-       OR P.Nome LIKE '%' + @Pesquisa + '%'
-       OR
-       (
-           CASE
-               WHEN I.Estado = 'Terminada'
-                   THEN 'Terminada'
-               WHEN I.DataFim < CAST(GETDATE() AS DATE)
-                   THEN 'Terminada'
-               ELSE I.Estado
-           END
-       ) LIKE '%' + @Pesquisa + '%'
-    ORDER BY I.DataInicio DESC;
+
+    WHERE I.IdCliente = @IdCliente
+      AND I.Estado = 'Pendente'
+
+      AND NOT EXISTS
+      (
+          SELECT 1
+          FROM Pagamentos AS PG
+          WHERE PG.IdInscricao = I.IdInscricao
+            AND PG.Estado IN ('Pago', 'Pendente')
+      )
+
+    ORDER BY
+        I.DataInicio DESC,
+        I.IdInscricao DESC;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_Inscricoes_AtualizarEstadosExpirados
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Inscricoes
+    SET Estado = 'Terminada'
+    WHERE Estado IN ('Ativa', 'Suspensa')
+      AND DataFim < CAST(GETDATE() AS DATE);
+END;
+GO
+
+CREATE OR ALTER TRIGGER trg_Inscricoes_CriarPagamento
+ON Inscricoes
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Pagamentos
+    (
+        IdCliente,
+        IdInscricao,
+        DataPagamento,
+        Valor,
+        MetodoPagamento,
+        Observacoes,
+        Estado,
+        ReferenciaExterna,
+        IdTransacaoExterna,
+        DataConfirmacao
+    )
+    SELECT
+        I.IdCliente,
+        I.IdInscricao,
+        CAST(GETDATE() AS DATE),
+        P.Preco,
+        'Pagamento Posterior',
+        'Pagamento criado automaticamente.',
+        'Pendente',
+        NULL,
+        NULL,
+        NULL
+    FROM inserted I
+    INNER JOIN Planos P
+        ON P.IdPlano = I.IdPlano;
 END;
 GO

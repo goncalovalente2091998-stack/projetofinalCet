@@ -109,28 +109,3 @@ BEGIN
     WHERE IdPT = @IdPT;
 END;
 GO
-
-CREATE OR ALTER PROCEDURE sp_PersonalTrainers_Pesquisar
-(
-    @Pesquisa NVARCHAR(100)
-)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT
-        IdPT,
-        Nome,
-        Especialidade,
-        Telefone,
-        Email,
-        ValorHora,
-        Estado
-    FROM PersonalTrainers
-    WHERE Nome LIKE '%' + @Pesquisa + '%'
-       OR Especialidade LIKE '%' + @Pesquisa + '%'
-       OR Telefone LIKE '%' + @Pesquisa + '%'
-       OR Email LIKE '%' + @Pesquisa + '%'
-    ORDER BY Nome;
-END;
-GO

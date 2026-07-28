@@ -61,15 +61,24 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE sp_Professores_Eliminar
+CREATE OR ALTER PROCEDURE sp_Professores_Atualizar
 (
-    @IdProfessor INT
+    @IdProfessor INT,
+    @Nome NVARCHAR(100),
+    @Especialidade NVARCHAR(100),
+    @Telefone NVARCHAR(20),
+    @Email NVARCHAR(100)
 )
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    DELETE FROM Professores
+    UPDATE Professores
+    SET
+        Nome = @Nome,
+        Especialidade = @Especialidade,
+        Telefone = @Telefone,
+        Email = @Email
     WHERE IdProfessor = @IdProfessor;
 END;
 GO

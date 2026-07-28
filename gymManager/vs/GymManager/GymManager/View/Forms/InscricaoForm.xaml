@@ -226,10 +226,12 @@
                               SelectedIndex="0"
                               materialDesign:HintAssist.Hint="Estado">
 
+
+                        <ComboBoxItem Content="Pendente"/>
                         <ComboBoxItem Content="Ativa"/>
                         <ComboBoxItem Content="Suspensa"/>
                         <ComboBoxItem Content="Terminada"/>
-                        
+                        <ComboBoxItem Content="Cancelada"/>
 
                     </ComboBox>
 

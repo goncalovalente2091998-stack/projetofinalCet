@@ -103,7 +103,7 @@ namespace GymManager.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GymManager;component/view/inscricoespage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GymManager;V1.0.0.0;component/view/inscricoespage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\InscricoesPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

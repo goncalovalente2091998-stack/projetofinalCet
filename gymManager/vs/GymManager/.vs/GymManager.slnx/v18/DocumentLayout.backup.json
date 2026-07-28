@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\inscricoespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\inscricoespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\models\\dashboardresumo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\models\\dashboardresumo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\services\\inscricaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\services\\inscricaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\forms\\inscricaoform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\forms\\inscricaoform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,12 +35,64 @@
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\forms\\inscricaoform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\services\\inscricaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\services\\inscricaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\inscricoespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\inscricoespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\inscricoespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\inscricoespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\gymmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\gymmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\models\\dashboardinscricoesterminar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\models\\dashboardinscricoesterminar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\models\\dashboardpagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\models\\dashboardpagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\pagamentospage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\pagamentospage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\pagamentospage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\pagamentospage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\forms\\pagamentoform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\forms\\pagamentoform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\forms\\pagamentoform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\forms\\pagamentoform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\models\\pagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\models\\pagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\helpers\\dadospaypal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\helpers\\dadospaypal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\services\\pagamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\services\\pagamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\models\\inscricaopagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\models\\inscricaopagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\helpers\\dadosbancarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\helpers\\dadosbancarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\services\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\services\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\inscricoespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\inscricoespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\forms\\clienteform.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -103,16 +175,8 @@
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\models\\plano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\forms\\utilizadorform.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -163,10 +227,6 @@
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\services\\personaltrainerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\personaltrainerspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\personaltrainerspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|c:\\users\\gonca\\desktop\\gymmanager\\vs\\gymmanager\\gymmanager\\view\\planostreinopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{163FF749-B6BF-47FD-A7E0-CC131D2A232B}|GymManager\\GymManager.csproj|solutionrelative:gymmanager\\view\\planostreinopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -190,37 +250,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Cliente.cs",
-              "RelativeDocumentMoniker": "GymManager\\Models\\Cliente.cs",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Cliente.cs",
-              "RelativeToolTip": "GymManager\\Models\\Cliente.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAgwB0AAAABAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "InscricoesPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\InscricoesPage.xaml.cs",
+              "RelativeDocumentMoniker": "GymManager\\View\\InscricoesPage.xaml.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\InscricoesPage.xaml.cs",
+              "RelativeToolTip": "GymManager\\View\\InscricoesPage.xaml.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAA+wCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T20:27:12.952Z",
+              "WhenOpened": "2026-07-26T20:03:43.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "InscricaoForm.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\InscricaoForm.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\InscricaoForm.xaml.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\InscricaoForm.xaml.cs",
               "RelativeToolTip": "GymManager\\View\\Forms\\InscricaoForm.xaml.cs",
-              "ViewState": "AgIAAGMBAAAAAAAAAAAswIQBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAiwCYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T20:15:05.084Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "InscricaoForm.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\InscricaoForm.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\InscricaoForm.xaml",
@@ -232,46 +292,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InscricoesPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\InscricoesPage.xaml.cs",
-              "RelativeDocumentMoniker": "GymManager\\View\\InscricoesPage.xaml.cs",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\InscricoesPage.xaml.cs",
-              "RelativeToolTip": "GymManager\\View\\InscricoesPage.xaml.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T20:03:43.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "InscricaoService.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\InscricaoService.cs",
-              "RelativeDocumentMoniker": "GymManager\\Services\\InscricaoService.cs",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\InscricaoService.cs",
-              "RelativeToolTip": "GymManager\\Services\\InscricaoService.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAowLwAAAAAAAAAAAAAAA==",
+              "Title": "DashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\DashboardService.cs",
+              "RelativeDocumentMoniker": "GymManager\\Services\\DashboardService.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\DashboardService.cs",
+              "RelativeToolTip": "GymManager\\Services\\DashboardService.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwD8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T20:03:39.371Z",
+              "WhenOpened": "2026-07-27T23:24:49.265Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ClienteService.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\ClienteService.cs",
-              "RelativeDocumentMoniker": "GymManager\\Services\\ClienteService.cs",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\ClienteService.cs",
-              "RelativeToolTip": "GymManager\\Services\\ClienteService.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAA5wA8AAAAHAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "DashboardPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\DashboardPage.xaml.cs",
+              "RelativeDocumentMoniker": "GymManager\\View\\DashboardPage.xaml.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\DashboardPage.xaml.cs",
+              "RelativeToolTip": "GymManager\\View\\DashboardPage.xaml.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAUwFsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T16:03:46.747Z",
+              "WhenOpened": "2026-07-27T23:28:33.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
+              "Title": "DashboardPage.xaml",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\DashboardPage.xaml",
+              "RelativeDocumentMoniker": "GymManager\\View\\DashboardPage.xaml",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\DashboardPage.xaml",
+              "RelativeToolTip": "GymManager\\View\\DashboardPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-27T23:28:11.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "InscricoesPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\InscricoesPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\InscricoesPage.xaml",
@@ -283,7 +342,238 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
+              "Title": "DashboardResumo.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\DashboardResumo.cs",
+              "RelativeDocumentMoniker": "GymManager\\Models\\DashboardResumo.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\DashboardResumo.cs",
+              "RelativeToolTip": "GymManager\\Models\\DashboardResumo.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T23:24:22.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InscricaoService.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\InscricaoService.cs",
+              "RelativeDocumentMoniker": "GymManager\\Services\\InscricaoService.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\InscricaoService.cs",
+              "RelativeToolTip": "GymManager\\Services\\InscricaoService.cs",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAqwAQBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-26T20:03:39.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GymManager",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\GymManager.csproj",
+              "RelativeDocumentMoniker": "GymManager\\GymManager.csproj",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\GymManager.csproj",
+              "RelativeToolTip": "GymManager\\GymManager.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-27T23:49:02.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DashboardPagamento.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\DashboardPagamento.cs",
+              "RelativeDocumentMoniker": "GymManager\\Models\\DashboardPagamento.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\DashboardPagamento.cs",
+              "RelativeToolTip": "GymManager\\Models\\DashboardPagamento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T23:30:50.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DashboardInscricoesTerminar.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\DashboardInscricoesTerminar.cs",
+              "RelativeDocumentMoniker": "GymManager\\Models\\DashboardInscricoesTerminar.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\DashboardInscricoesTerminar.cs",
+              "RelativeToolTip": "GymManager\\Models\\DashboardInscricoesTerminar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T23:31:04.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DadosPayPal.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\DadosPayPal.cs",
+              "RelativeDocumentMoniker": "GymManager\\Helpers\\DadosPayPal.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\DadosPayPal.cs",
+              "RelativeToolTip": "GymManager\\Helpers\\DadosPayPal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T23:05:44.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PagamentosPage.xaml",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PagamentosPage.xaml",
+              "RelativeDocumentMoniker": "GymManager\\View\\PagamentosPage.xaml",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PagamentosPage.xaml",
+              "RelativeToolTip": "GymManager\\View\\PagamentosPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-27T20:32:32.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PagamentoForm.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PagamentoForm.xaml.cs",
+              "RelativeDocumentMoniker": "GymManager\\View\\Forms\\PagamentoForm.xaml.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PagamentoForm.xaml.cs",
+              "RelativeToolTip": "GymManager\\View\\Forms\\PagamentoForm.xaml.cs",
+              "ViewState": "AgIAACoDAAAAAAAAAAAuwEEDAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T20:45:10.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PagamentoForm.xaml",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PagamentoForm.xaml",
+              "RelativeDocumentMoniker": "GymManager\\View\\Forms\\PagamentoForm.xaml",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PagamentoForm.xaml",
+              "RelativeToolTip": "GymManager\\View\\Forms\\PagamentoForm.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-27T20:43:41.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Pagamento.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Pagamento.cs",
+              "RelativeDocumentMoniker": "GymManager\\Models\\Pagamento.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Pagamento.cs",
+              "RelativeToolTip": "GymManager\\Models\\Pagamento.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCIAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T20:10:25.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PagamentosPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PagamentosPage.xaml.cs",
+              "RelativeDocumentMoniker": "GymManager\\View\\PagamentosPage.xaml.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PagamentosPage.xaml.cs",
+              "RelativeToolTip": "GymManager\\View\\PagamentosPage.xaml.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAmwKUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T22:19:30.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PagamentoService.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\PagamentoService.cs",
+              "RelativeDocumentMoniker": "GymManager\\Services\\PagamentoService.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\PagamentoService.cs",
+              "RelativeToolTip": "GymManager\\Services\\PagamentoService.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAqwNoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T20:13:44.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "InscricaoPagamento.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\InscricaoPagamento.cs",
+              "RelativeDocumentMoniker": "GymManager\\Models\\InscricaoPagamento.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\InscricaoPagamento.cs",
+              "RelativeToolTip": "GymManager\\Models\\InscricaoPagamento.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAcwB4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T21:22:47.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DadosBancarios.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\DadosBancarios.cs",
+              "RelativeDocumentMoniker": "GymManager\\Helpers\\DadosBancarios.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\DadosBancarios.cs",
+              "RelativeToolTip": "GymManager\\Helpers\\DadosBancarios.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T20:58:57.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "GymManager\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml",
+              "RelativeToolTip": "GymManager\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-26T16:34:02.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "GymManager\\View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml.cs",
+              "RelativeToolTip": "GymManager\\View\\MainWindow.xaml.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAAM8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-26T16:40:02.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "GymManager\\Models\\Cliente.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Cliente.cs",
+              "RelativeToolTip": "GymManager\\Models\\Cliente.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA3wB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-26T20:27:12.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ClienteService.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\ClienteService.cs",
+              "RelativeDocumentMoniker": "GymManager\\Services\\ClienteService.cs",
+              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\ClienteService.cs",
+              "RelativeToolTip": "GymManager\\Services\\ClienteService.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAgwA8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-26T16:03:46.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
               "Title": "ClienteForm.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\ClienteForm.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\ClienteForm.xaml.cs",
@@ -296,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 27,
               "Title": "Inscricao.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Inscricao.cs",
               "RelativeDocumentMoniker": "GymManager\\Models\\Inscricao.cs",
@@ -309,7 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 30,
               "Title": "ProfessoresPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\ProfessoresPage.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\ProfessoresPage.xaml.cs",
@@ -322,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 29,
               "Title": "ProfessoresForm.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\ProfessoresForm.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\ProfessoresForm.xaml",
@@ -334,7 +624,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 32,
               "Title": "ClienteForm.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\ClienteForm.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\ClienteForm.xaml",
@@ -346,20 +636,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 26,
               "Title": "UtilizadorService.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\UtilizadorService.cs",
               "RelativeDocumentMoniker": "GymManager\\Services\\UtilizadorService.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\UtilizadorService.cs",
               "RelativeToolTip": "GymManager\\Services\\UtilizadorService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAzwMgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAwMgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T16:53:07.722Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 28,
               "Title": "ProfessoresForm.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\ProfessoresForm.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\ProfessoresForm.xaml.cs",
@@ -372,7 +662,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 33,
               "Title": "ClientesPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\ClientesPage.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\ClientesPage.xaml.cs",
@@ -385,7 +675,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 38,
               "Title": "PlanoForm.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PlanoForm.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\PlanoForm.xaml.cs",
@@ -398,7 +688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 41,
               "Title": "PlanoForm.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PlanoForm.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\PlanoForm.xaml",
@@ -410,7 +700,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 31,
               "Title": "ProfessoresPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\ProfessoresPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\ProfessoresPage.xaml",
@@ -422,7 +712,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 34,
               "Title": "ClientesPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\ClientesPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\ClientesPage.xaml",
@@ -434,7 +724,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 35,
               "Title": "PlanosPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PlanosPage.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\PlanosPage.xaml.cs",
@@ -447,7 +737,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 36,
               "Title": "PlanosPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PlanosPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\PlanosPage.xaml",
@@ -459,7 +749,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 37,
               "Title": "PlanoService.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\PlanoService.cs",
               "RelativeDocumentMoniker": "GymManager\\Services\\PlanoService.cs",
@@ -472,20 +762,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 40,
               "Title": "PersonalTrainerForm.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PersonalTrainerForm.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\PersonalTrainerForm.xaml.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PersonalTrainerForm.xaml.cs",
               "RelativeToolTip": "GymManager\\View\\Forms\\PersonalTrainerForm.xaml.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAzwGUAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwGUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T15:55:02.551Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 39,
               "Title": "PersonalTrainerForm.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\PersonalTrainerForm.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\PersonalTrainerForm.xaml",
@@ -497,45 +787,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 42,
               "Title": "Plano.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Plano.cs",
               "RelativeDocumentMoniker": "GymManager\\Models\\Plano.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Plano.cs",
               "RelativeToolTip": "GymManager\\Models\\Plano.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwBMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T18:54:47.124Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "GymManager\\View\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml.cs",
-              "RelativeToolTip": "GymManager\\View\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAcwM8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T16:40:02.62Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "GymManager\\View\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\MainWindow.xaml",
-              "RelativeToolTip": "GymManager\\View\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-07-26T16:34:02.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 43,
               "Title": "LoginWindow.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\LoginWindow.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\LoginWindow.xaml",
@@ -547,7 +812,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 45,
               "Title": "UtilizadoresPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\UtilizadoresPage.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\UtilizadoresPage.xaml.cs",
@@ -560,7 +825,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 44,
               "Title": "UtilizadorForm.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\UtilizadorForm.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\UtilizadorForm.xaml",
@@ -572,7 +837,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 46,
               "Title": "UtilizadoresPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\UtilizadoresPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\UtilizadoresPage.xaml",
@@ -584,7 +849,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 47,
               "Title": "UtilizadorForm.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\Forms\\UtilizadorForm.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\Forms\\UtilizadorForm.xaml.cs",
@@ -597,7 +862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 48,
               "Title": "Perfis.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Perfis.cs",
               "RelativeDocumentMoniker": "GymManager\\Models\\Perfis.cs",
@@ -610,20 +875,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 50,
               "Title": "Utilizador.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Utilizador.cs",
               "RelativeDocumentMoniker": "GymManager\\Models\\Utilizador.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Utilizador.cs",
               "RelativeToolTip": "GymManager\\Models\\Utilizador.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T16:52:35.973Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 51,
               "Title": "passwordHelper.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\passwordHelper.cs",
               "RelativeDocumentMoniker": "GymManager\\Helpers\\passwordHelper.cs",
@@ -636,7 +901,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 49,
               "Title": "LoginWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\LoginWindow.xaml.cs",
               "RelativeDocumentMoniker": "GymManager\\View\\LoginWindow.xaml.cs",
@@ -649,20 +914,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 53,
               "Title": "Sessao.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Sessao.cs",
               "RelativeDocumentMoniker": "GymManager\\Models\\Sessao.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\Sessao.cs",
               "RelativeToolTip": "GymManager\\Models\\Sessao.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T16:44:21.27Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 54,
               "Title": "PersonalTrainersPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PersonalTrainersPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\PersonalTrainersPage.xaml",
@@ -674,20 +939,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 55,
               "Title": "PersonalTrainerService.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\PersonalTrainerService.cs",
               "RelativeDocumentMoniker": "GymManager\\Services\\PersonalTrainerService.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\PersonalTrainerService.cs",
               "RelativeToolTip": "GymManager\\Services\\PersonalTrainerService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA/wI8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAA9wI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T15:39:15.5Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 52,
               "Title": "ProfessoresService.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Services\\ProfessoresService.cs",
               "RelativeDocumentMoniker": "GymManager\\Services\\ProfessoresService.cs",
@@ -700,20 +965,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "PersonalTrainersPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PersonalTrainersPage.xaml.cs",
-              "RelativeDocumentMoniker": "GymManager\\View\\PersonalTrainersPage.xaml.cs",
-              "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PersonalTrainersPage.xaml.cs",
-              "RelativeToolTip": "GymManager\\View\\PersonalTrainersPage.xaml.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T15:38:54.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 56,
               "Title": "PlanosTreinoPage.xaml",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\View\\PlanosTreinoPage.xaml",
               "RelativeDocumentMoniker": "GymManager\\View\\PlanosTreinoPage.xaml",
@@ -725,20 +977,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 57,
               "Title": "Validacoes.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\Validacoes.cs",
               "RelativeDocumentMoniker": "GymManager\\Helpers\\Validacoes.cs",
               "ToolTip": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\Validacoes.cs",
               "RelativeToolTip": "GymManager\\Helpers\\Validacoes.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-26T16:06:14.063Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 58,
               "Title": "Mensagem.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Helpers\\Mensagem.cs",
               "RelativeDocumentMoniker": "GymManager\\Helpers\\Mensagem.cs",
@@ -751,7 +1003,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 59,
               "Title": "PersonalTrainer.cs",
               "DocumentMoniker": "C:\\Users\\gonca\\Desktop\\gymManager\\vs\\GymManager\\GymManager\\Models\\PersonalTrainer.cs",
               "RelativeDocumentMoniker": "GymManager\\Models\\PersonalTrainer.cs",
