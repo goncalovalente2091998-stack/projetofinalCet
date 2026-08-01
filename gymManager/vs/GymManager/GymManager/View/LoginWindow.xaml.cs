@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GymManager.View
 {
@@ -31,9 +32,9 @@ namespace GymManager.View
             InitializeComponent();
         }
 
-        private void btnEntrar_Click(
-            object sender,
-            RoutedEventArgs e)
+        private async void btnEntrar_Click(
+      object sender,
+      RoutedEventArgs e)
         {
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Password;
@@ -52,6 +53,8 @@ namespace GymManager.View
                 return;
             }
 
+            btnEntrar.IsEnabled = false;
+
             try
             {
                 Utilizador? utilizador =
@@ -65,33 +68,50 @@ namespace GymManager.View
 
                 if (!credenciaisValidas)
                 {
-                    Mensagem.Aviso(
-                        "Email ou palavra-passe inválidos.");
+                    Mensagem.Aviso("Email ou palavra-passe inválidos.");
 
                     txtPassword.Clear();
                     txtPassword.Focus();
+
                     return;
                 }
 
-                Sessao.IdUtilizador =
-                    utilizador!.IdUtilizador;
+                Sessao.IdUtilizador = utilizador!.IdUtilizador;
+                Sessao.Nome = utilizador.Nome;
+                Sessao.Perfil = utilizador.Perfil;
 
-                Sessao.Nome =
-                    utilizador.Nome;
+                Keyboard.ClearFocus();
 
-                Sessao.Perfil =
-                    utilizador.Perfil;
+                Hide();
+
+                await System.Windows.Threading.Dispatcher.Yield(
+                    DispatcherPriority.Background);
 
                 MainWindow mainWindow = new MainWindow();
+
+                Application.Current.MainWindow = mainWindow;
+
                 mainWindow.Show();
 
                 Close();
             }
             catch (Exception ex)
             {
+                if (!IsVisible)
+                {
+                    Show();
+                }
+
                 Mensagem.Erro(
                     "Não foi possível iniciar sessão.\n\n" +
                     ex.Message);
+            }
+            finally
+            {
+                if (IsVisible)
+                {
+                    btnEntrar.IsEnabled = true;
+                }
             }
         }
     }

@@ -71,33 +71,34 @@
 
         <!-- BARRA DE AÇÕES -->
         <Border Grid.Row="1"
-                Background="White"
-                CornerRadius="12"
-                Padding="15"
-                Margin="0,25,0,20">
+        Background="White"
+        CornerRadius="12"
+        Padding="15"
+        Margin="0,25,0,20">
 
             <Grid>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="300"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
+                <!-- BOTÕES -->
+                <WrapPanel Grid.Row="0"
+                   HorizontalAlignment="Left">
 
                     <Button x:Name="btnNovo"
-                            Width="120"
-                            Height="42"
-                            Margin="0,0,10,0"
-                            Click="btnNovo_Click">
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="btnNovo_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="AccountPlus"
-                                                     Width="18"
-                                                     Height="18"
-                                                     Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Novo"/>
 
@@ -106,17 +107,17 @@
                     </Button>
 
                     <Button x:Name="btnEditar"
-                            Width="120"
-                            Height="42"
-                            Margin="0,0,10,0"
-                            Click="btnEditar_Click">
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="btnEditar_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="Pencil"
-                                                     Width="18"
-                                                     Height="18"
-                                                     Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Editar"/>
 
@@ -125,16 +126,17 @@
                     </Button>
 
                     <Button x:Name="btnEliminar"
-                            Width="120"
-                            Height="42"
-                            Click="btnEliminar_Click">
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="btnEliminar_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="Delete"
-                                                     Width="18"
-                                                     Height="18"
-                                                     Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Eliminar"/>
 
@@ -142,26 +144,67 @@
 
                     </Button>
 
-                </StackPanel>
+                    <Button x:Name="btnExportarPdf"
+                    Width="150"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="BtnExportarPdf_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="FilePdfBox"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Exportar PDF"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnDossier"
+                    Width="150"
+                    Height="42"
+                    Click="BtnDossier_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="FileDocument"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Dossier"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                </WrapPanel>
 
                 <!-- PESQUISA -->
-                <Grid Grid.Column="2"
-                      Height="42">
+                <Grid Grid.Row="1"
+              Width="520"
+              Height="44"
+              Margin="0,16,0,0"
+              HorizontalAlignment="Left">
 
                     <TextBox x:Name="txtPesquisar"
-                             Padding="38,0,35,0"
-                             VerticalContentAlignment="Center"
-                             TextChanged="txtPesquisar_TextChanged"
-                             materialDesign:HintAssist.Hint="Pesquisar cliente..."
-                             materialDesign:TextFieldAssist.HasClearButton="True"/>
+                     Padding="38,0,35,0"
+                     VerticalContentAlignment="Center"
+                     TextChanged="txtPesquisar_TextChanged"
+                     materialDesign:HintAssist.Hint="Pesquisar cliente..."
+                     materialDesign:TextFieldAssist.HasClearButton="True"/>
 
                     <materialDesign:PackIcon Kind="Magnify"
-                                             Width="20"
-                                             Height="20"
-                                             Margin="10,0,0,0"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                             Foreground="#64748B"/>
+                                     Width="20"
+                                     Height="20"
+                                     Margin="10,0,0,0"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Foreground="#64748B"
+                                     IsHitTestVisible="False"/>
 
                 </Grid>
 
@@ -192,9 +235,7 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="ID"
-                                        Binding="{Binding IdCliente}"
-                                        Width="60"/>
+                   
 
                     <DataGridTextColumn Header="Nome"
                                         Binding="{Binding Nome}"

@@ -3,6 +3,7 @@ using GymManager.Models;
 using GymManager.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,8 +38,8 @@ namespace GymManager.View.Forms
             Title = "Novo Cliente";
         }
         public ClienteForm(Cliente cliente)
-{
-             InitializeComponent();
+        {
+            InitializeComponent();
 
             this.cliente = cliente;
 
@@ -55,7 +56,7 @@ namespace GymManager.View.Forms
             chkEstado.IsChecked = cliente.Estado;
         }
 
-       
+
 
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
@@ -110,7 +111,7 @@ namespace GymManager.View.Forms
 
             Cliente novoCliente = new Cliente
             {
-                Nome = txtNome.Text,
+                Nome = FormatarTexto.Nome(txtNome.Text),
                 NIF = txtNIF.Text,
                 DataNascimento = dpNascimento.SelectedDate ?? DateTime.Today,
                 Telefone = txtTelefone.Text,
@@ -139,5 +140,6 @@ namespace GymManager.View.Forms
         {
             Close();
         }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace GymManager.Models
 {
@@ -33,5 +34,25 @@ namespace GymManager.Models
         public int? IdInscricao { get; set; }
 
         public string NomePlano { get; set; } = string.Empty;
+        public DateTime? DataInicio { get; set; }
+
+        public DateTime? DataFim { get; set; }
+
+        public string ReferenciaInscricao
+        {
+            get
+            {
+                if (!DataInicio.HasValue ||
+                    !DataFim.HasValue)
+                {
+                    return NomePlano;
+                }
+
+                return
+                    $"{NomePlano} " +
+                    $"{DataInicio.Value:dd/MM/yyyy} → " +
+                    $"{DataFim.Value:dd/MM/yyyy}";
+            }
+        }
     }
 }

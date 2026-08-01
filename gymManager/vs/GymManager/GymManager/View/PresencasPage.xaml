@@ -1,0 +1,646 @@
+﻿<Page x:Class="GymManager.View.PresencasPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Presenças"
+      Background="#F1F5F9"
+      Language="pt-PT"
+      PreviewMouseDown="Pagina_PreviewMouseDown"
+      Unloaded="PresencasPage_Unloaded">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="25">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- CABEÇALHO -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Gestão de Presenças"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Foreground="#1E293B"/>
+
+                    <TextBlock Text="Registo de entradas e saídas dos clientes"
+                               Margin="0,5,0,0"
+                               FontSize="14"
+                               Foreground="#64748B"/>
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        Width="125"
+                        Height="42"
+                        Click="btnAtualizar_Click">
+
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Refresh"
+                                                 Width="18"
+                                                 Height="18"
+                                                 Margin="0,0,8,0"/>
+
+                        <TextBlock Text="Atualizar"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- CARTÕES -->
+            <Grid Grid.Row="1"
+                  Margin="0,25,0,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="14"
+                        Padding="20"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#DCFCE7">
+
+                            <materialDesign:PackIcon Kind="AccountGroup"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#15803D"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Presentes agora"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
+
+                            <TextBlock x:Name="txtTotalPresentes"
+                                       Text="0"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Background="White"
+                        CornerRadius="14"
+                        Padding="20"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#DBEAFE">
+
+                            <materialDesign:PackIcon Kind="Login"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#2563EB"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Entradas hoje"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
+
+                            <TextBlock x:Name="txtEntradasHoje"
+                                       Text="0"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="4"
+                        Background="White"
+                        CornerRadius="14"
+                        Padding="20"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Width="54"
+                                Height="54"
+                                CornerRadius="27"
+                                Background="#F3E8FF">
+
+                            <materialDesign:PackIcon Kind="ClockOutline"
+                                                     Width="28"
+                                                     Height="28"
+                                                     Foreground="#7E22CE"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="15,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="Tempo médio"
+                                       FontSize="13"
+                                       Foreground="#64748B"/>
+
+                            <TextBlock x:Name="txtTempoMedio"
+                                       Text="-"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#1E293B"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- PESQUISA / ENTRADA / SAÍDA -->
+            <Border Grid.Row="2"
+                    Background="White"
+                    CornerRadius="14"
+                    Padding="20"
+                    Margin="0,0,0,20"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="155"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <TextBox x:Name="txtPesquisarCliente"
+                                 Height="48"
+                                 VerticalContentAlignment="Center"
+                                 TextChanged="txtPesquisarCliente_TextChanged"
+                                 PreviewMouseLeftButtonDown="txtPesquisarCliente_PreviewMouseLeftButtonDown"
+                                 PreviewKeyDown="txtPesquisarCliente_PreviewKeyDown"
+                                 materialDesign:HintAssist.Hint="Pesquisar cliente por nome ou NIF..."/>
+
+                        <Popup x:Name="popupClientes"
+                               PlacementTarget="{Binding ElementName=txtPesquisarCliente}"
+                               Placement="Bottom"
+                               StaysOpen="True"
+                               AllowsTransparency="True"
+                               PopupAnimation="Fade">
+
+                            <Border Width="{Binding ActualWidth, ElementName=txtPesquisarCliente}"
+                                    Margin="0,4,0,0"
+                                    Background="White"
+                                    BorderBrush="#CBD5E1"
+                                    BorderThickness="1"
+                                    CornerRadius="10"
+                                    MaxHeight="280">
+
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="14"
+                                                      ShadowDepth="3"
+                                                      Opacity="0.18"/>
+                                </Border.Effect>
+
+                                <ListBox x:Name="lstClientes"
+                                         BorderThickness="0"
+                                         Background="White"
+                                         PreviewMouseLeftButtonDown="lstClientes_PreviewMouseLeftButtonDown"
+                                         PreviewKeyDown="lstClientes_PreviewKeyDown"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="HorizontalContentAlignment"
+                                                    Value="Stretch"/>
+                                            <Setter Property="Padding"
+                                                    Value="0"/>
+                                            <Setter Property="Margin"
+                                                    Value="5"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="ListBoxItem">
+                                                        <Border x:Name="bdItem"
+                                                                Padding="12"
+                                                                CornerRadius="9"
+                                                                Background="#F8FAFC"
+                                                                BorderBrush="#E2E8F0"
+                                                                BorderThickness="1">
+                                                            <ContentPresenter/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver"
+                                                                     Value="True">
+                                                                <Setter TargetName="bdItem"
+                                                                        Property="Background"
+                                                                        Value="#EFF6FF"/>
+                                                                <Setter TargetName="bdItem"
+                                                                        Property="BorderBrush"
+                                                                        Value="#93C5FD"/>
+                                                            </Trigger>
+
+                                                            <Trigger Property="IsSelected"
+                                                                     Value="True">
+                                                                <Setter TargetName="bdItem"
+                                                                        Property="Background"
+                                                                        Value="#DBEAFE"/>
+                                                                <Setter TargetName="bdItem"
+                                                                        Property="BorderBrush"
+                                                                        Value="#2563EB"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="44"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Width="38"
+                                                        Height="38"
+                                                        CornerRadius="19"
+                                                        Background="#DCFCE7">
+
+                                                    <materialDesign:PackIcon Kind="Account"
+                                                                             Width="20"
+                                                                             Height="20"
+                                                                             Foreground="#15803D"
+                                                                             HorizontalAlignment="Center"
+                                                                             VerticalAlignment="Center"/>
+                                                </Border>
+
+                                                <StackPanel Grid.Column="1"
+                                                            Margin="10,0,0,0"
+                                                            VerticalAlignment="Center">
+
+                                                    <TextBlock Text="{Binding Nome}"
+                                                               FontWeight="SemiBold"
+                                                               Foreground="#1E293B"/>
+
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Margin="0,3,0,0">
+
+                                                        <TextBlock Text="NIF: "
+                                                                   FontSize="12"
+                                                                   Foreground="#64748B"/>
+
+                                                        <TextBlock Text="{Binding NIF}"
+                                                                   FontSize="12"
+                                                                   Foreground="#64748B"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+                        </Popup>
+                    </Grid>
+
+                    <Button Grid.Column="1"
+                            Height="48"
+                            Background="#16A34A"
+                            Foreground="White"
+                            BorderBrush="#16A34A"
+                            Click="btnRegistarEntrada_Click" Grid.ColumnSpan="3" Margin="18,0,0,0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Login"
+                                                     Width="19"
+                                                     Height="19"
+                                                     Margin="0,0,8,0"/>
+
+                            <TextBlock Text="Registar entrada"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Column="4"
+                            Height="48"
+                            Background="#DC2626"
+                            Foreground="White"
+                            BorderBrush="#DC2626"
+                            Click="btnRegistarSaida_Click" Margin="5,0,-10,0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Logout"
+                                                     Width="19"
+                                                     Height="19"
+                                                     Margin="0,0,8,0"/>
+
+                            <TextBlock Text="Registar saída"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- PRESENTES -->
+            <Border Grid.Row="3"
+                    Background="White"
+                    CornerRadius="14"
+                    Padding="18"
+                    Margin="0,0,0,20"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,12">
+
+                        <materialDesign:PackIcon Kind="AccountCheck"
+                                                 Width="23"
+                                                 Height="23"
+                                                 Foreground="#16A34A"
+                                                 Margin="0,0,9,0"/>
+
+                        <TextBlock Text="Clientes atualmente no ginásio"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1E293B"/>
+                    </StackPanel>
+
+                    <ListBox x:Name="lstPresencasAtivas"
+                             Grid.Row="1"
+                             MinHeight="110"
+                             MaxHeight="220"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             SelectionChanged="lstPresencasAtivas_SelectionChanged"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Padding"
+                                        Value="0"/>
+                                <Setter Property="Margin"
+                                        Value="0,0,12,10"/>
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="255"
+                                        Padding="14"
+                                        CornerRadius="10"
+                                        Background="#F8FAFC"
+                                        BorderBrush="#E2E8F0"
+                                        BorderThickness="1">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="42"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Width="38"
+                                                Height="38"
+                                                CornerRadius="19"
+                                                Background="#DCFCE7">
+
+                                            <materialDesign:PackIcon Kind="Account"
+                                                                     Width="20"
+                                                                     Height="20"
+                                                                     Foreground="#15803D"
+                                                                     HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Center"/>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1"
+                                                    Margin="10,0,0,0">
+
+                                            <TextBlock Text="{Binding NomeCliente}"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="#1E293B"
+                                                       TextTrimming="CharacterEllipsis"/>
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        Margin="0,5,0,0">
+
+                                                <TextBlock Text="Entrada: "
+                                                           FontSize="12"
+                                                           Foreground="#64748B"/>
+
+                                                <TextBlock Text="{Binding DataEntrada, StringFormat=HH:mm}"
+                                                           FontSize="12"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="#2563EB"/>
+                                            </StackPanel>
+
+                                            <TextBlock Text="{Binding DuracaoFormatada}"
+                                                       Margin="0,3,0,0"
+                                                       FontSize="12"
+                                                       Foreground="#64748B"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <!-- HISTÓRICO -->
+            <Border Grid.Row="4"
+                    Background="White"
+                    CornerRadius="14"
+                    Padding="18"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="420"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="350"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Histórico de presenças"
+                                   FontSize="17"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1E293B"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBox x:Name="txtPesquisarHistorico"
+                                 Grid.Column="1"
+                                 Height="40"
+                                 VerticalContentAlignment="Center"
+                                 TextChanged="txtPesquisarHistorico_TextChanged"
+                                 materialDesign:HintAssist.Hint="Pesquisar histórico..."/>
+                    </Grid>
+
+                    <DataGrid x:Name="dgPresencas"
+                              Grid.Row="1"
+                              Margin="0,15,0,0"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              SelectionChanged="dgPresencas_SelectionChanged"
+                              GridLinesVisibility="Horizontal"
+                              HeadersVisibility="Column"
+                              RowHeight="44"
+                              ColumnHeaderHeight="44"
+                              AlternatingRowBackground="#F8FAFC"
+                              BorderThickness="0"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cliente"
+                                                Binding="{Binding NomeCliente}"
+                                                Width="2*"/>
+
+                            <DataGridTextColumn Header="NIF"
+                                                Binding="{Binding NIF}"
+                                                Width="120"/>
+
+                            <DataGridTextColumn Header="Entrada"
+                                                Binding="{Binding DataEntradaFormatada}"
+                                                Width="155"/>
+
+                            <DataGridTextColumn Header="Saída"
+                                                Binding="{Binding DataSaidaFormatada}"
+                                                Width="155"/>
+
+                            <DataGridTextColumn Header="Duração"
+                                                Binding="{Binding DuracaoFormatada}"
+                                                Width="120"/>
+
+                            <DataGridTemplateColumn Header="Estado"
+                                                    Width="125">
+
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment"
+                                                Value="Center"/>
+                                    </Style>
+                                </DataGridTemplateColumn.HeaderStyle>
+
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="9,4"
+                                                CornerRadius="10"
+                                                HorizontalAlignment="Center">
+
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background"
+                                                            Value="#E2E8F0"/>
+
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding EstaAtiva}"
+                                                                     Value="True">
+                                                            <Setter Property="Background"
+                                                                    Value="#DCFCE7"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+
+                                            <TextBlock Text="{Binding Estado}"
+                                                       FontSize="12"
+                                                       FontWeight="SemiBold"
+                                                       TextAlignment="Center">
+
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Foreground"
+                                                                Value="#475569"/>
+
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding EstaAtiva}"
+                                                                         Value="True">
+                                                                <Setter Property="Foreground"
+                                                                        Value="#15803D"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                         
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

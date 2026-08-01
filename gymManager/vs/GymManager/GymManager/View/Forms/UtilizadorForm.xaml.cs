@@ -89,7 +89,7 @@ namespace GymManager.View.Forms
             object sender,
             RoutedEventArgs e)
         {
-            string nome = txtNome.Text.Trim();
+            string nome = FormatarTexto.Nome(txtNome.Text);
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Password;
             string confirmarPassword =

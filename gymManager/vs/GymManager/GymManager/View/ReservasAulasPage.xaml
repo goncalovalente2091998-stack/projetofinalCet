@@ -303,9 +303,9 @@
                 </WrapPanel>
 
                 <Grid Grid.Row="1"
-                      Width="380"
+                      Width="520"
                       Height="42"
-                      HorizontalAlignment="Right">
+                      HorizontalAlignment="Left">
 
                     <TextBox x:Name="txtPesquisar"
                              Padding="38,0,35,0"

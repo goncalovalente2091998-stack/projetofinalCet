@@ -50,7 +50,7 @@ namespace GymManager.View.Forms
 
         public PagamentoForm()
         {
-           InitializeComponent();
+            InitializeComponent();
 
             CarregarClientes();
 
@@ -298,27 +298,35 @@ namespace GymManager.View.Forms
             }
         }
 
-        private void SelecionarCliente(Cliente cliente)
+        private void SelecionarCliente(
+      Cliente cliente)
         {
-            clienteSelecionado = cliente;
+            clienteSelecionado =
+                cliente;
 
-            atualizandoTextoCliente = true;
+            atualizandoTextoCliente =
+                true;
 
             txtCliente.Text =
-                cliente.Nome;
+                cliente.DescricaoReserva;
 
             txtCliente.CaretIndex =
                 txtCliente.Text.Length;
 
-            atualizandoTextoCliente = false;
+            atualizandoTextoCliente =
+                false;
 
-            popupClientes.IsOpen = false;
-            lstClientes.SelectedIndex = -1;
+            popupClientes.IsOpen =
+                false;
+
+            lstClientes.SelectedIndex =
+                -1;
 
             CarregarInscricoesAtivas(
                 cliente.IdCliente);
 
-            if (ObterTextoCombo(cmbMetodoPagamento) ==
+            if (ObterTextoCombo(
+                    cmbMetodoPagamento) ==
                 "Transferência Bancária")
             {
                 GerarReferenciaTransferencia();
@@ -331,8 +339,8 @@ namespace GymManager.View.Forms
             try
             {
                 inscricoesAtivas =
-                    inscricaoService
-                        .ListarAtivasPorCliente(idCliente);
+                  inscricaoService.ListarDisponiveisParaPagamento(
+    idCliente);
 
                 cmbInscricao.ItemsSource =
                     inscricoesAtivas;
@@ -346,7 +354,7 @@ namespace GymManager.View.Forms
                 {
                     cmbInscricao.SelectedIndex = -1;
                     txtAvisoMetodo.Text =
-                        "O cliente não possui inscrições ativas disponíveis para pagamento."; 
+                        "O cliente não possui inscrições disponíveis para pagamento.";
 
                     return;
                 }
@@ -426,6 +434,29 @@ namespace GymManager.View.Forms
 
             bool mbway =
                 metodo == "MB WAY";
+            if (!transferencia)
+            {
+                referenciaTransferencia =
+                    string.Empty;
+
+                txtReferenciaTransferencia.Text =
+         string.Empty;
+            }
+
+            if (!paypal)
+            {
+                referenciaPayPal =
+                    string.Empty;
+
+                txtReferenciaPayPal.Text =
+       string.Empty;
+            }
+
+            if (!transferencia && !paypal)
+            {
+                txtReferenciaExterna.Clear();
+                txtIdTransacao.Clear();
+            }
 
             bool pagamentoJaPago =
                 pagamento != null &&
@@ -475,7 +506,32 @@ namespace GymManager.View.Forms
 
                 return;
             }
+            if (pagamento == null)
+            {
+                if (!transferencia)
+                {
+                    referenciaTransferencia =
+                        string.Empty;
+                    txtReferenciaTransferencia.Text =
+    string.Empty;
+                }
 
+                if (!paypal)
+                {
+                    referenciaPayPal =
+                        string.Empty;
+
+                    txtReferenciaPayPal.Text =
+     string.Empty;
+
+                }
+
+                if (!transferencia && !paypal)
+                {
+                    txtReferenciaExterna.Clear();
+                    txtIdTransacao.Clear();
+                }
+            }
             // Um pagamento reembolsado é final
             if (pagamentoReembolsado)
             {
@@ -549,7 +605,7 @@ namespace GymManager.View.Forms
                 return;
             }
 
-            if ( mbway)
+            if (mbway)
             {
                 SelecionarCombo(cmbEstado, "Pendente");
 
@@ -753,7 +809,7 @@ namespace GymManager.View.Forms
             {
                 estado = "Pendente";
             }
-        
+
             else if (metodo == "Pagamento Posterior" ||
                       metodo == "MB WAY" ||
              metodo == "PayPal")
@@ -825,16 +881,19 @@ namespace GymManager.View.Forms
 
                 Estado =
                     estado,
-
                 ReferenciaExterna =
     metodo == "Transferência Bancária"
         ? referenciaTransferencia
         : metodo == "PayPal"
             ? referenciaPayPal
-            : txtReferenciaExterna.Text.Trim(),
+            : string.Empty,
 
                 IdTransacaoExterna =
-                    txtIdTransacao.Text.Trim(),
+    metodo == "PayPal"
+        ? txtIdTransacao.Text.Trim()
+        : string.Empty,
+
+
 
                 DataConfirmacao =
                     dataConfirmacao,
@@ -881,7 +940,7 @@ namespace GymManager.View.Forms
             Mensagem.Sucesso(
                 "Email PayPal copiado para a área de transferência.");
         }
-        
+
 
         private void btnCancelar_Click(
             object sender,

@@ -266,7 +266,13 @@ namespace GymManager.Services
                     reader["DataConfirmacao"] == DBNull.Value
                         ? null
                         : Convert.ToDateTime(
-                            reader["DataConfirmacao"])
+                            reader["DataConfirmacao"]),
+
+                        DataInicio =
+    Convert.ToDateTime(reader["DataInicio"]),
+
+                DataFim =
+    Convert.ToDateTime(reader["DataFim"]),
             };
         }
         public void Confirmar(int idPagamento)

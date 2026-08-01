@@ -416,5 +416,79 @@ namespace GymManager.Services
 
             cmd.ExecuteNonQuery();
         }
+
+        public List<InscricaoPagamento> ListarDisponiveisParaPagamento(
+    int idCliente)
+        {
+            List<InscricaoPagamento> lista = new();
+
+            using SqlConnection conn =
+                db.GetConnection();
+
+            conn.Open();
+
+            using SqlCommand cmd =
+                new SqlCommand(
+                    "sp_Inscricoes_ListarDisponiveisParaPagamento",
+                    conn);
+
+            cmd.CommandType =
+                CommandType.StoredProcedure;
+
+            cmd.Parameters.Add(
+                "@IdCliente",
+                SqlDbType.Int).Value =
+                idCliente;
+
+            using SqlDataReader reader =
+                cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lista.Add(
+                    new InscricaoPagamento
+                    {
+                        IdInscricao =
+                            Convert.ToInt32(
+                                reader["IdInscricao"]),
+
+                        IdCliente =
+                            Convert.ToInt32(
+                                reader["IdCliente"]),
+
+                        IdPlano =
+                            Convert.ToInt32(
+                                reader["IdPlano"]),
+
+                        NomePlano =
+                            reader["NomePlano"].ToString()
+                            ?? string.Empty,
+
+                        Preco =
+                            Convert.ToDecimal(
+                                reader["Preco"]),
+
+                        DuracaoMeses =
+                            Convert.ToInt32(
+                                reader["DuracaoMeses"]),
+
+                        DataInicio =
+                            Convert.ToDateTime(
+                                reader["DataInicio"]),
+
+                        DataFim =
+                            Convert.ToDateTime(
+                                reader["DataFim"]),
+
+                        Estado =
+                            reader["Estado"].ToString()
+                            ?? string.Empty
+                    });
+            }
+
+            return lista;
+        }
     }
+
+
 }

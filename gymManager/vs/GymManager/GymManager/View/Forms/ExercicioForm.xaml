@@ -1,0 +1,227 @@
+﻿<Window x:Class="GymManager.View.Forms.ExercicioForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Exercício"
+         Icon="/GymManager;component/Assets/logo.ico"
+        Width="700"
+        Height="650"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F1F5F9"
+        Language="pt-PT">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+        <!-- CABEÇALHO -->
+        <Border Grid.Row="0"
+                Background="#2563EB">
+
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="25,0">
+
+                <Border Width="52"
+                        Height="52"
+                        CornerRadius="26"
+                        Background="#33FFFFFF">
+
+                    <materialDesign:PackIcon Kind="WeightLifter"
+                                             Width="30"
+                                             Height="30"
+                                             Foreground="White"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+
+                </Border>
+
+                <StackPanel Margin="15,0,0,0"
+                            VerticalAlignment="Center">
+
+                    <TextBlock x:Name="txtTitulo"
+                               Text="Novo Exercício"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <TextBlock Text="Registar exercício no catálogo"
+                               FontSize="13"
+                               Foreground="#DBEAFE"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- CONTEÚDO -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <Border Background="White"
+                    CornerRadius="14"
+                    Padding="25"
+                    Margin="25">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- NOME -->
+                    <TextBox x:Name="txtNome"
+                             Grid.Row="0"
+                             Grid.ColumnSpan="3"
+                             Height="48"
+                             Margin="0,0,0,18"
+                             MaxLength="100"
+                             VerticalContentAlignment="Center"
+                             materialDesign:HintAssist.Hint="Nome do exercício"/>
+
+                    <!-- GRUPO MUSCULAR -->
+                    <ComboBox x:Name="cmbGrupoMuscular"
+                              Grid.Row="1"
+                              Height="48"
+                              Margin="0,0,0,18"
+                              materialDesign:HintAssist.Hint="Grupo muscular">
+
+                        <ComboBoxItem Content="Peito"/>
+                        <ComboBoxItem Content="Costas"/>
+                        <ComboBoxItem Content="Ombros"/>
+                        <ComboBoxItem Content="Bíceps"/>
+                        <ComboBoxItem Content="Tríceps"/>
+                        <ComboBoxItem Content="Pernas"/>
+                        <ComboBoxItem Content="Glúteos"/>
+                        <ComboBoxItem Content="Abdominais"/>
+                        <ComboBoxItem Content="Cardio"/>
+                        <ComboBoxItem Content="Corpo inteiro"/>
+
+                    </ComboBox>
+
+                    <!-- DIFICULDADE -->
+                    <ComboBox x:Name="cmbDificuldade"
+                              Grid.Row="1"
+                              Grid.Column="2"
+                              Height="48"
+                              Margin="0,0,0,18"
+                              SelectedIndex="1"
+                              materialDesign:HintAssist.Hint="Dificuldade">
+
+                        <ComboBoxItem Content="Iniciante"/>
+                        <ComboBoxItem Content="Intermédio"/>
+                        <ComboBoxItem Content="Avançado"/>
+
+                    </ComboBox>
+
+                    <!-- EQUIPAMENTO -->
+                    <TextBox x:Name="txtEquipamento"
+                             Grid.Row="2"
+                             Grid.ColumnSpan="3"
+                             Height="48"
+                             Margin="0,0,0,18"
+                             MaxLength="100"
+                             VerticalContentAlignment="Center"
+                             materialDesign:HintAssist.Hint="Equipamento necessário (opcional)"/>
+
+                    <!-- ESTADO -->
+                    <ComboBox x:Name="cmbEstado"
+                              Grid.Row="3"
+                              Grid.ColumnSpan="3"
+                              Height="48"
+                              Margin="0,0,0,18"
+                              SelectedIndex="0"
+                              materialDesign:HintAssist.Hint="Estado">
+
+                        <ComboBoxItem Content="Ativo"/>
+                        <ComboBoxItem Content="Inativo"/>
+
+                    </ComboBox>
+
+                    <!-- DESCRIÇÃO -->
+                    <TextBox x:Name="txtDescricao"
+                             Grid.Row="4"
+                             Grid.ColumnSpan="3"
+                             Height="130"
+                             MaxLength="500"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             materialDesign:HintAssist.Hint="Descrição do exercício"/>
+
+                </Grid>
+
+            </Border>
+
+        </ScrollViewer>
+
+        <!-- RODAPÉ -->
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#E2E8F0"
+                BorderThickness="0,1,0,0">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="20,0">
+
+                <Button Width="125"
+                        Height="42"
+                        Margin="0,0,10,0"
+                        Click="btnCancelar_Click">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="Close"
+                                                 Width="18"
+                                                 Height="18"
+                                                 Margin="0,0,7,0"/>
+
+                        <TextBlock Text="Cancelar"/>
+
+                    </StackPanel>
+
+                </Button>
+
+                <Button Width="125"
+                        Height="42"
+                        Click="btnGuardar_Click">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="ContentSave"
+                                                 Width="18"
+                                                 Height="18"
+                                                 Margin="0,0,7,0"/>
+
+                        <TextBlock Text="Guardar"/>
+
+                    </StackPanel>
+
+                </Button>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>

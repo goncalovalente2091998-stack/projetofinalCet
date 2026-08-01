@@ -4,6 +4,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
         Title="Pagamento"
+         Icon="/GymManager;component/Assets/logo.ico"
         Height="800"
         Width="720"
         WindowStartupLocation="CenterOwner"
@@ -270,7 +271,7 @@
                         <ComboBoxItem Content="Pendente"/>
                         <ComboBoxItem Content="Pago"/>
                         <ComboBoxItem Content="Falhado"/>
-                        
+
 
                     </ComboBox>
 

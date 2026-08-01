@@ -86,7 +86,7 @@ namespace GymManager.View
 
         private void btnAvaliacoes_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new AvaliacoesPage());
+            MainFrame.Navigate(new AvaliacoesFisicasPage());
         }
 
         private void btnEquipamentos_Click(object sender, RoutedEventArgs e)
@@ -112,7 +112,16 @@ namespace GymManager.View
             Close();
         }
 
+        private void btnAgenda_Click(
+    object sender,
+    RoutedEventArgs e)
+        {
+            MainFrame.Navigate(
+                new AgendaPage());
 
+            txtTituloPagina.Text =
+                "Agenda";
+        }
 
 
         private void AplicarPermissoes()
@@ -167,20 +176,6 @@ namespace GymManager.View
       administrador || rececionista
           ? Visibility.Visible
           : Visibility.Collapsed;
-
-
-
-            txtGestao.Visibility =
-             administrador || rececionista 
-                 ? Visibility.Visible
-                 : Visibility.Collapsed;
-
-            spGestao.Visibility =
-            administrador || rececionista
-                ? Visibility.Visible
-                : Visibility.Collapsed;
-
-
 
 
             btnClientes.Visibility =
@@ -255,6 +250,15 @@ namespace GymManager.View
         {
             txtTituloPagina.Text = "Utilizadores";
             MainFrame.Navigate(new UtilizadoresPage());
+        }
+
+        private void btnPresencas_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(
+     new PresencasPage());
+
+            txtTituloPagina.Text =
+                "Presenças";
         }
     }
 }

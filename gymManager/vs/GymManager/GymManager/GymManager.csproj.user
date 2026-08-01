@@ -2,19 +2,19 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="View\AgendaPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AulasPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\AvaliacoesPage.xaml.cs">
+    <Compile Update="View\AvaliacoesFisicasPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ClientesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\DashboardPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="View\DashboardWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\EquipamentosPage.xaml.cs">
@@ -26,10 +26,25 @@
     <Compile Update="View\Forms\AulaForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Forms\AvaliacaoFisicaForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Forms\ClienteForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Forms\EquipamentoForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\EventoAgendaForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\ExercicioForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Forms\InscricaoForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\ManutencaoForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Forms\PagamentoForm.xaml.cs">
@@ -39,6 +54,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Forms\PlanoForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\PlanoTreinoExercicioForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Forms\PlanoTreinoForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Forms\ProfessoresForm.xaml.cs">
@@ -72,6 +93,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\PlanosTreinoPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PlanoTreinoExerciciosPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PresencasPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProfessoresPage.xaml.cs">

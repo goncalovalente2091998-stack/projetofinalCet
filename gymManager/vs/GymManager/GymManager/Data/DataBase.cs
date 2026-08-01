@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 
 namespace GymManager.Data
 {
-  public  class DataBase
+    public class DataBase
     {
         private readonly string connectionString =
            @"Server=localhost\SQLEXPRESS;

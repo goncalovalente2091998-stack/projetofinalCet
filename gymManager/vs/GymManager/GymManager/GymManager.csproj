@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Assets\Icones\" />
     <Folder Include="Assets\Imagens\" />
     <Folder Include="ViewModels\" />
@@ -16,9 +20,14 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
+    <PackageReference Include="itext7" Version="9.7.0" />
     <PackageReference Include="MaterialDesignColors" Version="5.3.3-ci1429" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.3-ci1429" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.0-preview2.26190.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\logo.ico" />
   </ItemGroup>
 
 </Project>

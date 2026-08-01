@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Gym Manager"
+      Icon="/GymManager;component/Assets/logo.ico"
         Height="700"
         Width="1200"
         MinHeight="600"
@@ -146,7 +147,25 @@
                             </StackPanel>
 
                         </Button>
+                        <Button x:Name="btnPresencas"
+        Height="42"
+        Margin="0,2"
+        HorizontalContentAlignment="Left"
+        Click="btnPresencas_Click">
 
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="AccountClock"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Presenças"
+                   VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
                         <Button x:Name="btnProfessores"
         Height="42"
         Margin="0,2"
@@ -202,12 +221,12 @@
                                 Click="btnAulas_Click">
 
                             <StackPanel Orientation="Horizontal">
-                          
+
                                 <materialDesign:PackIcon Kind="CalendarClock"
                                                          Width="19"
                                                          Height="19"
                                                          Margin="3,0,12,0"/>
-                                                        
+
 
                                 <TextBlock Text="Aulas"
                                            VerticalAlignment="Center"/>
@@ -215,7 +234,25 @@
                             </StackPanel>
 
                         </Button>
+                        <Button x:Name="btnAgenda"
+        Height="42"
+        Margin="0,2"
+        HorizontalContentAlignment="Left"
+        Click="btnAgenda_Click">
 
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="CalendarMonth"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Agenda"
+                   VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
                         <Button x:Name="btnTreinos"
                                 Height="42"
                                 Margin="0,2"

@@ -1,0 +1,658 @@
+﻿<Page x:Class="GymManager.View.AgendaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Agenda"
+      Background="#F1F5F9"
+      Language="pt-PT">
+
+    <Page.Resources>
+
+        <Style x:Key="BotaoNavegacaoMes"
+               TargetType="Button">
+            <Setter Property="Width" Value="44"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#1E293B"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#EFF6FF"/>
+                                <Setter TargetName="bd"
+                                        Property="BorderBrush"
+                                        Value="#60A5FA"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#DBEAFE"/>
+                                <Setter TargetName="bd"
+                                        Property="BorderBrush"
+                                        Value="#2563EB"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BotaoDiaCalendario"
+               TargetType="Button">
+            <Setter Property="Height" Value="64"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Padding" Value="7"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="9"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#F8FAFC"/>
+                                <Setter TargetName="bd"
+                                        Property="BorderBrush"
+                                        Value="#93C5FD"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#EFF6FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BotaoAcaoAgenda"
+               TargetType="Button">
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Page.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="25"
+              MinHeight="760">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- CABEÇALHO -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1"
+            Orientation="Horizontal"
+            VerticalAlignment="Center">
+
+                    <Button Height="44"
+            Padding="18,0"
+            Margin="0,0,10,0"
+            Background="#2563EB"
+            Foreground="White"
+            BorderBrush="#2563EB"
+            Click="btnNovoAgendamento_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="CalendarPlus"
+                                     Width="20"
+                                     Height="20"
+                                     Margin="0,0,8,0"/>
+
+                            <TextBlock Text="Novo agendamento PT"
+                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnExportarPdf"
+            Height="44"
+            Padding="18,0"
+            Background="White"
+            Foreground="#1E293B"
+            BorderBrush="#CBD5E1"
+            BorderThickness="1"
+            Click="BtnExportarPdf_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="FilePdfBox"
+                                     Width="20"
+                                     Height="20"
+                                     Foreground="#DC2626"
+                                     Margin="0,0,8,0"/>
+
+                            <TextBlock Text="Exportar PDF"
+                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+
+            <!-- FILTRO -->
+            <Border Grid.Row="1"
+                    Margin="0,22,0,20"
+                    Padding="18"
+                    Background="White"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1"
+                    CornerRadius="14">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="24"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox x:Name="cmbFiltroTipo"
+                              Grid.Column="0"
+                              Height="44"
+                              SelectedIndex="0"
+                              SelectionChanged="cmbFiltroTipo_SelectionChanged"
+                              materialDesign:HintAssist.Hint="Tipo de evento">
+
+                        <ComboBoxItem Content="Todos"/>
+                        <ComboBoxItem Content="Sessão PT"/>
+                        <ComboBoxItem Content="Aula"/>
+                    </ComboBox>
+
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right">
+
+                        <materialDesign:PackIcon Kind="CalendarToday"
+                                                 Width="22"
+                                                 Height="22"
+                                                 Foreground="#2563EB"
+                                                 Margin="0,0,9,0"/>
+
+                        <TextBlock x:Name="txtDiaSelecionado"
+                                   Text="Hoje"
+                                   FontSize="15"
+                                   FontWeight="SemiBold"
+                                   Foreground="#1E293B"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- CONTEÚDO -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.35*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- CALENDÁRIO -->
+                <Border Grid.Column="0"
+                        Padding="18"
+                        Background="White"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1"
+                        CornerRadius="14">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="390"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Margin="0,0,0,15">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Style="{StaticResource BotaoNavegacaoMes}"
+                                    Click="btnMesAnterior_Click"
+                                    ToolTip="Mês anterior">
+
+                                <TextBlock Text="‹"
+                                           FontFamily="Segoe UI"
+                                           FontSize="30"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1E293B"
+                                           Margin="0,-4,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Button>
+
+                            <StackPanel Grid.Column="1"
+                                        HorizontalAlignment="Center">
+
+                                <TextBlock x:Name="txtMesAno"
+                                           Text="Julho 2026"
+                                           FontSize="21"
+                                           FontWeight="Bold"
+                                           Foreground="#1E293B"
+                                           HorizontalAlignment="Center"/>
+
+                                <Button Content="Ir para hoje"
+                                        Margin="0,4,0,0"
+                                        Padding="10,3"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Foreground="#2563EB"
+                                        Cursor="Hand"
+                                        Click="btnHoje_Click"/>
+                            </StackPanel>
+
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource BotaoNavegacaoMes}"
+                                    Click="btnMesSeguinte_Click"
+                                    ToolTip="Mês seguinte">
+
+                                <TextBlock Text="›"
+                                           FontFamily="Segoe UI"
+                                           FontSize="30"
+                                           FontWeight="SemiBold"
+                                           Foreground="#1E293B"
+                                           Margin="0,-4,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Button>
+                        </Grid>
+
+                        <UniformGrid Grid.Row="1"
+                                     Columns="7"
+                                     Margin="0,0,0,6">
+                            <TextBlock Text="SEG" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                            <TextBlock Text="TER" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                            <TextBlock Text="QUA" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                            <TextBlock Text="QUI" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                            <TextBlock Text="SEX" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                            <TextBlock Text="SÁB" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                            <TextBlock Text="DOM" TextAlignment="Center" FontWeight="SemiBold" Foreground="#64748B"/>
+                        </UniformGrid>
+
+                        <UniformGrid x:Name="gridCalendario"
+                                     Grid.Row="2"
+                                     Columns="7"
+                                     Rows="6"/>
+
+                        <Border Grid.Row="3"
+                                Margin="3,14,3,0"
+                                Padding="14,10"
+                                Background="#F8FAFC"
+                                BorderBrush="#E2E8F0"
+                                BorderThickness="1"
+                                CornerRadius="10">
+
+                            <WrapPanel VerticalAlignment="Center">
+
+                                <TextBlock Text="Legenda:"
+                                           Margin="0,0,18,0"
+                                           FontWeight="SemiBold"
+                                           Foreground="#334155"
+                                           VerticalAlignment="Center"/>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="0,0,22,0">
+                                    <Ellipse Width="10"
+                                             Height="10"
+                                             Fill="#2563EB"
+                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Agendamento PT"
+                                               Foreground="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="0,0,22,0">
+                                    <Ellipse Width="10"
+                                             Height="10"
+                                             Fill="#22C55E"
+                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Aula"
+                                               Foreground="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="0,0,22,0">
+                                    <Ellipse Width="10"
+                                             Height="10"
+                                             Fill="#64748B"
+                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Concluído"
+                                               Foreground="#475569"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="10"
+                                             Height="10"
+                                             Fill="#EF4444"
+                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Cancelado"
+                                               Foreground="#475569"/>
+                                </StackPanel>
+                            </WrapPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- EVENTOS DO DIA -->
+                <Border Grid.Column="2"
+                        Padding="18"
+                        Background="White"
+                        BorderBrush="#E2E8F0"
+                        BorderThickness="1"
+                        CornerRadius="14">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="500"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Margin="0,0,0,14">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel>
+                                <TextBlock Text="Eventos do dia"
+                                           FontSize="19"
+                                           FontWeight="Bold"
+                                           Foreground="#1E293B"/>
+
+                                <TextBlock x:Name="txtTotalEventosDia"
+                                           Text="0 eventos"
+                                           Margin="0,4,0,0"
+                                           FontSize="12"
+                                           Foreground="#64748B"/>
+                            </StackPanel>
+
+                            <Border Grid.Column="1"
+                                    Width="44"
+                                    Height="44"
+                                    CornerRadius="22"
+                                    Background="#DBEAFE">
+
+                                <materialDesign:PackIcon Kind="CalendarClock"
+                                                         Width="23"
+                                                         Height="23"
+                                                         Foreground="#2563EB"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+
+                        <ListBox x:Name="lstEventosDia"
+                                 Grid.Row="1"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 SelectionMode="Single"
+                                 SelectionChanged="lstEventosDia_SelectionChanged"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="Padding" Value="0"/>
+                                    <Setter Property="Margin" Value="0,0,0,10"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="14"
+                                            BorderBrush="#E2E8F0"
+                                            BorderThickness="1"
+                                            CornerRadius="11">
+
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background" Value="#F8FAFC"/>
+
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Tipo}" Value="Sessão PT">
+                                                        <Setter Property="Background" Value="#EFF6FF"/>
+                                                        <Setter Property="BorderBrush" Value="#BFDBFE"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Tipo}" Value="Aula">
+                                                        <Setter Property="Background" Value="#F0FDF4"/>
+                                                        <Setter Property="BorderBrush" Value="#BBF7D0"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Estado}" Value="Cancelado">
+                                                        <Setter Property="Opacity" Value="0.55"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="54"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding HoraInicioFormatada}"
+                                                           FontSize="16"
+                                                           FontWeight="Bold"
+                                                           Foreground="#1E293B"
+                                                           HorizontalAlignment="Center"/>
+
+                                                <TextBlock Text="{Binding HoraFimFormatada}"
+                                                           FontSize="11"
+                                                           Foreground="#64748B"
+                                                           HorizontalAlignment="Center"/>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="1"
+                                                        Margin="12,0">
+
+                                                <TextBlock Text="{Binding Titulo}"
+                                                           FontSize="14"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="#1E293B"
+                                                           TextWrapping="Wrap"/>
+
+                                                <TextBlock Text="{Binding NomePT, StringFormat=Responsável: {0}}"
+                                                           Margin="0,4,0,0"
+                                                           FontSize="12"
+                                                           Foreground="#64748B"/>
+
+                                                <TextBlock Text="{Binding Participante}"
+                                                           Margin="0,3,0,0"
+                                                           FontSize="12"
+                                                           Foreground="#475569"/>
+
+                                                <TextBlock Text="{Binding Localizacao, StringFormat=Local: {0}}"
+                                                           Margin="0,3,0,0"
+                                                           FontSize="11"
+                                                           Foreground="#94A3B8"/>
+                                            </StackPanel>
+
+                                            <Border Grid.Column="2"
+                                                    Padding="9,4"
+                                                    CornerRadius="10"
+                                                    VerticalAlignment="Top">
+
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Background" Value="#DBEAFE"/>
+
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Estado}" Value="Concluído">
+                                                                <Setter Property="Background" Value="#DCFCE7"/>
+                                                            </DataTrigger>
+
+                                                            <DataTrigger Binding="{Binding Estado}" Value="Cancelado">
+                                                                <Setter Property="Background" Value="#FEE2E2"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+
+                                                <TextBlock Text="{Binding Estado}"
+                                                           FontSize="11"
+                                                           FontWeight="SemiBold"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Border x:Name="borderSemEventos"
+        Grid.Row="1"
+        Visibility="Collapsed"
+        Background="#F8FAFC"
+        BorderBrush="#E2E8F0"
+        BorderThickness="1"
+        CornerRadius="12"
+        Padding="35"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+
+                            <Grid>
+
+                                <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    MaxWidth="320">
+
+                                    <materialDesign:PackIcon Kind="CalendarBlank"
+                                     Width="56"
+                                     Height="56"
+                                     Foreground="#94A3B8"
+                                     HorizontalAlignment="Center"/>
+
+                                    <TextBlock Margin="0,18,0,8"
+                       Text="Não existem eventos para este dia."
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="#1E293B"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"/>
+
+                                    <TextBlock Text="Selecione outro dia ou crie um novo agendamento."
+                       FontSize="14"
+                       Foreground="#64748B"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+                        <WrapPanel Grid.Row="2"
+                                   Margin="0,15,0,0"
+                                   HorizontalAlignment="Right">
+
+                            <Button x:Name="btnEditar"
+                                    Style="{StaticResource BotaoAcaoAgenda}"
+                                    Visibility="Collapsed"
+                                    Click="btnEditar_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Pencil"
+                                                             Width="17"
+                                                             Height="17"
+                                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Editar"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="btnConcluir"
+                                    Style="{StaticResource BotaoAcaoAgenda}"
+                                    Visibility="Collapsed"
+                                    Background="#16A34A"
+                                    Foreground="White"
+                                    BorderBrush="#16A34A"
+                                    Click="btnConcluir_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="CheckCircle"
+                                                             Width="17"
+                                                             Height="17"
+                                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Concluir"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="btnCancelarEvento"
+                                    Style="{StaticResource BotaoAcaoAgenda}"
+                                    Visibility="Collapsed"
+                                    Background="#DC2626"
+                                    Foreground="White"
+                                    BorderBrush="#DC2626"
+                                    Click="btnCancelarEvento_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="CalendarRemove"
+                                                             Width="17"
+                                                             Height="17"
+                                                             Margin="0,0,7,0"/>
+                                    <TextBlock Text="Cancelar"/>
+                                </StackPanel>
+                            </Button>
+                            
+                        </WrapPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

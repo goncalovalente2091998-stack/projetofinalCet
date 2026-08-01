@@ -2,6 +2,7 @@
 using GymManager.Models;
 using GymManager.Services;
 using GymManager.View.Forms;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -218,11 +219,10 @@ namespace GymManager.View
         }
 
         private void btnEliminar_Click(
-            object sender,
-            RoutedEventArgs e)
+    object sender,
+    RoutedEventArgs e)
         {
-            if (dgPagamentos.SelectedItem is not
-                Pagamento pagamento)
+            if (dgPagamentos.SelectedItem is not Pagamento pagamento)
             {
                 Mensagem.Aviso(
                     "Selecione um pagamento.");
@@ -230,14 +230,32 @@ namespace GymManager.View
                 return;
             }
 
-            string valorFormatado =
-                pagamento.Valor.ToString(
-                    "C2",
-                    culturaPortugal);
+            if (string.Equals(
+                    pagamento.Estado,
+                    "Pago",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                Mensagem.Aviso(
+                    "Um pagamento pago não pode ser eliminado.");
+
+                return;
+            }
+
+            if (string.Equals(
+                    pagamento.Estado,
+                    "Reembolsado",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                Mensagem.Aviso(
+                    "Um pagamento reembolsado não pode ser eliminado.");
+
+                return;
+            }
 
             if (!Mensagem.Confirmar(
-                $"Tem a certeza que pretende eliminar o pagamento de " +
-                $"'{pagamento.NomeCliente}' no valor de {valorFormatado}?"))
+                    $"Tem a certeza que pretende eliminar o pagamento " +
+                    $"de '{pagamento.NomeCliente}' no valor de " +
+                    $"{pagamento.Valor:N2} €?"))
             {
                 return;
             }
@@ -248,7 +266,7 @@ namespace GymManager.View
                     pagamento.IdPagamento);
 
                 Mensagem.Sucesso(
-                    "Pagamento eliminado com sucesso!");
+                    "Pagamento eliminado com sucesso.");
 
                 CarregarPagamentos();
             }
@@ -336,6 +354,37 @@ namespace GymManager.View
                 Mensagem.Erro(
                     "Não foi possível reembolsar o pagamento.\n\n" +
                     ex.Message);
+            }
+        }
+        private void BtnExportarPdf_Click(
+      object sender,
+      RoutedEventArgs e)
+        {
+            if (dgPagamentos.SelectedItem is not Pagamento pagamento)
+            {
+                Mensagem.Aviso(
+                    "Selecione um pagamento.");
+
+                return;
+            }
+
+            SaveFileDialog dlg =
+                new SaveFileDialog();
+
+            dlg.Filter =
+                "PDF (*.pdf)|*.pdf";
+
+            dlg.FileName =
+                $"Pagamento_{pagamento.IdPagamento}.pdf";
+
+            if (dlg.ShowDialog() == true)
+            {
+                PdfPagamento.Gerar(
+                    dlg.FileName,
+                    pagamento);
+
+                Mensagem.Sucesso(
+                    "Pagamento exportado com sucesso.");
             }
         }
     }

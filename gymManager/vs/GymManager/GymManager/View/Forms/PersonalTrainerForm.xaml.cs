@@ -118,7 +118,7 @@ namespace GymManager.View.Forms
             PersonalTrainer dados = new PersonalTrainer
             {
                 IdPT = idAtual,
-                Nome = txtNome.Text.Trim(),
+                Nome = FormatarTexto.Nome(txtNome.Text),
                 Especialidade = txtEspecialidade.Text.Trim(),
                 Telefone = txtTelefone.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
@@ -153,6 +153,8 @@ namespace GymManager.View.Forms
         {
             Close();
         }
+
+      
     }
 }
 

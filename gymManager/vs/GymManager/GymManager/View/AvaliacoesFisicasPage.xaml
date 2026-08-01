@@ -1,0 +1,373 @@
+﻿<Page x:Class="GymManager.View.AvaliacoesFisicasPage"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Avaliações Físicas"
+      Language="pt-PT"
+      Background="#F1F5F9">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- CABEÇALHO -->
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+
+                <TextBlock Text="Avaliações Físicas"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1E293B"/>
+
+                <TextBlock Text="Acompanhamento da evolução física dos clientes"
+                           FontSize="14"
+                           Foreground="#64748B"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+            <Border Grid.Column="1"
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="18,10"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="ChartLine"
+                                             Width="27"
+                                             Height="27"
+                                             Foreground="#2563EB"
+                                             VerticalAlignment="Center"/>
+
+                    <StackPanel Margin="10,0,0,0">
+
+                        <TextBlock Text="Total"
+                                   FontSize="12"
+                                   Foreground="#64748B"/>
+
+                        <TextBlock x:Name="txtTotal"
+                                   Text="0"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Foreground="#1E293B"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+        <!-- BARRA DE AÇÕES -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                Margin="0,25,0,20"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <WrapPanel Grid.Row="0"
+                           Margin="0,0,0,14">
+
+                    <Button x:Name="btnNovo"
+                            Width="120"
+                            Height="42"
+                            Margin="0,0,10,10"
+                            Click="btnNovo_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Plus"
+                                                     Width="18"
+                                                     Height="18"/>
+
+                            <TextBlock Text="Nova"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEditar"
+                            Width="120"
+                            Height="42"
+                            Margin="0,0,10,10"
+                            Click="btnEditar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Pencil"
+                                                     Width="18"
+                                                     Height="18"/>
+
+                            <TextBlock Text="Editar"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEliminar"
+                            Width="120"
+                            Height="42"
+                            Margin="0,0,10,10"
+                            Click="btnEliminar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Delete"
+                                                     Width="18"
+                                                     Height="18"/>
+
+                            <TextBlock Text="Eliminar"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+                    <Button x:Name="btnExportarPdf"
+        Width="140"
+        Height="42"
+        Margin="0,0,10,10"
+        Click="BtnExportarPdf_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon
+            Kind="FilePdfBox"
+            Width="18"
+            Height="18"/>
+
+                            <TextBlock Text="Exportar PDF"
+                   Margin="8,0,0,0"
+                   VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+                </WrapPanel>
+
+                <Grid Grid.Row="1"
+                      Width="520"
+                      Height="42"
+                      HorizontalAlignment="Left">
+
+                    <TextBox x:Name="txtPesquisar"
+                             Padding="38,0,35,0"
+                             VerticalContentAlignment="Center"
+                             TextChanged="txtPesquisar_TextChanged"
+                             materialDesign:HintAssist.Hint="Pesquisar por cliente, PT, estado, data ou valor..."
+                             materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="20"
+                                             Height="20"
+                                             Margin="10,0,0,0"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             Foreground="#64748B"
+                                             IsHitTestVisible="False"/>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+        <!-- TABELA -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1">
+
+            <DataGrid x:Name="dgAvaliacoes"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      AlternatingRowBackground="#F8FAFC"
+                      RowHeight="44"
+                      ColumnHeaderHeight="44"
+                      BorderThickness="0">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Cliente"
+                                        Binding="{Binding NomeCliente}"
+                                        Width="180"/>
+
+                    <DataGridTextColumn Header="Personal trainer"
+                                        Binding="{Binding NomePT}"
+                                        Width="170"/>
+
+                    <DataGridTextColumn Header="Data"
+                                        Binding="{Binding DataAvaliacao,
+                                                          StringFormat=dd/MM/yyyy}"
+                                        Width="110"/>
+
+                    <DataGridTextColumn Header="Peso"
+                                        Binding="{Binding PesoFormatado}"
+                                        Width="95"/>
+
+                    <DataGridTextColumn Header="Altura"
+                                        Binding="{Binding AlturaFormatada}"
+                                        Width="95"/>
+
+                    <DataGridTextColumn Header="IMC"
+                                        Binding="{Binding IMCFormatado}"
+                                        Width="80"/>
+
+                    <DataGridTextColumn Header="Classificação"
+                                        Binding="{Binding ClassificacaoIMC}"
+                                        Width="140"/>
+
+                    <DataGridTextColumn Header="Massa gorda"
+                                        Binding="{Binding MassaGordaFormatada}"
+                                        Width="115"/>
+
+                    <DataGridTextColumn Header="Massa muscular"
+                                        Binding="{Binding MassaMuscularFormatada}"
+                                        Width="125"/>
+
+                    <DataGridTemplateColumn Header="Estado"
+                                            Width="120">
+
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment"
+                                        Value="Center"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <Grid HorizontalAlignment="Stretch">
+
+                                    <Border Padding="9,4"
+                                            CornerRadius="10"
+                                            HorizontalAlignment="Center">
+
+                                        <Border.Style>
+
+                                            <Style TargetType="Border">
+
+                                                <Setter Property="Background"
+                                                        Value="#E2E8F0"/>
+
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="Agendada">
+                                                        <Setter Property="Background"
+                                                                Value="#FEF3C7"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="Concluída">
+                                                        <Setter Property="Background"
+                                                                Value="#DCFCE7"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="Cancelada">
+                                                        <Setter Property="Background"
+                                                                Value="#FEE2E2"/>
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+
+                                            </Style>
+
+                                        </Border.Style>
+
+                                        <TextBlock Text="{Binding Estado}"
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold"
+                                                   HorizontalAlignment="Center"
+                                                   TextAlignment="Center">
+
+                                            <TextBlock.Style>
+
+                                                <Style TargetType="TextBlock">
+
+                                                    <Setter Property="Foreground"
+                                                            Value="#475569"/>
+
+                                                    <Style.Triggers>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                                     Value="Agendada">
+                                                            <Setter Property="Foreground"
+                                                                    Value="#B45309"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                                     Value="Concluída">
+                                                            <Setter Property="Foreground"
+                                                                    Value="#15803D"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                                     Value="Cancelada">
+                                                            <Setter Property="Foreground"
+                                                                    Value="#B91C1C"/>
+                                                        </DataTrigger>
+
+                                                    </Style.Triggers>
+
+                                                </Style>
+
+                                            </TextBlock.Style>
+
+                                        </TextBlock>
+
+                                    </Border>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+
+</Page>

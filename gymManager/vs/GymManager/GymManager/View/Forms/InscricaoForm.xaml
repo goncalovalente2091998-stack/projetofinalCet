@@ -4,6 +4,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
         Title="Inscrição"
+         Icon="/GymManager;component/Assets/logo.ico"
         Height="620"
         Width="680"
         WindowStartupLocation="CenterOwner"

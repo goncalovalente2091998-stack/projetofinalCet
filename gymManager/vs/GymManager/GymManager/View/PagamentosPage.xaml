@@ -249,34 +249,36 @@
         </Grid>
 
         <!-- BARRA DE AÇÕES -->
+
         <Border Grid.Row="2"
-                Background="White"
-                CornerRadius="12"
-                Padding="15"
-                Margin="0,0,0,20">
+        Background="White"
+        CornerRadius="12"
+        Padding="15"
+        Margin="0,0,0,20">
 
             <Grid>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="300"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
+                <!-- BOTÕES -->
+
+                <WrapPanel Grid.Row="0">
 
                     <Button x:Name="btnEditar"
-                            Width="120"
-                            Height="42"
-                            Margin="0,0,10,0"
-                            Click="btnEditar_Click">
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,10"
+                    Click="btnEditar_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="Pencil"
-                                                     Width="18"
-                                                     Height="18"
-                                                     Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Editar"/>
 
@@ -285,52 +287,55 @@
                     </Button>
 
                     <Button x:Name="btnConfirmar"
-                            Width="130"
-                            Height="42"
-                            Margin="0,0,10,0"
-                            Click="btnConfirmar_Click">
+                    Width="130"
+                    Height="42"
+                    Margin="0,0,10,10"
+                    Click="btnConfirmar_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="CheckCircle"
-                                                     Width="18"
-                                                     Height="18"
-                                                     Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Confirmar"/>
 
                         </StackPanel>
 
                     </Button>
+
                     <Button x:Name="btnReembolsar"
-        Width="135"
-        Height="42"
-        Margin="0,0,10,0"
-        Click="btnReembolsar_Click">
+                    Width="135"
+                    Height="42"
+                    Margin="0,0,10,10"
+                    Click="btnReembolsar_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="CashRefund"
-                                 Width="18"
-                                 Height="18"
-                                 Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Reembolsar"/>
 
                         </StackPanel>
 
                     </Button>
+
                     <Button x:Name="btnEliminar"
-                            Width="120"
-                            Height="42"
-                            Click="btnEliminar_Click">
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,10"
+                    Click="btnEliminar_Click">
 
                         <StackPanel Orientation="Horizontal">
 
                             <materialDesign:PackIcon Kind="Delete"
-                                                     Width="18"
-                                                     Height="18"
-                                                     Margin="0,0,7,0"/>
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
 
                             <TextBlock Text="Eliminar"/>
 
@@ -338,25 +343,49 @@
 
                     </Button>
 
-                </StackPanel>
+                    <Button x:Name="btnExportarPdf"
+        Width="120"
+        Height="42"
+        Margin="0,0,10,10"
+        Click="BtnExportarPdf_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="FilePdfBox"
+                                 Width="18"
+                                 Height="18"
+                                 Margin="0,0,7,0"/>
+
+                            <TextBlock Text="PDF"/>
+
+                        </StackPanel>
+
+                    </Button>
+                </WrapPanel>
 
                 <!-- PESQUISA -->
-                <Grid Grid.Column="2"
-                      Height="42">
+
+                <Grid Grid.Row="1"
+              Width="520"
+              Height="42"
+              Margin="0,16,0,0"
+              HorizontalAlignment="Left">
+
                     <TextBox x:Name="txtPesquisar"
-         Padding="38,0,35,0"
-         VerticalContentAlignment="Center"
-         TextChanged="txtPesquisar_TextChanged"
-         materialDesign:HintAssist.Hint="Pesquisar por data ou cliente..."
-         materialDesign:TextFieldAssist.HasClearButton="True"/>
+                     Padding="38,0,35,0"
+                     VerticalContentAlignment="Center"
+                     TextChanged="txtPesquisar_TextChanged"
+                     materialDesign:HintAssist.Hint="Pesquisar por cliente ou data..."
+                     materialDesign:TextFieldAssist.HasClearButton="True"/>
 
                     <materialDesign:PackIcon Kind="Magnify"
-                                             Width="20"
-                                             Height="20"
-                                             Margin="10,0,0,0"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                             Foreground="#64748B"/>
+                                     Width="20"
+                                     Height="20"
+                                     Margin="10,0,0,0"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Foreground="#64748B"
+                                     IsHitTestVisible="False"/>
 
                 </Grid>
 
@@ -393,9 +422,12 @@
                                         Width="180"/>
 
                     <DataGridTextColumn Header="Plano"
-                                        Binding="{Binding NomePlano}"
-                                        Width="160"/>
+                    Binding="{Binding NomePlano}"
+                    Width="140"/>
 
+                    <DataGridTextColumn Header="Referência"
+                    Binding="{Binding  ReferenciaInscricao}"
+                    Width="220"/>
                     <DataGridTextColumn Header="Data"
                                         Binding="{Binding DataPagamento,
                                                           StringFormat=dd/MM/yyyy}"
@@ -409,103 +441,121 @@
                     <DataGridTextColumn Header="Método"
                                         Binding="{Binding MetodoPagamento}"
                                         Width="150"/>
-
                     <DataGridTemplateColumn Header="Estado"
-                                            Width="120">
+                        Width="120">
+
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment"
+                    Value="Center"/>
+                                <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
 
                         <DataGridTemplateColumn.CellTemplate>
 
                             <DataTemplate>
 
-                                <Border Padding="9,4"
-                                        CornerRadius="10"
-                                        HorizontalAlignment="Center">
+                                <Grid HorizontalAlignment="Stretch">
 
-                                    <Border.Style>
+                                    <Border Padding="9,4"
+                        CornerRadius="10"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
 
-                                        <Style TargetType="Border">
+                                        <Border.Style>
 
-                                            <Setter Property="Background"
-                                                    Value="#FEE2E2"/>
+                                            <Style TargetType="Border">
 
-                                            <Style.Triggers>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Pago">
-
-                                                    <Setter Property="Background"
-                                                            Value="#DCFCE7"/>
-
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Pendente">
-
-                                                    <Setter Property="Background"
-                                                            Value="#FEF3C7"/>
-
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Reembolsado">
-
-                                                    <Setter Property="Background"
-                                                            Value="#DBEAFE"/>
-
-                                                </DataTrigger>
-
-                                            </Style.Triggers>
-
-                                        </Style>
-
-                                    </Border.Style>
-
-                                    <TextBlock Text="{Binding Estado}"
-                                               FontSize="12"
-                                               FontWeight="SemiBold">
-
-                                        <TextBlock.Style>
-
-                                            <Style TargetType="TextBlock">
-
-                                                <Setter Property="Foreground"
-                                                        Value="#B91C1C"/>
+                                                <!-- Falhado por defeito -->
+                                                <Setter Property="Background"
+                                    Value="#FEE2E2"/>
 
                                                 <Style.Triggers>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Pago">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#15803D"/>
-
+                                             Value="Pago">
+                                                        <Setter Property="Background"
+                                            Value="#DCFCE7"/>
                                                     </DataTrigger>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Pendente">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#B45309"/>
-
+                                             Value="Pendente">
+                                                        <Setter Property="Background"
+                                            Value="#FEF3C7"/>
                                                     </DataTrigger>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Reembolsado">
+                                             Value="Reembolsado">
+                                                        <Setter Property="Background"
+                                            Value="#DBEAFE"/>
+                                                    </DataTrigger>
 
-                                                        <Setter Property="Foreground"
-                                                                Value="#1D4ED8"/>
-
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                             Value="Falhado">
+                                                        <Setter Property="Background"
+                                            Value="#FEE2E2"/>
                                                     </DataTrigger>
 
                                                 </Style.Triggers>
 
                                             </Style>
 
-                                        </TextBlock.Style>
+                                        </Border.Style>
 
-                                    </TextBlock>
+                                        <TextBlock Text="{Binding Estado}"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               TextAlignment="Center">
 
-                                </Border>
+                                            <TextBlock.Style>
+
+                                                <Style TargetType="TextBlock">
+
+                                                    <!-- Falhado por defeito -->
+                                                    <Setter Property="Foreground"
+                                        Value="#B91C1C"/>
+
+                                                    <Style.Triggers>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                 Value="Pago">
+                                                            <Setter Property="Foreground"
+                                                Value="#15803D"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                 Value="Pendente">
+                                                            <Setter Property="Foreground"
+                                                Value="#B45309"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                 Value="Reembolsado">
+                                                            <Setter Property="Foreground"
+                                                Value="#1D4ED8"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                 Value="Falhado">
+                                                            <Setter Property="Foreground"
+                                                Value="#B91C1C"/>
+                                                        </DataTrigger>
+
+                                                    </Style.Triggers>
+
+                                                </Style>
+
+                                            </TextBlock.Style>
+
+                                        </TextBlock>
+
+                                    </Border>
+
+                                </Grid>
 
                             </DataTemplate>
 

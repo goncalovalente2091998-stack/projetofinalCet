@@ -49,7 +49,7 @@ namespace GymManager.View.Forms
             txtDadosAula.Text =
                 $"{aula.DataAula:dd/MM/yyyy} às " +
                 $"{aula.HoraInicio:hh\\:mm} — " +
-                $"Sala {aula.Sala}";
+                $"{aula.Sala}";
         }
 
         private void CarregarClientes()

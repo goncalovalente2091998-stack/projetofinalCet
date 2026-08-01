@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Aula"
+         Icon="/GymManager;component/Assets/logo.ico"
         Height="700"
         Width="720"
         WindowStartupLocation="CenterOwner"
@@ -94,6 +95,7 @@
                              Margin="0,0,0,18"
                              MaxLength="100"
                              VerticalContentAlignment="Center"
+                              TextChanged="CamposAlterados"
                              materialDesign:HintAssist.Hint="Nome da aula"/>
 
                     <!-- PROFESSOR -->
@@ -104,6 +106,7 @@
                               Margin="0,0,0,18"
                               DisplayMemberPath="Nome"
                               SelectedValuePath="IdProfessor"
+                               SelectionChanged="CamposAlterados"
                               materialDesign:HintAssist.Hint="Professor"/>
 
                     <!-- DATA -->
@@ -111,6 +114,7 @@
                                 Grid.Row="2"
                                 Height="48"
                                 Margin="0,0,0,18"
+                                 SelectedDateChanged="CamposAlterados"
                                 materialDesign:HintAssist.Hint="Data da aula"/>
 
                     <!-- HORA -->
@@ -122,6 +126,7 @@
                              MaxLength="5"
                              VerticalContentAlignment="Center"
                              PreviewTextInput="txtHoraInicio_PreviewTextInput"
+                              TextChanged="CamposAlterados"
                              materialDesign:HintAssist.Hint="Hora de início (HH:mm)"/>
 
                     <!-- DURAÇÃO -->
@@ -132,6 +137,7 @@
                              MaxLength="4"
                              VerticalContentAlignment="Center"
                              PreviewTextInput="txtNumero_PreviewTextInput"
+                              TextChanged="CamposAlterados"
                              materialDesign:HintAssist.Hint="Duração em minutos"/>
 
                     <!-- LOTAÇÃO -->
@@ -143,6 +149,7 @@
                              MaxLength="4"
                              VerticalContentAlignment="Center"
                              PreviewTextInput="txtNumero_PreviewTextInput"
+                              TextChanged="CamposAlterados"
                              materialDesign:HintAssist.Hint="Lotação"/>
 
                     <!-- SALA -->

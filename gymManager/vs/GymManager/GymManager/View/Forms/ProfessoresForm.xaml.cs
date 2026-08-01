@@ -3,6 +3,7 @@ using GymManager.Models;
 using GymManager.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,7 +83,7 @@ namespace GymManager.View.Forms
             Professor dadosProfessor = new Professor
             {
                 IdProfessor = professor?.IdProfessor ?? 0,
-                Nome = txtNome.Text.Trim(),
+                Nome = FormatarTexto.Nome(txtNome.Text),
                 Especialidade = txtEspecialidade.Text.Trim(),
                 Telefone = txtTelefone.Text.Trim(),
                 Email = txtEmail.Text.Trim()
@@ -114,6 +115,8 @@ namespace GymManager.View.Forms
         {
             Close();
         }
+
+      
     }
 }
 

@@ -205,9 +205,9 @@
 
                 <!-- PESQUISA -->
                 <Grid Grid.Row="1"
-                      Width="900"
+                      Width="520"
                       Height="42"
-                      HorizontalAlignment="Right">
+                      HorizontalAlignment="Left">
 
                     <TextBox x:Name="txtPesquisar"
                              Padding="38,0,35,0"
@@ -240,170 +240,164 @@
                 BorderThickness="1">
 
             <DataGrid x:Name="dgInscricoes"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True"
-                      CanUserAddRows="False"
-                      SelectionMode="Single"
-                      SelectionUnit="FullRow"
-                      HeadersVisibility="Column"
-                      GridLinesVisibility="Horizontal"
-                      AlternatingRowBackground="#F8FAFC"
-                      RowHeight="44"
-                      ColumnHeaderHeight="44"
-                      BorderThickness="0">
+          AutoGenerateColumns="False"
+          IsReadOnly="True"
+          CanUserAddRows="False"
+          SelectionMode="Single"
+          SelectionUnit="FullRow"
+          HeadersVisibility="Column"
+          GridLinesVisibility="Horizontal"
+          AlternatingRowBackground="#F8FAFC"
+          RowHeight="44"
+          ColumnHeaderHeight="44"
+          BorderThickness="0">
 
                 <DataGrid.Columns>
 
-                    
-
                     <DataGridTextColumn Header="Cliente"
-                                        Binding="{Binding NomeCliente}"
-                                        Width="2*"/>
+                            Binding="{Binding NomeCliente}"
+                            Width="2*" />
 
                     <DataGridTextColumn Header="Plano"
-                                        Binding="{Binding NomePlano}"
-                                        Width="160"/>
+                            Binding="{Binding NomePlano}"
+                            Width="160" />
 
                     <DataGridTextColumn Header="Início"
-                                        Binding="{Binding DataInicio,
-                                                          StringFormat=dd/MM/yyyy}"
-                                        Width="110"/>
+                            Binding="{Binding DataInicio,
+                                              StringFormat=dd/MM/yyyy}"
+                            Width="110" />
 
                     <DataGridTextColumn Header="Fim"
-                                        Binding="{Binding DataFim,
-                                                          StringFormat=dd/MM/yyyy}"
-                                        Width="110"/>
+                            Binding="{Binding DataFim,
+                                              StringFormat=dd/MM/yyyy}"
+                            Width="110" />
 
                     <DataGridTemplateColumn Header="Estado"
-                                            Width="125">
+                                Width="125">
+
+                        <!-- Cabeçalho centrado -->
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment"
+                            Value="Center"/>
+                                <Setter Property="FontWeight"
+                            Value="SemiBold"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
 
                         <DataGridTemplateColumn.CellTemplate>
 
                             <DataTemplate>
 
-                                <Border Padding="10,4"
-                                        CornerRadius="10"
-                                        HorizontalAlignment="Center">
+                                <Grid HorizontalAlignment="Stretch">
 
-                                    <Border.Style>
+                                    <Border Padding="10,4"
+                                CornerRadius="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
 
-                                        <Style TargetType="Border">
+                                        <Border.Style>
 
-                                            <!-- Valor padrão: Cancelada -->
-                                            <Setter Property="Background"
-                                                    Value="#FEE2E2"/>
+                                            <Style TargetType="Border">
 
-                                            <Style.Triggers>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Ativa">
-
-                                                    <Setter Property="Background"
-                                                            Value="#DCFCE7"/>
-
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Pendente">
-
-                                                    <Setter Property="Background"
-                                                            Value="#FEF3C7"/>
-
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Suspensa">
-
-                                                    <Setter Property="Background"
-                                                            Value="#DBEAFE"/>
-
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Terminada">
-
-                                                    <Setter Property="Background"
-                                                            Value="#E2E8F0"/>
-
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding Estado}"
-                                                             Value="Cancelada">
-
-                                                    <Setter Property="Background"
-                                                            Value="#FEE2E2"/>
-
-                                                </DataTrigger>
-
-                                            </Style.Triggers>
-
-                                        </Style>
-
-                                    </Border.Style>
-
-                                    <TextBlock Text="{Binding Estado}"
-                                               FontSize="12"
-                                               FontWeight="SemiBold">
-
-                                        <TextBlock.Style>
-
-                                            <Style TargetType="TextBlock">
-
-                                                <!-- Cor padrão: Cancelada -->
-                                                <Setter Property="Foreground"
-                                                        Value="#B91C1C"/>
+                                                <Setter Property="Background"
+                                            Value="#FEE2E2"/>
 
                                                 <Style.Triggers>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Ativa">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#15803D"/>
-
+                                                     Value="Ativa">
+                                                        <Setter Property="Background"
+                                                    Value="#DCFCE7"/>
                                                     </DataTrigger>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Pendente">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#B45309"/>
-
+                                                     Value="Pendente">
+                                                        <Setter Property="Background"
+                                                    Value="#FEF3C7"/>
                                                     </DataTrigger>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Suspensa">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#1D4ED8"/>
-
+                                                     Value="Suspensa">
+                                                        <Setter Property="Background"
+                                                    Value="#DBEAFE"/>
                                                     </DataTrigger>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Terminada">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#475569"/>
-
+                                                     Value="Terminada">
+                                                        <Setter Property="Background"
+                                                    Value="#E2E8F0"/>
                                                     </DataTrigger>
 
                                                     <DataTrigger Binding="{Binding Estado}"
-                                                                 Value="Cancelada">
-
-                                                        <Setter Property="Foreground"
-                                                                Value="#B91C1C"/>
-
+                                                     Value="Cancelada">
+                                                        <Setter Property="Background"
+                                                    Value="#FEE2E2"/>
                                                     </DataTrigger>
 
                                                 </Style.Triggers>
 
                                             </Style>
 
-                                        </TextBlock.Style>
+                                        </Border.Style>
 
-                                    </TextBlock>
+                                        <TextBlock Text="{Binding Estado}"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center">
 
-                                </Border>
+                                            <TextBlock.Style>
+
+                                                <Style TargetType="TextBlock">
+
+                                                    <Setter Property="Foreground"
+                                                Value="#B91C1C"/>
+
+                                                    <Style.Triggers>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                         Value="Ativa">
+                                                            <Setter Property="Foreground"
+                                                        Value="#15803D"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                         Value="Pendente">
+                                                            <Setter Property="Foreground"
+                                                        Value="#B45309"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                         Value="Suspensa">
+                                                            <Setter Property="Foreground"
+                                                        Value="#1D4ED8"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                         Value="Terminada">
+                                                            <Setter Property="Foreground"
+                                                        Value="#475569"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding Estado}"
+                                                         Value="Cancelada">
+                                                            <Setter Property="Foreground"
+                                                        Value="#B91C1C"/>
+                                                        </DataTrigger>
+
+                                                    </Style.Triggers>
+
+                                                </Style>
+
+                                            </TextBlock.Style>
+
+                                        </TextBlock>
+
+                                    </Border>
+
+                                </Grid>
 
                             </DataTemplate>
 

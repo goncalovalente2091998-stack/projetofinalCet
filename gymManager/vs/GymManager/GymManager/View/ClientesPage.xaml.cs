@@ -2,6 +2,7 @@
 using GymManager.Models;
 using GymManager.Services;
 using GymManager.View.Forms;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,6 +130,71 @@ namespace GymManager.View
                 Mensagem.Erro(
                     "Não foi possível pesquisar os clientes.\n\n" +
                     ex.Message);
+            }
+
+
+        }
+        private void BtnExportarPdf_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgClientes.SelectedItem == null)
+            {
+                Mensagem.Aviso("Selecione um cliente.");
+                return;
+            }
+
+            Cliente cliente =
+                (Cliente)dgClientes.SelectedItem;
+
+            SaveFileDialog dlg =
+                new SaveFileDialog();
+
+            dlg.Filter =
+                "PDF (*.pdf)|*.pdf";
+
+            dlg.FileName =
+                $"Cliente_{cliente.Nome}.pdf";
+
+            if (dlg.ShowDialog() == true)
+            {
+                PdfCliente.Gerar(
+                    dlg.FileName,
+                    cliente);
+
+                Mensagem.Sucesso(
+                    "PDF criado com sucesso.");
+            }
+        }
+
+        private void BtnDossier_Click(
+     object sender,
+     RoutedEventArgs e)
+        {
+            if (dgClientes.SelectedItem == null)
+            {
+                Mensagem.Aviso("Selecione um cliente.");
+                return;
+            }
+
+            Cliente cliente =
+                (Cliente)dgClientes.SelectedItem;
+
+            SaveFileDialog dlg =
+                new SaveFileDialog();
+
+            dlg.Filter =
+                "PDF (*.pdf)|*.pdf";
+
+            dlg.FileName =
+                $"Dossier_{cliente.Nome}.pdf";
+
+            if (dlg.ShowDialog() == true)
+            {
+                PdfDossier.Gerar(
+                    dlg.FileName,
+                    cliente);
+
+                Mensagem.Sucesso(
+                    "Dossier criado com sucesso.");
             }
         }
     }

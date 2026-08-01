@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Nova Reserva"
+         Icon="/GymManager;component/Assets/logo.ico"
         Width="620"
-        Height="520"
+        Height="600"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Background="#F1F5F9"
@@ -59,22 +60,25 @@
         </Border>
 
         <!-- CONTEÚDO -->
-        <Border Grid.Row="1"
-                Background="White"
-                CornerRadius="14"
-                Padding="25"
-                Margin="25">
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
 
-            <Grid>
+            <Border Background="White"
+                    CornerRadius="14"
+                    Padding="25"
+                    Margin="25">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                <Grid>
 
-                <!-- INFORMAÇÃO DA AULA -->
-                <Border Grid.Row="0"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- INFORMAÇÃO DA AULA -->
+                    <Border Grid.Row="0"
                         Background="#EFF6FF"
                         BorderBrush="#BFDBFE"
                         BorderThickness="1"
@@ -82,44 +86,44 @@
                         Padding="15"
                         Margin="0,0,0,22">
 
-                    <Grid>
+                        <Grid>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <materialDesign:PackIcon Kind="CalendarClock"
+                            <materialDesign:PackIcon Kind="CalendarClock"
                                                  Width="24"
                                                  Height="24"
                                                  Foreground="#2563EB"
                                                  Margin="0,2,12,0"
                                                  VerticalAlignment="Top"/>
 
-                        <StackPanel Grid.Column="1">
+                            <StackPanel Grid.Column="1">
 
-                            <TextBlock x:Name="txtNomeAula"
+                                <TextBlock x:Name="txtNomeAula"
                                        Text="-"
                                        FontSize="17"
                                        FontWeight="Bold"
                                        Foreground="#1E3A8A"/>
 
-                            <TextBlock x:Name="txtDadosAula"
+                                <TextBlock x:Name="txtDadosAula"
                                        Text="-"
                                        FontSize="13"
                                        Foreground="#475569"
                                        Margin="0,4,0,0"/>
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Grid>
+                        </Grid>
 
-                </Border>
+                    </Border>
 
-                <!-- AUTOCOMPLETE DO CLIENTE -->
-                <Grid Grid.Row="1">
+                    <!-- AUTOCOMPLETE DO CLIENTE -->
+                    <Grid Grid.Row="1">
 
-                    <TextBox x:Name="txtCliente"
+                        <TextBox x:Name="txtCliente"
                              Height="48"
                              Padding="38,0,12,0"
                              VerticalContentAlignment="Center"
@@ -127,7 +131,7 @@
                              KeyDown="txtCliente_KeyDown"
                              materialDesign:HintAssist.Hint="Pesquisar cliente por nome ou NIF"/>
 
-                    <materialDesign:PackIcon Kind="AccountSearch"
+                        <materialDesign:PackIcon Kind="AccountSearch"
                                              Width="20"
                                              Height="20"
                                              Margin="11,0,0,0"
@@ -136,13 +140,13 @@
                                              Foreground="#64748B"
                                              IsHitTestVisible="False"/>
 
-                    <Popup x:Name="popupClientes"
+                        <Popup x:Name="popupClientes"
                            PlacementTarget="{Binding ElementName=txtCliente}"
                            Placement="Bottom"
                            StaysOpen="False"
                            AllowsTransparency="True">
 
-                        <Border Width="{Binding ActualWidth, ElementName=txtCliente}"
+                            <Border Width="{Binding ActualWidth, ElementName=txtCliente}"
                                 MaxHeight="220"
                                 Background="White"
                                 BorderBrush="#CBD5E1"
@@ -150,21 +154,21 @@
                                 CornerRadius="8"
                                 Padding="4">
 
-                            <ListBox x:Name="lstClientes"
+                                <ListBox x:Name="lstClientes"
                                      DisplayMemberPath="DescricaoReserva"
                                      SelectionChanged="lstClientes_SelectionChanged"
                                      MouseDoubleClick="lstClientes_MouseDoubleClick"
                                      KeyDown="lstClientes_KeyDown"
                                      ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
-                        </Border>
+                            </Border>
 
-                    </Popup>
+                        </Popup>
 
-                </Grid>
+                    </Grid>
 
-                <!-- CLIENTE SELECIONADO -->
-                <Border Grid.Row="2"
+                    <!-- CLIENTE SELECIONADO -->
+                    <Border Grid.Row="2"
                         x:Name="pnlClienteSelecionado"
                         Background="#ECFDF5"
                         BorderBrush="#BBF7D0"
@@ -174,46 +178,48 @@
                         Margin="0,18,0,0"
                         Visibility="Collapsed">
 
-                    <Grid>
+                        <Grid>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <materialDesign:PackIcon Kind="AccountCheck"
+                            <materialDesign:PackIcon Kind="AccountCheck"
                                                  Width="23"
                                                  Height="23"
                                                  Foreground="#15803D"
                                                  Margin="0,1,10,0"/>
 
-                        <StackPanel Grid.Column="1">
+                            <StackPanel Grid.Column="1">
 
-                            <TextBlock Text="Cliente selecionado"
+                                <TextBlock Text="Cliente selecionado"
                                        FontSize="11"
                                        Foreground="#15803D"/>
 
-                            <TextBlock x:Name="txtClienteSelecionado"
+                                <TextBlock x:Name="txtClienteSelecionado"
                                        Text="-"
                                        FontSize="15"
                                        FontWeight="SemiBold"
                                        Foreground="#166534"/>
 
-                            <TextBlock x:Name="txtNifSelecionado"
+                                <TextBlock x:Name="txtNifSelecionado"
                                        Text="-"
                                        FontSize="12"
                                        Foreground="#475569"
                                        Margin="0,3,0,0"/>
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Grid>
+                        </Grid>
 
-                </Border>
+                    </Border>
 
-            </Grid>
+                </Grid>
 
-        </Border>
+            </Border>
+
+        </ScrollViewer>
 
         <!-- RODAPÉ -->
         <Border Grid.Row="2"

@@ -221,10 +221,15 @@ namespace GymManager.View.Forms
                     : txtNome.Text.Trim();
 
             string professor =
-                cmbProfessor?.SelectedItem is
-                    Professor professorSelecionado
-                    ? professorSelecionado.Nome
-                    : "sem professor";
+        cmbProfessor?.SelectedItem is
+            Professor professorSelecionado
+            ? professorSelecionado.Nome
+            : "";
+
+            string textoProfessor =
+                string.IsNullOrWhiteSpace(professor)
+                    ? ""
+                    : $" com {professor}";
 
             string data =
                 dpDataAula?.SelectedDate.HasValue == true
@@ -253,8 +258,8 @@ namespace GymManager.View.Forms
          : "sem sala";
 
             txtResumo.Text =
-                $"{nome}, com {professor}, em {data} às {hora}, " +
-                $"{duracao}, {sala}.";
+    $"{nome}{textoProfessor}, em {data} às {hora}, " +
+    $"{duracao}, {sala}.";
         }
 
         private void btnGuardar_Click(
@@ -453,12 +458,14 @@ namespace GymManager.View.Forms
              * Se a aula for hoje, não permite criar
              * uma aula cujo fim já tenha passado.
              */
+            DateTime dataHoraInicio =
+      dataAula.Date.Add(horaInicio);
+
             if (novaAula &&
-                dataAula == DateTime.Today &&
-                horaFim <= DateTime.Now.TimeOfDay)
+                dataHoraInicio <= DateTime.Now)
             {
                 Mensagem.Aviso(
-                    "Não é possível criar uma aula que já terminou.");
+                    "A data e hora de início da aula devem ser posteriores ao momento atual.");
 
                 txtHoraInicio.Focus();
                 return;

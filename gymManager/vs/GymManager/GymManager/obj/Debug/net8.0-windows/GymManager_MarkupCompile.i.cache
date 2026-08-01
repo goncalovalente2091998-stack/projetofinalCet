@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\gonca\Desktop\gymManager\vs\GymManager\GymManager\App.xaml
-271294966538
+36315969410
 222124293599
-63-1116230158
-216-891236099
-View\AulasPage.xaml;View\AvaliacoesPage.xaml;View\ClientesPage.xaml;View\DashboardPage.xaml;View\DashboardWindow.xaml;View\EquipamentosPage.xaml;View\ExerciciosPage.xaml;View\Forms\AulaForm.xaml;View\Forms\ClienteForm.xaml;View\Forms\InscricaoForm.xaml;View\Forms\PagamentoForm.xaml;View\Forms\PersonalTrainerForm.xaml;View\Forms\PlanoForm.xaml;View\Forms\ProfessoresForm.xaml;View\Forms\ReservaAulaForm.xaml;View\Forms\UtilizadorForm.xaml;View\InscricoesPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ManutencoesPage.xaml;View\PagamentosPage.xaml;View\PersonalTrainersPage.xaml;View\PlanosPage.xaml;View\PlanosTreinoPage.xaml;View\ProfessoresPage.xaml;View\ReservasAulasPage.xaml;View\UtilizadoresPage.xaml;
+98900580466
+235-1465385375
+View\AgendaPage.xaml;View\AulasPage.xaml;View\AvaliacoesFisicasPage.xaml;View\ClientesPage.xaml;View\DashboardPage.xaml;View\EquipamentosPage.xaml;View\ExerciciosPage.xaml;View\Forms\AulaForm.xaml;View\Forms\AvaliacaoFisicaForm.xaml;View\Forms\ClienteForm.xaml;View\Forms\EquipamentoForm.xaml;View\Forms\EventoAgendaForm.xaml;View\Forms\ExercicioForm.xaml;View\Forms\InscricaoForm.xaml;View\Forms\ManutencaoForm.xaml;View\Forms\PagamentoForm.xaml;View\Forms\PersonalTrainerForm.xaml;View\Forms\PlanoForm.xaml;View\Forms\PlanoTreinoExercicioForm.xaml;View\Forms\PlanoTreinoForm.xaml;View\Forms\ProfessoresForm.xaml;View\Forms\ReservaAulaForm.xaml;View\Forms\UtilizadorForm.xaml;View\InscricoesPage.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\ManutencoesPage.xaml;View\PagamentosPage.xaml;View\PersonalTrainersPage.xaml;View\PlanosPage.xaml;View\PlanosTreinoPage.xaml;View\PlanoTreinoExerciciosPage.xaml;View\PresencasPage.xaml;View\ProfessoresPage.xaml;View\ReservasAulasPage.xaml;View\UtilizadoresPage.xaml;
 
 False
 

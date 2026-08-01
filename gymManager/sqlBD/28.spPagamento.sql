@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE sp_Pagamentos_Listar
+CREATE OR ALTER PROCEDURE dbo.sp_Pagamentos_Listar
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -11,6 +11,9 @@ BEGIN
         PG.IdInscricao,
         PL.Nome AS NomePlano,
 
+        I.DataInicio,
+        I.DataFim,
+
         PG.DataPagamento,
         PG.Valor,
         PG.MetodoPagamento,
@@ -20,15 +23,15 @@ BEGIN
         PG.IdTransacaoExterna,
         PG.DataConfirmacao
 
-    FROM Pagamentos AS PG
+    FROM dbo.Pagamentos AS PG
 
-    INNER JOIN Clientes AS C
+    INNER JOIN dbo.Clientes AS C
         ON C.IdCliente = PG.IdCliente
 
-    LEFT JOIN Inscricoes AS I
+    LEFT JOIN dbo.Inscricoes AS I
         ON I.IdInscricao = PG.IdInscricao
 
-    LEFT JOIN Planos AS PL
+    LEFT JOIN dbo.Planos AS PL
         ON PL.IdPlano = I.IdPlano
 
     ORDER BY
@@ -377,8 +380,7 @@ BEGIN
     WHERE IdPagamento = @IdPagamento;
 END;
 GO
-
-CREATE OR ALTER PROCEDURE sp_Pagamentos_Eliminar
+CREATE OR ALTER PROCEDURE dbo.sp_Pagamentos_Eliminar
 (
     @IdPagamento INT
 )
@@ -386,13 +388,42 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    DELETE FROM Pagamentos
+    IF NOT EXISTS
+    (
+        SELECT 1
+        FROM dbo.Pagamentos
+        WHERE IdPagamento = @IdPagamento
+    )
+    BEGIN
+        THROW 50001,
+              'O pagamento indicado não existe.',
+              1;
+    END;
+
+    IF EXISTS
+    (
+        SELECT 1
+        FROM dbo.Pagamentos
+        WHERE IdPagamento = @IdPagamento
+          AND Estado IN
+          (
+              N'Pago',
+              N'Reembolsado'
+          )
+    )
+    BEGIN
+        THROW 50002,
+              'Pagamentos pagos ou reembolsados não podem ser eliminados.',
+              1;
+    END;
+
+    DELETE FROM dbo.Pagamentos
     WHERE IdPagamento = @IdPagamento;
 END;
 GO
 
 
-CREATE OR ALTER PROCEDURE sp_Pagamentos_Pesquisar
+CREATE OR ALTER PROCEDURE dbo.sp_Pagamentos_Pesquisar
 (
     @Pesquisa NVARCHAR(100)
 )
@@ -400,12 +431,20 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    SET @Pesquisa =
+        LTRIM(RTRIM(@Pesquisa));
+
     SELECT
         PG.IdPagamento,
         PG.IdCliente,
         C.Nome AS NomeCliente,
+
         PG.IdInscricao,
         PL.Nome AS NomePlano,
+
+        I.DataInicio,
+        I.DataFim,
+
         PG.DataPagamento,
         PG.Valor,
         PG.MetodoPagamento,
@@ -414,45 +453,108 @@ BEGIN
         PG.ReferenciaExterna,
         PG.IdTransacaoExterna,
         PG.DataConfirmacao
-    FROM Pagamentos AS PG
 
-    INNER JOIN Clientes AS C
+    FROM dbo.Pagamentos AS PG
+
+    INNER JOIN dbo.Clientes AS C
         ON C.IdCliente = PG.IdCliente
 
-    LEFT JOIN Inscricoes AS I
+    LEFT JOIN dbo.Inscricoes AS I
         ON I.IdInscricao = PG.IdInscricao
 
-    LEFT JOIN Planos AS PL
+    LEFT JOIN dbo.Planos AS PL
         ON PL.IdPlano = I.IdPlano
 
-    WHERE C.Nome LIKE '%' + @Pesquisa + '%'
-       OR C.NIF LIKE '%' + @Pesquisa + '%'
-       OR PL.Nome LIKE '%' + @Pesquisa + '%'
-       OR PG.MetodoPagamento LIKE '%' + @Pesquisa + '%'
-       OR PG.Estado LIKE '%' + @Pesquisa + '%'
-       OR PG.ReferenciaExterna LIKE '%' + @Pesquisa + '%'
-       OR PG.Observacoes LIKE '%' + @Pesquisa + '%'
-       OR CAST(PG.Valor AS NVARCHAR(20))
-            LIKE '%' + @Pesquisa + '%'
+    WHERE
+        C.Nome LIKE
+            N'%' + @Pesquisa + N'%'
 
-       OR CONVERT(
-            NVARCHAR(10),
-            PG.DataPagamento,
-            103
-          ) LIKE '%' + @Pesquisa + '%'
+        OR C.NIF LIKE
+            N'%' + @Pesquisa + N'%'
 
-       OR RIGHT(
-            '0' + CAST(MONTH(PG.DataPagamento) AS NVARCHAR(2)),
-            2
-          )
-          + '/'
-          + CAST(YEAR(PG.DataPagamento) AS NVARCHAR(4))
-          LIKE '%' + @Pesquisa + '%'
+        OR PL.Nome LIKE
+            N'%' + @Pesquisa + N'%'
 
-       OR CAST(
-            YEAR(PG.DataPagamento)
-            AS NVARCHAR(4)
-          ) LIKE '%' + @Pesquisa + '%'
+        OR PG.MetodoPagamento LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR PG.Estado LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR PG.ReferenciaExterna LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR PG.IdTransacaoExterna LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR PG.Observacoes LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR CAST(
+               PG.Valor AS NVARCHAR(20)
+           ) LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR CONVERT(
+               NVARCHAR(10),
+               PG.DataPagamento,
+               103
+           ) LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR CONVERT(
+               NVARCHAR(10),
+               I.DataInicio,
+               103
+           ) LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR CONVERT(
+               NVARCHAR(10),
+               I.DataFim,
+               103
+           ) LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR
+        (
+            PL.Nome + N' ' +
+            CONVERT(
+                NVARCHAR(10),
+                I.DataInicio,
+                103
+            ) + N' ' +
+            CONVERT(
+                NVARCHAR(10),
+                I.DataFim,
+                103
+            )
+        ) LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR
+        (
+            RIGHT(
+                N'0' +
+                CAST(
+                    MONTH(PG.DataPagamento)
+                    AS NVARCHAR(2)
+                ),
+                2
+            )
+            + N'/' +
+            CAST(
+                YEAR(PG.DataPagamento)
+                AS NVARCHAR(4)
+            )
+        ) LIKE
+            N'%' + @Pesquisa + N'%'
+
+        OR CAST(
+               YEAR(PG.DataPagamento)
+               AS NVARCHAR(4)
+           ) LIKE
+            N'%' + @Pesquisa + N'%'
 
     ORDER BY
         PG.DataPagamento DESC,
@@ -538,7 +640,7 @@ END;
 GO
 
 
-CREATE OR ALTER PROCEDURE sp_Pagamentos_ObterPorId
+CREATE OR ALTER PROCEDURE dbo.sp_Pagamentos_ObterPorId
 (
     @IdPagamento INT
 )
@@ -554,6 +656,9 @@ BEGIN
         PG.IdInscricao,
         PL.Nome AS NomePlano,
 
+        I.DataInicio,
+        I.DataFim,
+
         PG.DataPagamento,
         PG.Valor,
         PG.MetodoPagamento,
@@ -563,18 +668,19 @@ BEGIN
         PG.IdTransacaoExterna,
         PG.DataConfirmacao
 
-    FROM Pagamentos AS PG
+    FROM dbo.Pagamentos AS PG
 
-    INNER JOIN Clientes AS C
+    INNER JOIN dbo.Clientes AS C
         ON C.IdCliente = PG.IdCliente
 
-    LEFT JOIN Inscricoes AS I
+    LEFT JOIN dbo.Inscricoes AS I
         ON I.IdInscricao = PG.IdInscricao
 
-    LEFT JOIN Planos AS PL
+    LEFT JOIN dbo.Planos AS PL
         ON PL.IdPlano = I.IdPlano
 
-    WHERE PG.IdPagamento = @IdPagamento;
+    WHERE PG.IdPagamento =
+          @IdPagamento;
 END;
 GO
 
@@ -622,5 +728,24 @@ BEGIN
     UPDATE Pagamentos
     SET Estado = 'Reembolsado'
     WHERE IdPagamento = @IdPagamento;
+END;
+GO
+
+CREATE OR ALTER TRIGGER dbo.trg_Pagamentos_AtivarInscricao
+ON dbo.Pagamentos
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE I
+    SET I.Estado = N'Ativa'
+    FROM dbo.Inscricoes AS I
+    INNER JOIN inserted AS N
+        ON N.IdInscricao = I.IdInscricao
+    WHERE
+        N.Estado = N'Pago'
+        AND N.IdInscricao IS NOT NULL
+        AND I.Estado = N'Pendente';
 END;
 GO
