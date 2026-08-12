@@ -1,0 +1,323 @@
+﻿<Window x:Class="GymManager.View.Forms.InscricaoForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
+        Title="Inscrição"
+        Icon="/GymManager;component/Assets/logo.ico"
+        Height="620"
+        Width="680"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F1F5F9">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecalho -->
+        <Border Grid.Row="0"
+                Background="#0F766E">
+
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="25,0">
+
+                <Border Width="52"
+                        Height="52"
+                        CornerRadius="26"
+                        Background="#33FFFFFF">
+
+                    <materialDesign:PackIcon Kind="FileDocumentEdit"
+                                             Width="30"
+                                             Height="30"
+                                             Foreground="White"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+
+                </Border>
+
+                <StackPanel Margin="15,0,0,0"
+                            VerticalAlignment="Center">
+
+                    <TextBlock x:Name="txtTitulo"
+                               Text="Nova Inscrição"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <TextBlock Text="Associar um cliente a um plano de adesão"
+                               FontSize="13"
+                               Foreground="#CCFFFFFF"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- Conteudo -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <Border Background="White"
+                    CornerRadius="14"
+                    Padding="25"
+                    Margin="25">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Cliente -->
+                    <Grid Grid.Row="0"
+                            Grid.ColumnSpan="3"
+                            Margin="0,0,0,18">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox x:Name="txtCliente"
+                                Height="48"
+                                Padding="12,0"
+                                VerticalContentAlignment="Center"
+                                TextChanged="txtCliente_TextChanged"
+                                KeyDown="txtCliente_KeyDown"
+                                materialDesign:HintAssist.Hint="Pesquisar cliente por nome ou NIF"/>
+
+                        <primitives:Popup x:Name="popupClientes"
+                                        Grid.Row="1"
+                                        PlacementTarget="{Binding ElementName=txtCliente}"
+                                        Placement="Bottom"
+                                        StaysOpen="False"
+                                        AllowsTransparency="True">
+
+                            <Border Width="{Binding ActualWidth, ElementName=txtCliente}"
+                                        MaxHeight="260"
+                                        Background="White"
+                                        BorderBrush="#CBD5E1"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        Padding="4">
+
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="12"
+                                          ShadowDepth="2"
+                                          Opacity="0.18"/>
+                                </Border.Effect>
+                                <ListBox x:Name="lstClientes"
+                                        BorderThickness="0"
+                                        MaxHeight="250"
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        SelectionChanged="lstClientes_SelectionChanged"
+                                        MouseDoubleClick="lstClientes_MouseDoubleClick"
+                                        KeyDown="lstClientes_KeyDown">
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid Margin="8">
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="42"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Width="34"
+                                                        Height="34"
+                                                        CornerRadius="17"
+                                                        Background="#DBEAFE">
+
+                                                    <materialDesign:PackIcon Kind="Account"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Foreground="#2563EB"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+
+                                                </Border>
+
+                                                <StackPanel Grid.Column="1"
+                                                        Margin="10,0,0,0">
+
+                                                    <TextBlock Text="{Binding Nome}"
+                                                        FontWeight="SemiBold"
+                                                        Foreground="#1E293B"/>
+
+                                                    <StackPanel Orientation="Horizontal"
+                                                        Margin="0,3,0,0"            >
+
+                                                        <TextBlock Text="NIF: "
+                                                            Foreground="#64748B"/>
+
+                                                        <TextBlock Text="{Binding NIF}"
+                                                            Foreground="#64748B"/>
+
+                                                        <TextBlock Text="  •  Nascimento: "
+                                                            Foreground="#64748B"/>
+
+                                                        <TextBlock Text="{Binding DataNascimento, StringFormat=dd/MM/yyyy}"
+                                                            Foreground="#64748B"/>
+
+                                                    </StackPanel>
+
+                                                </StackPanel>
+
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+
+                                </ListBox>
+
+                            </Border>
+
+                            </primitives:Popup>
+
+                    </Grid>
+                    <!-- Plano -->
+                    <ComboBox x:Name="cmbPlano"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              Height="48"
+                              Margin="0,0,0,18"
+                              DisplayMemberPath="Nome"
+                              SelectedValuePath="IdPlano"
+                              SelectionChanged="cmbPlano_SelectionChanged"
+                              materialDesign:HintAssist.Hint="Plano"/>
+
+                    <!-- Datas -->
+                    <DatePicker x:Name="dpDataInicio"
+                                Grid.Row="2"
+                                Height="48"
+                                Margin="0,0,0,18"
+                                SelectedDateChanged="dpDataInicio_SelectedDateChanged"
+                                materialDesign:HintAssist.Hint="Data de início"/>
+
+                    <DatePicker x:Name="dpDataFim"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Height="48"
+                            Margin="0,0,0,18"
+                            IsEnabled="False"
+                            Focusable="False"
+                            materialDesign:HintAssist.Hint="Data de fim calculada"/>
+                    <!-- Estado -->
+                    <ComboBox x:Name="cmbEstado"
+                              Grid.Row="3"
+                              Height="48"
+                              SelectedIndex="0"
+                              materialDesign:HintAssist.Hint="Estado">
+
+
+                        <ComboBoxItem Content="Pendente"/>
+                        <ComboBoxItem Content="Ativa"/>
+                        <ComboBoxItem Content="Suspensa"/>
+                        <ComboBoxItem Content="Terminada"/>
+                        <ComboBoxItem Content="Cancelada"/>
+
+                    </ComboBox>
+
+                    <!-- Resumo do plano -->
+                    <Border Grid.Row="3"
+                            Grid.Column="2"
+                            Background="#ECFDF5"
+                            CornerRadius="10"
+                            Padding="14">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="CalendarCheck"
+                                                     Width="22"
+                                                     Height="22"
+                                                     Foreground="#0F766E"
+                                                     Margin="0,0,10,0"/>
+
+                            <TextBlock x:Name="txtResumoPlano"
+                                       Text="Selecione um plano para calcular a data final."
+                                       Foreground="#334155"
+                                       TextWrapping="Wrap"/>
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Grid>
+
+            </Border>
+
+        </ScrollViewer>
+
+        <!--Rodape -->
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#E2E8F0"
+                BorderThickness="0,1,0,0">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="20,0">
+
+                <Button x:Name="btnCancelar"
+                        Width="125"
+                        Height="42"
+                        Margin="0,0,10,0"
+                        Click="btnCancelar_Click">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="Close"
+                                                 Width="18"
+                                                 Height="18"
+                                                 Margin="0,0,7,0"/>
+
+                        <TextBlock Text="Cancelar"/>
+
+                    </StackPanel>
+
+                </Button>
+
+                <Button x:Name="btnGuardar"
+                        Width="125"
+                        Height="42"
+                        Click="btnGuardar_Click">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="ContentSave"
+                                                 Width="18"
+                                                 Height="18"
+                                                 Margin="0,0,7,0"/>
+
+                        <TextBlock Text="Guardar"/>
+
+                    </StackPanel>
+
+                </Button>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>

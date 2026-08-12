@@ -1,0 +1,348 @@
+﻿<Page x:Class="GymManager.View.ClientesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Clientes"
+      Background="#F1F5F9">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecalho -->
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+
+                <TextBlock Text="Gestão de Clientes"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1E293B"/>
+
+                <TextBlock Text="Registo e acompanhamento dos clientes do ginásio"
+                           FontSize="14"
+                           Foreground="#64748B"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+            <Border Grid.Column="1"
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="18,10"
+                    VerticalAlignment="Center">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="AccountGroup"
+                                             Width="26"
+                                             Height="26"
+                                             Foreground="#2563EB"
+                                             VerticalAlignment="Center"/>
+
+                    <StackPanel Margin="10,0,0,0">
+
+                        <TextBlock Text="Total de Clientes"
+                                   FontSize="12"
+                                   Foreground="#64748B"/>
+
+                        <TextBlock x:Name="txtTotalClientes"
+                                   Text="0"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Foreground="#1E293B"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+        <!-- Barra de Acoes -->
+        <Border Grid.Row="1"
+        Background="White"
+        CornerRadius="12"
+        Padding="15"
+        Margin="0,25,0,20">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Botoes -->
+                <WrapPanel Grid.Row="0"
+                   HorizontalAlignment="Left">
+
+                    <Button x:Name="btnNovo"
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="btnNovo_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="AccountPlus"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Novo"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEditar"
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="btnEditar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Pencil"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Editar"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEliminar"
+                    Width="120"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="btnEliminar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Delete"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Eliminar"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnExportarPdf"
+                    Width="150"
+                    Height="42"
+                    Margin="0,0,10,0"
+                    Click="BtnExportarPdf_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="FilePdfBox"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Exportar PDF"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnDossier"
+                    Width="150"
+                    Height="42"
+                    Click="BtnDossier_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="FileDocument"
+                                             Width="18"
+                                             Height="18"
+                                             Margin="0,0,7,0"/>
+
+                            <TextBlock Text="Dossier"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                </WrapPanel>
+
+                <!-- Pesquisa -->
+                <Grid Grid.Row="1"
+              Width="520"
+              Height="44"
+              Margin="0,16,0,0"
+              HorizontalAlignment="Left">
+
+                    <TextBox x:Name="txtPesquisar"
+                     Padding="38,0,35,0"
+                     VerticalContentAlignment="Center"
+                     TextChanged="txtPesquisar_TextChanged"
+                     materialDesign:HintAssist.Hint="Pesquisar cliente..."
+                     materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <materialDesign:PackIcon Kind="Magnify"
+                                     Width="20"
+                                     Height="20"
+                                     Margin="10,0,0,0"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Foreground="#64748B"
+                                     IsHitTestVisible="False"/>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Tabela -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1">
+
+            <DataGrid x:Name="dgClientes"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      RowHeight="42"
+                      ColumnHeaderHeight="42"
+                      BorderThickness="0"
+                      AlternatingRowBackground="#F8FAFC">
+
+                <DataGrid.Columns>
+
+                   
+
+                    <DataGridTextColumn Header="Nome"
+                                        Binding="{Binding Nome}"
+                                        Width="2*"/>
+
+                    <DataGridTextColumn Header="NIF"
+                                        Binding="{Binding NIF}"
+                                        Width="110"/>
+
+                    <DataGridTextColumn Header="Data de nascimento"
+                                        Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}"
+                                        Width="145"/>
+
+                    <DataGridTextColumn Header="Telefone"
+                                        Binding="{Binding Telefone}"
+                                        Width="120"/>
+
+                    <DataGridTextColumn Header="Email"
+                                        Binding="{Binding Email}"
+                                        Width="2*"/>
+
+                    <DataGridTextColumn Header="Inscrição"
+                                        Binding="{Binding DataInscricao, StringFormat=dd/MM/yyyy}"
+                                        Width="110"/>
+
+                    <DataGridTemplateColumn Header="Estado"
+                                            Width="100">
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <Border Padding="9,4"
+                                        CornerRadius="10"
+                                        HorizontalAlignment="Center">
+
+                                    <Border.Style>
+
+                                        <Style TargetType="Border">
+
+                                            <Setter Property="Background"
+                                                    Value="#FEE2E2"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding Estado}"
+                                                             Value="True">
+
+                                                    <Setter Property="Background"
+                                                            Value="#DCFCE7"/>
+
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </Border.Style>
+
+                                    <TextBlock FontSize="12"
+                                               FontWeight="SemiBold">
+
+                                        <TextBlock.Style>
+
+                                            <Style TargetType="TextBlock">
+
+                                                <Setter Property="Text"
+                                                        Value="Inativo"/>
+
+                                                <Setter Property="Foreground"
+                                                        Value="#B91C1C"/>
+
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="True">
+
+                                                        <Setter Property="Text"
+                                                                Value="Ativo"/>
+
+                                                        <Setter Property="Foreground"
+                                                                Value="#15803D"/>
+
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+
+                                            </Style>
+
+                                        </TextBlock.Style>
+
+                                    </TextBlock>
+
+                                </Border>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+
+</Page>

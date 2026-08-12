@@ -1,0 +1,364 @@
+﻿<Page x:Class="GymManager.View.AulasPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Aulas"
+      Language="pt-PT"
+      Background="#F1F5F9">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecalho -->
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+
+                <TextBlock Text="Gestão de Aulas"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="#1E293B"/>
+
+                <TextBlock Text="Gerir aulas, professores, horários, salas e lotação"
+                           FontSize="14"
+                           Foreground="#64748B"
+                           Margin="0,5,0,0"/>
+
+            </StackPanel>
+
+            <Border Grid.Column="1"
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="18,10"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="1">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="CalendarClock"
+                                             Width="26"
+                                             Height="26"
+                                             Foreground="#2563EB"
+                                             VerticalAlignment="Center"/>
+
+                    <StackPanel Margin="10,0,0,0">
+
+                        <TextBlock Text="Total de aulas"
+                                   FontSize="12"
+                                   Foreground="#64748B"/>
+
+                        <TextBlock x:Name="txtTotal"
+                                   Text="0"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Foreground="#1E293B"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+        <!-- Barra de Acoes -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                Margin="0,25,0,20"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Botoes -->
+                <StackPanel Grid.Row="0"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,14">
+
+                    <Button x:Name="btnNova"
+                            Width="125"
+                            Height="42"
+                            Margin="0,0,10,0"
+                            Click="btnNova_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Plus"
+                                                     Width="18"
+                                                     Height="18"/>
+
+                            <TextBlock Text="Nova Aula"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEditar"
+                            Width="120"
+                            Height="42"
+                            Margin="0,0,10,0"
+                            Click="btnEditar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Pencil"
+                                                     Width="18"
+                                                     Height="18"/>
+
+                            <TextBlock Text="Editar"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                    <Button x:Name="btnEliminar"
+                            Width="120"
+                            Height="42"
+                            Click="btnEliminar_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Delete"
+                                                     Width="18"
+                                                     Height="18"/>
+
+                            <TextBlock Text="Eliminar"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+                    <Button x:Name="btnReservas"
+        Width="130"
+        Height="42"
+        Margin="10,0,0,0"
+        Click="btnReservas_Click">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="AccountGroup"
+                                 Width="18"
+                                 Height="18"
+                                 Margin="0,0,8,0"/>
+
+                            <TextBlock Text="Reservas"/>
+
+                        </StackPanel>
+
+                    </Button>
+                </StackPanel>
+
+                <!-- Pesquisa -->
+                <Grid Grid.Row="1"
+                      Width="520"
+                      Height="42"
+                      HorizontalAlignment="Left">
+
+                    <TextBox x:Name="txtPesquisar"
+                             Padding="38,0,35,0"
+                             VerticalContentAlignment="Center"
+                             TextChanged="txtPesquisar_TextChanged"
+                             materialDesign:HintAssist.Hint="Pesquisar por aula, professor, sala, estado, data ou hora..."
+                             materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="20"
+                                             Height="20"
+                                             Margin="10,0,0,0"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             Foreground="#64748B"
+                                             IsHitTestVisible="False"/>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Tabela -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1">
+
+            <DataGrid x:Name="dgAulas"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      AlternatingRowBackground="#F8FAFC"
+                      RowHeight="44"
+                      ColumnHeaderHeight="44"
+                      BorderThickness="0">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Aula"
+                                        Binding="{Binding Nome}"
+                                        Width="2*"/>
+
+                    <DataGridTextColumn Header="Professor"
+                                        Binding="{Binding NomeProfessor}"
+                                        Width="2*"/>
+
+                    <DataGridTextColumn Header="Data"
+                                        Binding="{Binding DataAula,
+                                                          StringFormat=dd/MM/yyyy}"
+                                        Width="110"/>
+
+                    <DataGridTextColumn Header="Hora"
+                                        Binding="{Binding HoraFormatada}"
+                                        Width="80"/>
+
+                    <DataGridTextColumn Header="Duração"
+                                        Binding="{Binding DuracaoFormatada}"
+                                        Width="90"/>
+
+                    <DataGridTextColumn Header="Sala"
+                                        Binding="{Binding Sala}"
+                                        Width="110"/>
+
+                    <DataGridTextColumn Header="Ocupação"
+                    Binding="{Binding OcupacaoFormatada}"
+                    Width="100"/>
+
+                    <DataGridTemplateColumn Header="Estado"
+                                            Width="120">
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <Border Padding="9,4"
+                                        CornerRadius="10"
+                                        HorizontalAlignment="Center">
+
+                                    <Border.Style>
+
+                                        <Style TargetType="Border">
+
+                                            <Setter Property="Background"
+                                                    Value="#E2E8F0"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding Estado}"
+                                                             Value="Agendada">
+
+                                                    <Setter Property="Background"
+                                                            Value="#DBEAFE"/>
+
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding Estado}"
+                                                             Value="Concluída">
+
+                                                    <Setter Property="Background"
+                                                            Value="#DCFCE7"/>
+
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding Estado}"
+                                                             Value="Cancelada">
+
+                                                    <Setter Property="Background"
+                                                            Value="#FEE2E2"/>
+
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </Border.Style>
+
+                                    <TextBlock Text="{Binding Estado}"
+                                               FontSize="12"
+                                               FontWeight="SemiBold">
+
+                                        <TextBlock.Style>
+
+                                            <Style TargetType="TextBlock">
+
+                                                <Setter Property="Foreground"
+                                                        Value="#475569"/>
+
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="Agendada">
+
+                                                        <Setter Property="Foreground"
+                                                                Value="#1D4ED8"/>
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="Concluída">
+
+                                                        <Setter Property="Foreground"
+                                                                Value="#15803D"/>
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Estado}"
+                                                                 Value="Cancelada">
+
+                                                        <Setter Property="Foreground"
+                                                                Value="#B91C1C"/>
+
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+
+                                            </Style>
+
+                                        </TextBlock.Style>
+
+                                    </TextBlock>
+
+                                </Border>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+
+</Page>

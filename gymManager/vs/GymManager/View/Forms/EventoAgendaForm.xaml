@@ -1,0 +1,361 @@
+﻿<Window x:Class="GymManager.View.Forms.EventoAgendaForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Agendamento PT"
+        Width="760"
+        Height="720"
+        MinWidth="700"
+        MinHeight="650"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        Background="#F1F5F9"
+        FontFamily="Segoe UI"
+        Language="pt-PT">
+
+    <Window.Resources>
+
+        <Style x:Key="CartaoForm"
+               TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="22"/>
+        </Style>
+
+        <Style x:Key="TituloSecao"
+               TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#1E293B"/>
+        </Style>
+
+        <Style x:Key="BotaoSecundario"
+               TargetType="Button">
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="MinWidth" Value="125"/>
+            <Setter Property="Padding" Value="18,0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#334155"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="BotaoPrincipal"
+               TargetType="Button">
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="MinWidth" Value="160"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="Background" Value="#2563EB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#2563EB"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="#0F172A"
+                Padding="28,22">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Width="58"
+                        Height="58"
+                        CornerRadius="16"
+                        Background="#1E3A8A">
+
+                    <materialDesign:PackIcon Kind="AccountClock"
+                                             Width="30"
+                                             Height="30"
+                                             Foreground="#BFDBFE"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                </Border>
+
+                <StackPanel Grid.Column="1"
+                            Margin="16,0,0,0"
+                            VerticalAlignment="Center">
+
+                    <TextBlock x:Name="txtTituloJanela"
+                               Text="Novo agendamento PT"
+                               FontSize="27"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <TextBlock Text="Agende uma sessão entre um cliente e um personal trainer."
+                               Margin="0,5,0,0"
+                               FontSize="13"
+                               Foreground="#CBD5E1"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <StackPanel Margin="26">
+
+                <Border Style="{StaticResource CartaoForm}"
+                        Margin="0,0,0,18">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,0,0,18">
+
+                            <Border Width="34"
+                                    Height="34"
+                                    CornerRadius="10"
+                                    Background="#DBEAFE">
+
+                                <materialDesign:PackIcon Kind="InformationOutline"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Foreground="#2563EB"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Informação do agendamento"
+                                       Style="{StaticResource TituloSecao}"
+                                       Margin="10,7,0,0"/>
+                        </StackPanel>
+
+                        <TextBox x:Name="txtTitulo"
+                                 Grid.Row="1"
+                                 Height="50"
+                                 VerticalContentAlignment="Center"
+                                 materialDesign:HintAssist.Hint="Título do agendamento"/>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource CartaoForm}"
+                        Margin="0,0,0,18">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,0,0,20">
+
+                            <Border Width="34"
+                                    Height="34"
+                                    CornerRadius="10"
+                                    Background="#F3E8FF">
+
+                                <materialDesign:PackIcon Kind="ClockOutline"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Foreground="#7E22CE"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Data e horário"
+                                       Style="{StaticResource TituloSecao}"
+                                       Margin="10,7,0,0"/>
+                        </StackPanel>
+
+                        <Grid Grid.Row="1"
+                              Margin="0,4,0,0">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.2*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <DatePicker x:Name="dpData"
+                                        Grid.Column="0"
+                                        Height="50"
+                                        VerticalContentAlignment="Center"
+                                        materialDesign:HintAssist.Hint="Data"/>
+
+                            <TextBox x:Name="txtHoraInicio"
+                                     Grid.Column="2"
+                                     Height="50"
+                                     VerticalContentAlignment="Center"
+                                     PreviewTextInput="txtHora_PreviewTextInput"
+                                     materialDesign:HintAssist.Hint="Hora de início"/>
+
+                            <TextBox x:Name="txtHoraFim"
+                                     Grid.Column="4"
+                                     Height="50"
+                                     VerticalContentAlignment="Center"
+                                     PreviewTextInput="txtHora_PreviewTextInput"
+                                     materialDesign:HintAssist.Hint="Hora de fim"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource CartaoForm}"
+                        Margin="0,0,0,18">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,0,0,18">
+
+                            <Border Width="34"
+                                    Height="34"
+                                    CornerRadius="10"
+                                    Background="#DCFCE7">
+
+                                <materialDesign:PackIcon Kind="AccountGroup"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Foreground="#15803D"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Participantes"
+                                       Style="{StaticResource TituloSecao}"
+                                       Margin="10,7,0,0"/>
+                        </StackPanel>
+
+                        <ComboBox x:Name="cmbPT"
+                                  Grid.Row="1"
+                                  Height="50"
+                                  DisplayMemberPath="Nome"
+                                  SelectedValuePath="IdPT"
+                                  materialDesign:HintAssist.Hint="Personal trainer"/>
+
+                        <ComboBox x:Name="cmbCliente"
+                                  Grid.Row="2"
+                                  Height="50"
+                                  Margin="0,16,0,0"
+                                  DisplayMemberPath="Nome"
+                                  SelectedValuePath="IdCliente"
+                                  materialDesign:HintAssist.Hint="Cliente"/>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource CartaoForm}">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,0,0,18">
+
+                            <Border Width="34"
+                                    Height="34"
+                                    CornerRadius="10"
+                                    Background="#FEF3C7">
+
+                                <materialDesign:PackIcon Kind="TextBoxOutline"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Foreground="#B45309"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                            </Border>
+
+                            <TextBlock Text="Detalhes adicionais"
+                                       Style="{StaticResource TituloSecao}"
+                                       Margin="10,7,0,0"/>
+                        </StackPanel>
+
+                        <TextBox x:Name="txtLocalizacao"
+                                 Grid.Row="1"
+                                 Height="50"
+                                 Margin="0,0,0,16"
+                                 VerticalContentAlignment="Center"
+                                 materialDesign:HintAssist.Hint="Localização"/>
+
+                        <TextBox x:Name="txtDescricao"
+                                 Grid.Row="2"
+                                 Height="110"
+                                 Padding="10"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Descrição ou observações"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="#E2E8F0"
+                BorderThickness="0,1,0,0"
+                Padding="24,16">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Confirme os dados antes de guardar."
+                           FontSize="12"
+                           Foreground="#64748B"
+                           VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal">
+
+                    <Button x:Name="btnCancelar"
+                            Content="Cancelar"
+                            Style="{StaticResource BotaoSecundario}"
+                            Margin="0,0,10,0"
+                            Click="btnCancelar_Click"/>
+
+                    <Button x:Name="btnGuardar"
+                            Style="{StaticResource BotaoPrincipal}"
+                            Click="btnGuardar_Click"
+                            IsDefault="True">
+
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave"
+                                                     Width="18"
+                                                     Height="18"
+                                                     Margin="0,0,8,0"/>
+
+                            <TextBlock Text="Guardar agendamento"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

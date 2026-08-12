@@ -89,17 +89,16 @@ BEGIN
 
         RETURN;
     END;
+IF @Valor < 0
+BEGIN
+    RAISERROR(
+        'O valor não pode ser negativo.',
+        16,
+        1
+    );
 
-    IF @Valor <= 0
-    BEGIN
-        RAISERROR(
-            'O valor deve ser superior a zero.',
-            16,
-            1
-        );
-
-        RETURN;
-    END;
+    RETURN;
+END;
 
     IF @Estado NOT IN
     (
@@ -738,13 +737,32 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Se o valor for 0, o pagamento passa automaticamente para Pago
+    UPDATE P
+    SET
+        P.Estado = N'Pago',
+        P.DataConfirmacao =
+            COALESCE(
+                P.DataConfirmacao,
+                SYSDATETIME()
+            )
+    FROM dbo.Pagamentos AS P
+    INNER JOIN inserted AS N
+        ON N.IdPagamento = P.IdPagamento
+    WHERE
+        P.Valor = 0
+        AND P.Estado <> N'Pago';
+
+    -- Se o pagamento estiver Pago, ativa a inscrição
     UPDATE I
     SET I.Estado = N'Ativa'
     FROM dbo.Inscricoes AS I
     INNER JOIN inserted AS N
         ON N.IdInscricao = I.IdInscricao
+    INNER JOIN dbo.Pagamentos AS P
+        ON P.IdPagamento = N.IdPagamento
     WHERE
-        N.Estado = N'Pago'
+        P.Estado = N'Pago'
         AND N.IdInscricao IS NOT NULL
         AND I.Estado = N'Pendente';
 END;

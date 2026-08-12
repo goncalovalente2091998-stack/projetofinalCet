@@ -1,0 +1,558 @@
+﻿<Window x:Class="GymManager.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Gym Manager"
+        Icon="/GymManager;component/Assets/logo.ico"
+        Height="700"
+        Width="1200"
+        MinHeight="600"
+        MinWidth="1000"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F1F5F9">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="235"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- menu lateral -->
+        <Border Grid.Column="0"
+                Background="#1E293B">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Logotipo -->
+                <Border Grid.Row="0"
+                        Background="#172033"
+                        Padding="15,20">
+
+                    <StackPanel>
+
+                        <materialDesign:PackIcon Kind="Dumbbell"
+                                                 Width="36"
+                                                 Height="36"
+                                                 Foreground="#38BDF8"
+                                                 HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="GYM MANAGER"
+                                   Foreground="White"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Margin="0,8,0,0"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="Gestão de Ginásio"
+                                   Foreground="#94A3B8"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+
+                </Border>
+
+                <!-- opcoes com scroll -->
+                <ScrollViewer Grid.Row="1"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+
+                    <StackPanel Margin="10,12,10,15">
+
+                        <!-- dashboard -->
+
+                        <Button x:Name="btnDashboard"
+                            Height="44"
+                            Margin="0,0,0,12"
+                            HorizontalContentAlignment="Left"
+                            Click="btnDashboard_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="ViewDashboard"
+                                 Width="20"
+                                 Height="20"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Dashboard"
+                                   VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <!-- administracao -->
+
+                        <TextBlock Text="ADMINISTRAÇÃO"
+                                   x:Name="txtAdmin"
+                                   Foreground="#64748B"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Margin="10,8,0,6"/>
+
+                        <Button x:Name="btnUtilizadores"
+                            Height="42"
+                            Margin="0,2"
+                            HorizontalContentAlignment="Left"
+                            Click="btnUtilizadores_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="AccountCog"
+                                   Width="19"
+                                   Height="19"
+                                   Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Utilizadores"
+                                   VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Separator Margin="5,14"
+                                   x:Name="spGestao"
+                                   Background="#334155"/>
+
+                        <!-- gestao -->
+
+                        <TextBlock Text="GESTÃO"
+                                   x:Name="txtGestao"
+                                   Foreground="#64748B"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Margin="10,0,0,6"/>
+
+                        <Button x:Name="btnClientes"
+                          Height="42"
+                          Margin="0,2"
+                          HorizontalContentAlignment="Left"
+                          Click="btnClientes_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="AccountGroup"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Clientes"/>
+
+                            </StackPanel>
+
+                        </Button>
+                        <Button x:Name="btnPresencas"
+                          Height="42"
+                          Margin="0,2"
+                          HorizontalContentAlignment="Left"
+                          Click="btnPresencas_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="AccountClock"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Presenças"
+                                  VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+                        <Button x:Name="btnProfessores"
+                          Height="42"
+                          Margin="0,2"
+                          HorizontalContentAlignment="Left"
+                          Click="btnProfessores_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="School"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Professores"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Button x:Name="btnPT"
+                          Height="42"
+                          Margin="0,2"
+                          HorizontalContentAlignment="Left"
+                          Click="btnPT_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="AccountTie"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Personal Trainers"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Separator Margin="5,14"
+                                   x:Name="spTreino"
+                                   Background="#334155"/>
+                        <!-- Treino -->
+                        <TextBlock Text="TREINO"
+                                   Foreground="#64748B"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Margin="10,0,0,6"/>
+
+                        <Button x:Name="btnAulas"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnAulas_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="CalendarClock"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+
+                                <TextBlock Text="Aulas"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+                        <Button x:Name="btnAgenda"
+                          Height="42"
+                          Margin="0,2"
+                          HorizontalContentAlignment="Left"
+                          Click="btnAgenda_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="CalendarMonth"
+                                 Width="19"
+                                 Height="19"
+                                 Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Agenda"
+                                  VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+                        <Button x:Name="btnTreinos"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnTreinos_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="ClipboardText"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Planos de Treino"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Button x:Name="btnExercicios"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnExercicios_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="WeightLifter"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Exercícios"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Button x:Name="btnAvaliacoes"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnAvaliacoes_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="ChartLine"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Avaliações Físicas"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Separator Margin="5,14"
+                                   x:Name="spComercial"
+                                   Background="#334155"/>
+
+                        <!-- Comercial -->
+                        <TextBlock Text="COMERCIAL"
+                                   x:Name="txtComercial"
+                                   Foreground="#64748B"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Margin="10,0,0,6"/>
+
+                        <Button x:Name="btnPlanos"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnPlanos_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="CardAccountDetails"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Planos de Adesão"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Button x:Name="btnInscricoes"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnInscricoes_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="FileDocumentEdit"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Inscrições"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Button x:Name="btnPagamentos"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnPagamentos_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="CashMultiple"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Pagamentos"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Separator Margin="5,14"
+                                   x:Name="spEquipamentos"
+                                   Background="#334155"/>
+
+                        <!-- Equipamentos -->
+                        <TextBlock Text="EQUIPAMENTOS"
+                                   x:Name="txtEquipamentos"
+                                   Foreground="#64748B"
+                                   FontSize="11"
+                                   FontWeight="Bold"
+                                   Margin="10,0,0,6"/>
+
+                        <Button x:Name="btnEquipamentos"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnEquipamentos_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="Tools"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Equipamentos"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                        <Button x:Name="btnManutencoes"
+                                Height="42"
+                                Margin="0,2"
+                                HorizontalContentAlignment="Left"
+                                Click="btnManutencoes_Click">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <materialDesign:PackIcon Kind="WrenchClock"
+                                                         Width="19"
+                                                         Height="19"
+                                                         Margin="3,0,12,0"/>
+
+                                <TextBlock Text="Manutenções"
+                                           VerticalAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </Button>
+
+                    </StackPanel>
+
+                </ScrollViewer>
+
+                <!-- Logout -->
+                <Border Grid.Row="2"
+                        Background="#172033"
+                        Padding="10">
+
+                    <Button x:Name="btnLogout"
+                            Height="44"
+                            HorizontalContentAlignment="Left"
+                            Click="btnLogout_Click" VerticalAlignment="Top">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <materialDesign:PackIcon Kind="Logout"
+                                                     Width="20"
+                                                     Height="20"
+                                                     Margin="3,0,12,0"/>
+
+                            <TextBlock Text="Terminar Sessão"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Button>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Area principal -->
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- cabecalho -->
+            <Border Grid.Row="0"
+                    Background="White"
+                    BorderBrush="#E2E8F0"
+                    BorderThickness="0,0,0,1">
+
+                <Grid Margin="20,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel VerticalAlignment="Center">
+
+                        <TextBlock x:Name="txtTituloPagina"
+                                   Text="Dashboard"
+                                   FontSize="23"
+                                   FontWeight="Bold"
+                                   Foreground="#1E293B"/>
+
+                        <TextBlock Text="Sistema de gestão do ginásio"
+                                   FontSize="12"
+                                   Foreground="#64748B"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+
+                        <Border Width="38"
+                                Height="38"
+                                CornerRadius="19"
+                                Background="#DBEAFE">
+
+                            <materialDesign:PackIcon Kind="Account"
+                                                     Width="22"
+                                                     Height="22"
+                                                     Foreground="#2563EB"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+
+                        </Border>
+
+                        <StackPanel Margin="10,0,0,0"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock x:Name="txtNomeUtilizador"
+                                       Text="Administrador"
+                                       FontWeight="SemiBold"
+                                       Foreground="#1E293B"/>
+
+                            <TextBlock x:Name="txtPerfilUtilizador"
+                                       Text="Administrador"
+                                       FontSize="11"
+                                       Foreground="#64748B"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+            <!-- conteudo -->
+            <Frame x:Name="MainFrame"
+                   Grid.Row="1"
+                   NavigationUIVisibility="Hidden"
+                   Background="#F1F5F9"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

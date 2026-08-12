@@ -1,0 +1,104 @@
+﻿using GymManager.Helpers;
+using GymManager.Models;
+using GymManager.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+
+namespace GymManager.View
+{
+    public partial class LoginWindow : Window
+    {
+        private readonly UtilizadorService service = new UtilizadorService();
+
+        public LoginWindow()
+        {
+            InitializeComponent();
+        }
+
+        private async void btnEntrar_Click(object sender, RoutedEventArgs e)
+        {
+            string email = txtEmail.Text.Trim();
+            string password = txtPassword.Password;
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                Mensagem.Aviso("Introduza o email.");
+                txtEmail.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                Mensagem.Aviso("Introduza a palavra-passe.");
+                txtPassword.Focus();
+                return;
+            }
+
+            btnEntrar.IsEnabled = false;
+
+            try
+            {
+                Utilizador? utilizador = service.ObterPorEmail(email);
+
+                bool credenciaisValidas = utilizador != null && passwordHelper.Verificar(password, utilizador.PasswordHash);
+
+                if (!credenciaisValidas)
+                {
+                    Mensagem.Aviso("Email ou palavra-passe inválidos.");
+
+                    txtPassword.Clear();
+                    txtPassword.Focus();
+
+                    return;
+                }
+
+                Sessao.IdUtilizador = utilizador!.IdUtilizador;
+                Sessao.Nome = utilizador.Nome;
+                Sessao.Perfil = utilizador.Perfil;
+
+                Keyboard.ClearFocus();
+
+                Hide();
+
+                await System.Windows.Threading.Dispatcher.Yield(DispatcherPriority.Background);
+
+                MainWindow mainWindow = new MainWindow();
+
+                Application.Current.MainWindow = mainWindow;
+
+                mainWindow.Show();
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+                if (!IsVisible)
+                {
+                    Show();
+                }
+
+                Mensagem.Erro("Não foi possível iniciar sessão.\n\n" + ex.Message);
+            }
+            finally
+            {
+                if (IsVisible)
+                {
+                    btnEntrar.IsEnabled = true;
+                }
+            }
+        }
+    }
+}
+

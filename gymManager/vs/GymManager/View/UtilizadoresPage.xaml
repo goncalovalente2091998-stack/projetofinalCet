@@ -1,0 +1,142 @@
+﻿<Page x:Class="GymManager.View.UtilizadoresPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Background="#F1F5F9">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+
+            <TextBlock Text="Gestão de Utilizadores"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="#1E293B"/>
+
+            <TextBlock Text="Criar e gerir contas de acesso à aplicação"
+                       FontSize="14"
+                       Foreground="#64748B"
+                       Margin="0,5,0,0"/>
+
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="12"
+                Padding="15"
+                Margin="0,25,0,20">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnNovo"
+                 Width="160"
+                 Height="42"
+                 Click="btnNovo_Click">
+    
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="AccountPlus"
+                                     Width="19"
+                                     Height="19"
+                                     Margin="0,0,8,0"/>
+
+                        <TextBlock Text="Novo Utilizador"/>
+
+                    </StackPanel>
+
+                </Button>
+
+                <Grid Grid.Column="2"
+                Height="42">
+
+                    <TextBox x:Name="txtPesquisar"
+                 Padding="38,0,35,0"
+                 VerticalContentAlignment="Center"
+                 TextChanged="txtPesquisar_TextChanged"
+                 materialDesign:HintAssist.Hint="Pesquisar utilizador..."
+                 materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                    <materialDesign:PackIcon Kind="Magnify"
+                                 Width="20"
+                                 Height="20"
+                                 Margin="10,0,0,0"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Foreground="#64748B"/>
+
+                </Grid>
+
+            </Grid>
+        </Border>
+
+        <DataGrid x:Name="dgUtilizadores"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  SelectionMode="Single">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Nome"
+                                    Binding="{Binding Nome}"
+                                    Width="*"/>
+
+                <DataGridTextColumn Header="Email"
+                                    Binding="{Binding Email}"
+                                    Width="*"/>
+
+                <DataGridTextColumn Header="Perfil"
+                                    Binding="{Binding Perfil}"
+                                    Width="180"/>
+
+                <DataGridTemplateColumn Header="Ações"
+                                        Width="210">
+
+                    <DataGridTemplateColumn.CellTemplate>
+
+                        <DataTemplate>
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+
+                                <Button Width="80"
+                                        Height="32"
+                                        Margin="0,0,8,0"
+                                        Tag="{Binding}"
+                                        Content="Editar"
+                                        Click="btnEditar_Click"/>
+
+                                <Button Width="85"
+                                        Height="32"
+                                        Tag="{Binding}"
+                                        Content="Eliminar"
+                                        Click="btnEliminar_Click"/>
+
+                            </StackPanel>
+
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+
+</Page>
