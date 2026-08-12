@@ -240,6 +240,7 @@
                         <ComboBoxItem Content="Pagamento Posterior"/>
                         <ComboBoxItem Content="MB WAY"/>
                         <ComboBoxItem Content="PayPal"/>
+                        <ComboBoxItem Content="Oferta"/>
 
                     </ComboBox>
 

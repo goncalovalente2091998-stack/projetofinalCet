@@ -360,12 +360,24 @@ namespace GymManager.View.Forms
                 estado =
                     estadoItem.Content?.ToString() ?? string.Empty;
             }
+            Plano? planoSelecionado = cmbPlano.SelectedItem as Plano;
 
+            bool oferta = planoSelecionado != null && planoSelecionado.Preco == 0;
             string operacao = modoRenovacao ? "renovar" : novaInscricao ? "criar" : "atualizar";
 
-            if (!Mensagem.Confirmar($"Tem a certeza que pretende " + $"{operacao} esta inscrição?"))
+            if (oferta && novaInscricao)
             {
-                return;
+                if (!Mensagem.Confirmar("Este plano é uma oferta de 0,00 €.\n\n" + $"Cliente: {clienteSelecionado.Nome}\n" + $"Plano: {planoSelecionado!.Nome}\n\n" + "Tem a certeza que pretende atribuir esta oferta?"))
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (!Mensagem.Confirmar($"Tem a certeza que pretende {operacao} esta inscrição?"))
+                {
+                    return;
+                }
             }
 
             Inscricao dados = new Inscricao
@@ -391,7 +403,14 @@ namespace GymManager.View.Forms
                 {
                     inscricaoService.Inserir(dados);
 
-                    Mensagem.Sucesso(modoRenovacao ? "Inscrição renovada com sucesso! " + "Foi criado um pagamento pendente." : "Inscrição criada com sucesso! " + "Foi criado um pagamento pendente.");
+                    if (oferta)
+                    {
+                        Mensagem.Sucesso(modoRenovacao ? "Inscrição renovada com sucesso! O plano foi atribuído como oferta." : "Inscrição criada com sucesso! O plano foi atribuído como oferta.");
+                    }
+                    else
+                    {
+                        Mensagem.Sucesso(modoRenovacao ? "Inscrição renovada com sucesso! Foi criado um pagamento pendente." : "Inscrição criada com sucesso! Foi criado um pagamento pendente.");
+                    }
                 }
                 else
                 {

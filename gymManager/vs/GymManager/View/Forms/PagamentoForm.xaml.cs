@@ -342,6 +342,7 @@ namespace GymManager.View.Forms
         private void AtualizarCamposMetodo()
         {
             string metodo = ObterTextoCombo(cmbMetodoPagamento);
+            bool ofertaSelecionada = cmbInscricao.SelectedItem is InscricaoPagamento inscricao && inscricao.Preco == 0;
 
             bool transferencia = metodo == "Transferência Bancária";
 
@@ -384,7 +385,22 @@ namespace GymManager.View.Forms
             txtReferenciaExterna.IsEnabled = paypal || mbway;
 
             txtIdTransacao.IsEnabled = paypal || mbway;
+            if (ofertaSelecionada)
+            {
+                SelecionarCombo(cmbMetodoPagamento, "Oferta");
 
+                SelecionarCombo(cmbEstado, "Pago");
+
+                cmbMetodoPagamento.IsEnabled = false;
+
+                cmbEstado.IsEnabled = false;
+
+                dpDataConfirmacao.IsEnabled = false;
+
+                txtAvisoMetodo.Text = "Este plano será registado como oferta.";
+
+                return;
+            }
             if (pagamentoJaPago)
             {
                 SelecionarCombo(cmbEstado, "Pago");
@@ -616,6 +632,7 @@ namespace GymManager.View.Forms
 
             if (oferta)
             {
+                metodo = "Oferta";
                 estado = "Pago";
             }
             else if (pagamentoJaPago)
@@ -745,7 +762,20 @@ namespace GymManager.View.Forms
         {
             if (pagamento == null)
                 return;
+            if (pagamento.Valor == 0)
+            {
+                SelecionarCombo(cmbMetodoPagamento, "Oferta");
 
+                SelecionarCombo(cmbEstado, "Pago");
+
+                cmbMetodoPagamento.IsEnabled = false;
+
+                cmbEstado.IsEnabled = false;
+
+                txtAvisoMetodo.Text = "Este plano foi atribuído como oferta.";
+
+                return;
+            }
             if (string.Equals(pagamento.Estado, "Pago", StringComparison.OrdinalIgnoreCase))
             {
 

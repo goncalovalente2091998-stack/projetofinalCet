@@ -265,10 +265,10 @@ BEGIN
     END;
 
     -- Validar valor
-    IF @Valor <= 0
+    IF @Valor < 0
     BEGIN
         RAISERROR(
-            'O valor deve ser superior a zero.',
+            'O valor não pode ser negativo',
             16,
             1
         );
@@ -740,22 +740,25 @@ BEGIN
     -- Se o valor for 0, o pagamento passa automaticamente para Pago
     UPDATE P
     SET
+        P.MetodoPagamento = N'Oferta',
         P.Estado = N'Pago',
         P.DataConfirmacao =
             COALESCE(
                 P.DataConfirmacao,
                 SYSDATETIME()
-            )
+            ),
+        P.ReferenciaExterna = NULL,
+        P.IdTransacaoExterna = NULL
     FROM dbo.Pagamentos AS P
     INNER JOIN inserted AS N
         ON N.IdPagamento = P.IdPagamento
     WHERE
-        P.Valor = 0
-        AND P.Estado <> N'Pago';
+        P.Valor = 0;
 
     -- Se o pagamento estiver Pago, ativa a inscrição
     UPDATE I
-    SET I.Estado = N'Ativa'
+    SET
+        I.Estado = N'Ativa'
     FROM dbo.Inscricoes AS I
     INNER JOIN inserted AS N
         ON N.IdInscricao = I.IdInscricao
